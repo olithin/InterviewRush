@@ -19,6 +19,16 @@ public class AttemptsController(AppDbContext db) : ControllerBase
             return BadRequest(ApiResponse<object>.Fail("Invalid problem id."));
         }
 
+        if (request.Score < 0)
+        {
+            return BadRequest(ApiResponse<object>.Fail("Score must be non-negative."));
+        }
+
+        if (request.DurationSeconds < 0)
+        {
+            return BadRequest(ApiResponse<object>.Fail("DurationSeconds must be non-negative."));
+        }
+
         var attempt = new Attempt
         {
             ProblemId = request.ProblemId,
@@ -32,6 +42,6 @@ public class AttemptsController(AppDbContext db) : ControllerBase
         db.Attempts.Add(attempt);
         await db.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(Create), ApiResponse<object>.Ok(new { attempt.Id }, "Attempt recorded."));
+        return Ok(ApiResponse<object>.Ok(new { attempt.Id }, "Attempt recorded."));
     }
 }

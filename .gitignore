@@ -1,7 +1,12 @@
 **/bin/
 **/obj/
+# Ad-hoc dotnet publish output at repo root (do not commit)
+_build_check_api*/
 **/.vs/
 **/*.user
 **/*.db
 **/*.db-shm
 **/*.db-wal
+
+# Frontend local secrets (NextAuth, Google OAuth)
+frontend/.env.local

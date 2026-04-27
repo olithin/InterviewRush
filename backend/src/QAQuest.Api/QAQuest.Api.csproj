@@ -12,6 +12,40 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="..\..\..\content\problems\sliding-window\">
+      <Link>content\problems\sliding-window</Link>
+    </Folder>
+    <Folder Include="..\..\..\content\problems\two-pointers\">
+      <Link>content\problems\two-pointers</Link>
+    </Folder>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\..\content\imports\middle_csharp_dotnet_17_blocks_qa_automation_qna.md">
+      <Link>content\imports\middle_csharp_dotnet_17_blocks_qa_automation_qna.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include=".cursor\rules\01_qaquest_architecture.mdc" />
+    <Content Include=".cursor\rules\02_qaquest_ui_learning_pages.mdc" />
+    <Content Include=".cursor\rules\03_qaquest_content_model.mdc" />
+    <Content Include=".cursor\skills\bulk-import-interview-questions\SKILL.md" />
+    <Content Include=".cursor\skills\interview-question-page\SKILL.md" />
+    <Content Include=".cursor\skills\learning-page-sections\SKILL.md" />
+    <Content Include=".cursor\skills\reuse-existing-problem-patterns\SKILL.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\..\content\problems\dictionary\two-sum.json">
+      <Link>content\problems\dictionary\two-sum.json</Link>
+    </Content>
+    <Content Include="..\..\..\content\problems\hashset\contains-duplicate.json">
+      <Link>content\problems\hashset\contains-duplicate.json</Link>
+    </Content>
   </ItemGroup>
 </Project>

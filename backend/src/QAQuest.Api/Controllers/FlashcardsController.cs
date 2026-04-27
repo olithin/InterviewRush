@@ -22,6 +22,7 @@ public class FlashcardsController(AppDbContext db) : ControllerBase
                 Topic = f.Topic!.Name,
                 f.Front,
                 f.Back,
+                f.Category,
                 f.Difficulty
             })
             .ToListAsync();

@@ -8,5 +8,6 @@ public class Flashcard
 
     public string Front { get; set; } = string.Empty;
     public string Back { get; set; } = string.Empty;
+    public string Category { get; set; } = "mnemonic";
     public int Difficulty { get; set; } = 1;
 }

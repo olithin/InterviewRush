@@ -4,24 +4,29 @@ import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold [text-shadow:none] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-200/90 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-40",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-soft hover:scale-[1.02]",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/90",
-        ghost: "hover:bg-muted text-foreground"
+        default: "btn-plasticine focus-visible:ring-0 focus-visible:ring-offset-0",
+        secondary:
+          "btn-clay-cream transition-[transform,filter] duration-200 ease-out",
+        ghost: "btn-plasticine-ghost"
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-8 rounded-xl px-3",
-        lg: "h-11 px-6"
+        default: "h-12 px-7 py-2",
+        sm: "h-9 px-4 text-xs",
+        lg: "h-14 px-10 text-base"
       }
     },
     defaultVariants: {
       variant: "default",
       size: "default"
-    }
+    },
+    compoundVariants: [
+      { variant: "default", size: "sm", class: "btn-plasticine--sm" },
+      { variant: "default", size: "lg", class: "btn-plasticine--lg" }
+    ]
   }
 );
 
