@@ -39,17 +39,28 @@ public class GapsController(AppDbContext db) : ControllerBase
             return BadRequest(ApiResponse<object>.Fail("Invalid topic id."));
         }
 
+        if (request.Severity is < 1 or > 5)
+        {
+            return BadRequest(ApiResponse<object>.Fail("Severity must be in range 1..5."));
+        }
+
+        var notes = request.Notes?.Trim();
+        if (string.IsNullOrWhiteSpace(notes))
+        {
+            return BadRequest(ApiResponse<object>.Fail("Notes are required."));
+        }
+
         var gap = new Gap
         {
             TopicId = request.TopicId,
-            Severity = Math.Clamp(request.Severity, 1, 5),
-            Notes = request.Notes.Trim(),
+            Severity = request.Severity,
+            Notes = notes,
             UpdatedAtUtc = DateTime.UtcNow
         };
 
         db.Gaps.Add(gap);
         await db.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetAll), ApiResponse<object>.Ok(new { gap.Id }, "Gap saved."));
+        return Ok(ApiResponse<object>.Ok(new { gap.Id }, "Gap saved."));
     }
 }

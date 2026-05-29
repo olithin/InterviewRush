@@ -5,7 +5,7 @@ const badgeVariants = cva("inline-flex items-center rounded-full px-3 py-1 text-
   variants: {
     variant: {
       default: "bg-primary/15 text-primary",
-      secondary: "bg-secondary text-secondary-foreground",
+      secondary: "bg-secondary text-secondary-foreground shadow-clay-sm",
       accent: "bg-accent text-accent-foreground"
     }
   },
@@ -14,6 +14,6 @@ const badgeVariants = cva("inline-flex items-center rounded-full px-3 py-1 text-
   }
 });
 
-export function Badge({ className, variant, ...props }: React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof badgeVariants>) {
-  return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
+export function Badge({ className, variant, ...props }: React.HTMLAttributes<HTMLSpanElement> & VariantProps<typeof badgeVariants>) {
+  return <span className={cn(badgeVariants({ variant }), className)} {...props} />;
 }

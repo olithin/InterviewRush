@@ -1,0 +1,68 @@
+{
+  "id": 1078,
+  "slug": "reverse-number",
+  "title": "Reverse Number",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a positive integer n, return the number with its digits reversed.",
+  "signals": [
+    "reverse number",
+    "digits",
+    "loop"
+  ],
+  "mnemonic": "Take last digit repeatedly",
+  "think": [
+    "What is the task asking? Given a positive integer n, return the number with its digits reversed.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? reverse number, digits, loop.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean linear scan solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Initialize reversed=0",
+    "While n > 0",
+    "Take last digit",
+    "Append to reversed",
+    "Drop last digit"
+  ],
+  "code": "public object ReverseNumber(/* input */)\n{\n    // 1. Initialize reversed=0\n    // 2. While n > 0\n    // 3. Take last digit\n    // 4. Append to reversed\n    // 5. Drop last digit\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void ReverseNumber_Sample_Test()\n{\n    Assert.Pass(\"Use example: 1234 -> 4321\");\n}",
+  "interview": "I would solve it using Linear Scan. I would first identify the core operation, then apply a simple linear scan approach and mention the complexity.",
+  "ru": "\u0411\u0435\u0440\u0451\u043c \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u044e\u044e \u0446\u0438\u0444\u0440\u0443 \u0438 \u043f\u0435\u0440\u0435\u043d\u043e\u0441\u0438\u043c \u0435\u0451 \u0432 \u043d\u043e\u0432\u044b\u0439 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Linear Scan"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Linear Scan problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "1234 -> 4321"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Linear Scan problem because the wording signals are: reverse number, digits.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the task does not require frequency or key-value mapping.",
+    "Not Two Pointers, because there is no left/right or slow/fast movement requirement."
+  ]
+}

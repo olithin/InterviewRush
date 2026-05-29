@@ -1,0 +1,69 @@
+{
+  "id": 1066,
+  "slug": "find-longest-word-in-sentence",
+  "title": "Find the Longest Word in a Sentence",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a sentence, return the longest word in it. Assume words are separated by spaces. If multiple words have the same length, return the first one.",
+  "signals": [
+    "longest word",
+    "scan words",
+    "track max"
+  ],
+  "mnemonic": "Scan and keep the best",
+  "think": [
+    "What is the task asking? Find the word with the maximum length.",
+    "What is the key operation? Compare each word length with the best seen so far.",
+    "What wording signals stand out? Longest, word, sentence.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Compare each word with every other word.",
+    "What is the better/optimal idea? Split into words and track the longest in one pass.",
+    "What are the edge cases? One word, ties, extra spaces.",
+    "What is the complexity? O(n) total character processing.",
+    "How would I explain it in an interview? I scan words once and keep the current longest candidate."
+  ],
+  "algorithm": [
+    "Split sentence into words removing empty entries",
+    "Initialize longest = first word",
+    "Iterate remaining words",
+    "If current.Length > longest.Length -> update longest",
+    "Return longest"
+  ],
+  "code": "public string FindLongestWord(string sentence)\n{\n    var words = sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries);\n    if (words.Length == 0)\n        return string.Empty;\n\n    string longest = words[0];\n\n    foreach (var word in words)\n    {\n        if (word.Length > longest.Length)\n            longest = word;\n    }\n\n    return longest;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class FindLongestWordTests\n{\n    [Test]\n    public void Returns_Longest_Word()\n    {\n        var result = FindLongestWord(\"I love automation testing\");\n        Assert.That(result, Is.EqualTo(\"automation\"));\n    }\n\n    private string FindLongestWord(string sentence)\n    {\n        var words = sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries);\n        if (words.Length == 0)\n            return string.Empty;\n\n        string longest = words[0];\n\n        foreach (var word in words)\n        {\n            if (word.Length > longest.Length)\n                longest = word;\n        }\n\n        return longest;\n    }\n}",
+  "interview": "I would split the sentence into words and track the longest word seen so far in one pass.",
+  "ru": "\u041d\u0443\u0436\u043d\u043e \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u0440\u043e\u0439\u0442\u0438 \u043f\u043e \u0441\u043b\u043e\u0432\u0430\u043c \u0438 \u0434\u0435\u0440\u0436\u0430\u0442\u044c \u0442\u0435\u043a\u0443\u0449\u0435\u0435 \u0441\u0430\u043c\u043e\u0435 \u0434\u043b\u0438\u043d\u043d\u043e\u0435. \u042d\u0442\u043e \u043e\u0431\u044b\u0447\u043d\u044b\u0439 linear scan \u043f\u043e \u0441\u043b\u043e\u0432\u0430\u043c.",
+  "visualExplanation": "sentence = \"I love automation testing\"\\nI -> best = I\\nlove -> best = love\\nautomation -> best = automation\\ntesting -> keep automation",
+  "mistakes": {
+    "critical": [
+      "Do not handle extra spaces"
+    ],
+    "important": [
+      "Overwrite on equal length when first should win"
+    ],
+    "nice": [
+      "Do not mention RemoveEmptyEntries"
+    ]
+  },
+  "gaps": [
+    "Important: scan words and keep current best",
+    "Nice to have: mention tie handling explicitly"
+  ],
+  "edgeCases": [
+    "one word",
+    "empty-like sentence",
+    "two longest words with same length"
+  ],
+  "sortOrder": 40,
+  "status": "active",
+  "examples": [
+    "sentence = \"I love automation testing\" -> \"automation\""
+  ],
+  "constraints": "Assume words are separated by spaces.",
+  "whyThisPattern": "This is a Linear Scan because we compare each word once against the current best candidate.",
+  "whyNotOtherPatterns": [
+    "Not Sorting, because sorting is unnecessary work for just one best answer.",
+    "Not Dictionary, because no frequency map is required."
+  ]
+}

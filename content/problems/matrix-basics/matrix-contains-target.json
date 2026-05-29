@@ -1,0 +1,66 @@
+{
+  "id": 1090,
+  "slug": "matrix-contains-target",
+  "title": "Matrix Contains Target",
+  "topic": "Matrix Basics",
+  "pattern": "Matrix Basics",
+  "difficulty": "Easy",
+  "statement": "Given a matrix and target, return true if the target value exists in any cell.",
+  "signals": [
+    "matrix contains",
+    "nested loops",
+    "search 2D"
+  ],
+  "mnemonic": "Scan until found",
+  "think": [
+    "What is the task asking? Given a matrix and target, return true if the target value exists in any cell.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? matrix contains, nested loops, search 2D.",
+    "Which pattern fits? Matrix Basics.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean matrix basics solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Iterate rows and columns",
+    "If cell == target -> true",
+    "Return false at the end"
+  ],
+  "code": "public object MatrixContainsTarget(/* input */)\n{\n    // 1. Iterate rows and columns\n    // 2. If cell == target -> true\n    // 3. Return false at the end\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void MatrixContainsTarget_Sample_Test()\n{\n    Assert.Pass(\"Use example: target=3 in [[1,2],[3,4]] -> true\");\n}",
+  "interview": "I would solve it using Matrix Basics. I would first identify the core operation, then apply a simple matrix basics approach and mention the complexity.",
+  "ru": "\u041d\u0430 easy-\u0443\u0440\u043e\u0432\u043d\u0435 \u044d\u0442\u043e \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u043e\u043b\u043d\u044b\u0439 \u043e\u0431\u0445\u043e\u0434 \u043c\u0430\u0442\u0440\u0438\u0446\u044b.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Matrix Basics"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Matrix Basics problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "target=3 in [[1,2],[3,4]] -> true"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Matrix Basics problem because the wording signals are: matrix contains, nested loops.",
+  "whyNotOtherPatterns": [
+    "Not Two Pointers, because this is about row/column traversal.",
+    "Not Dictionary, because no key-value mapping is required."
+  ]
+}

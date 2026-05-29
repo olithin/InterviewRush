@@ -1,0 +1,67 @@
+{
+  "id": 1017,
+  "slug": "first-unique-letter-in-name",
+  "title": "First Unique Letter in a Name",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given a string name, return the first letter that appears exactly once. Ignore case. If none exists, return null.",
+  "signals": [
+    "first unique",
+    "count letters",
+    "frequency then scan"
+  ],
+  "mnemonic": "Count first, scan second",
+  "think": [
+    "What is the task asking? Given a string name, return the first letter that appears exactly once. Ignore case. If none exists, return null.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? first unique, count letters, frequency then scan.",
+    "Which pattern fits? Dictionary.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean dictionary solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Create frequency map",
+    "First pass: count letters",
+    "Second pass: find first with count 1",
+    "Return result"
+  ],
+  "code": "public object FirstUniqueLetterInName(/* input */)\n{\n    // 1. Create frequency map\n    // 2. First pass: count letters\n    // 3. Second pass: find first with count 1\n    // 4. Return result\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void FirstUniqueLetterInAName_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"Swiss\" -> 'w'\");\n}",
+  "interview": "I would solve it using Dictionary. I would first identify the core operation, then apply a simple dictionary approach and mention the complexity.",
+  "ru": "\u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u0441\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0430\u0441\u0442\u043e\u0442\u044b, \u043f\u043e\u0442\u043e\u043c \u0435\u0449\u0451 \u0440\u0430\u0437 \u0438\u0434\u0451\u043c \u043f\u043e \u0441\u0442\u0440\u043e\u043a\u0435 \u0438 \u043d\u0430\u0445\u043e\u0434\u0438\u043c \u043f\u0435\u0440\u0432\u0443\u044e \u0431\u0443\u043a\u0432\u0443 \u0441 count == 1.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Dictionary"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Dictionary problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"Swiss\" -> 'w'"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Dictionary problem because the wording signals are: first unique, count letters.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because the task needs counts or grouping, not just uniqueness.",
+    "Not Two Pointers, because the task is about mapping/frequency rather than index movement."
+  ]
+}

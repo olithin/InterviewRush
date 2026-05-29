@@ -1,0 +1,68 @@
+{
+  "id": 1064,
+  "slug": "find-largest-odd-number-in-array",
+  "title": "Find the Largest Odd Number in an Array",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return the largest odd number. If no odd number exists, return null.",
+  "signals": [
+    "largest odd",
+    "track max",
+    "scan array"
+  ],
+  "mnemonic": "Filter then keep max",
+  "think": [
+    "What is the task asking? Find the largest value among odd numbers only.",
+    "What is the key operation? Check parity and track the current maximum odd value.",
+    "What wording signals stand out? Largest, odd number.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Collect odd numbers first, then find max.",
+    "What is the better/optimal idea? One pass keeping the best odd candidate.",
+    "What are the edge cases? No odd numbers, negative odd values, one element.",
+    "What is the complexity? O(n) time and O(1) space.",
+    "How would I explain it in an interview? I scan the array and update the best odd candidate whenever I see a larger odd value."
+  ],
+  "algorithm": [
+    "Initialize best = null",
+    "Iterate through nums",
+    "If num is odd and best is null or num > best -> update best",
+    "Return best"
+  ],
+  "code": "public int? FindLargestOdd(int[] nums)\n{\n    int? best = null;\n\n    foreach (var num in nums)\n    {\n        if (num % 2 != 0 && (best == null || num > best))\n            best = num;\n    }\n\n    return best;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class FindLargestOddTests\n{\n    [Test]\n    public void Returns_Largest_Odd()\n    {\n        var result = FindLargestOdd(new[] { 8, 3, 10, 5, 11 });\n        Assert.That(result, Is.EqualTo(11));\n    }\n\n    private int? FindLargestOdd(int[] nums)\n    {\n        int? best = null;\n\n        foreach (var num in nums)\n        {\n            if (num % 2 != 0 && (best == null || num > best))\n                best = num;\n        }\n\n        return best;\n    }\n}",
+  "interview": "I would scan the array once, keep only odd candidates, and update the current best whenever I find a larger odd value.",
+  "ru": "\u0418\u0434\u0451\u043c \u043f\u043e \u043c\u0430\u0441\u0441\u0438\u0432\u0443 \u0438 \u0441\u043c\u043e\u0442\u0440\u0438\u043c \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430 \u043d\u0435\u0447\u0451\u0442\u043d\u044b\u0435 \u0447\u0438\u0441\u043b\u0430. \u0421\u0440\u0435\u0434\u0438 \u043d\u0438\u0445 \u0434\u0435\u0440\u0436\u0438\u043c \u0442\u0435\u043a\u0443\u0449\u0435\u0435 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435.",
+  "visualExplanation": "nums = [8, 3, 10, 5, 11]\\n8 -> skip\\n3 -> best = 3\\n10 -> skip\\n5 -> best = 5\\n11 -> best = 11",
+  "mistakes": {
+    "critical": [
+      "Use wrong odd/even condition"
+    ],
+    "important": [
+      "Assume there is always an odd number"
+    ],
+    "nice": [
+      "Do not mention nullable result"
+    ]
+  },
+  "gaps": [
+    "Important: parity check confidence",
+    "Nice to have: mention null when no odd value exists"
+  ],
+  "edgeCases": [
+    "no odd numbers",
+    "negative odd values",
+    "single element"
+  ],
+  "sortOrder": 60,
+  "status": "active",
+  "examples": [
+    "nums = [8,3,10,5,11] -> 11"
+  ],
+  "constraints": "Assume array may contain positive or negative integers.",
+  "whyThisPattern": "This is a Linear Scan because we examine each element once and maintain a best candidate.",
+  "whyNotOtherPatterns": [
+    "Not Sorting, because sorting is unnecessary for one answer.",
+    "Not Dictionary, because no frequency or mapping is needed."
+  ]
+}

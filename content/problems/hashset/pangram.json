@@ -1,0 +1,68 @@
+{
+  "id": 1040,
+  "slug": "pangram",
+  "title": "Pangram",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given a sentence, return true if it contains every English letter at least once.",
+  "signals": [
+    "all letters",
+    "26 unique letters",
+    "seen letters"
+  ],
+  "mnemonic": "26 unique letters = pangram",
+  "think": [
+    "What is the task asking? Given a sentence, return true if it contains every English letter at least once.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? all letters, 26 unique letters, seen letters.",
+    "Which pattern fits? HashSet.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean hashset solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Create HashSet<char>",
+    "Iterate letters",
+    "Normalize case",
+    "Add letters",
+    "Check Count == 26"
+  ],
+  "code": "public object Pangram(/* input */)\n{\n    // 1. Create HashSet<char>\n    // 2. Iterate letters\n    // 3. Normalize case\n    // 4. Add letters\n    // 5. Check Count == 26\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void Pangram_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"The quick brown fox jumps over the lazy dog\" -> true\");\n}",
+  "interview": "I would solve it using HashSet. I would first identify the core operation, then apply a simple hashset approach and mention the complexity.",
+  "ru": "\u0415\u0441\u043b\u0438 \u043d\u0443\u0436\u043d\u043e \u0441\u043e\u0431\u0440\u0430\u0442\u044c \u0432\u0441\u0435 \u0431\u0443\u043a\u0432\u044b \u0430\u043b\u0444\u0430\u0432\u0438\u0442\u0430, set \u2014 \u0435\u0441\u0442\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u0432\u044b\u0431\u043e\u0440.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of HashSet"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a HashSet problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"The quick brown fox jumps over the lazy dog\" -> true"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a HashSet problem because the wording signals are: all letters, 26 unique letters.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because we only need seen/not-seen behavior.",
+    "Not Two Pointers, because there is no two-end traversal or in-place rewrite."
+  ]
+}

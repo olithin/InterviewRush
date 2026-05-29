@@ -1,0 +1,67 @@
+{
+  "id": 1031,
+  "slug": "common-characters-between-two-words",
+  "title": "Common Characters Between Two Words",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given two words, return all distinct letters that appear in both.",
+  "signals": [
+    "common chars",
+    "intersection",
+    "set membership"
+  ],
+  "mnemonic": "Letter intersection",
+  "think": [
+    "What is the task asking? Given two words, return all distinct letters that appear in both.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? common chars, intersection, set membership.",
+    "Which pattern fits? HashSet.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean hashset solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Put first word letters into set",
+    "Iterate second word",
+    "If seen -> add to result set",
+    "Return result"
+  ],
+  "code": "public object CommonCharactersBetweenTwoWords(/* input */)\n{\n    // 1. Put first word letters into set\n    // 2. Iterate second word\n    // 3. If seen -> add to result set\n    // 4. Return result\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void CommonCharactersBetweenTwoWords_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"team\" and \"meat\" -> [t,e,a,m] distinct common\");\n}",
+  "interview": "I would solve it using HashSet. I would first identify the core operation, then apply a simple hashset approach and mention the complexity.",
+  "ru": "\u041f\u0435\u0440\u0435\u0441\u0435\u0447\u0435\u043d\u0438\u0435 \u0434\u0432\u0443\u0445 \u043d\u0430\u0431\u043e\u0440\u043e\u0432 \u0431\u0443\u043a\u0432 \u2014 \u044d\u0442\u043e set-\u0437\u0430\u0434\u0430\u0447\u0430.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of HashSet"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a HashSet problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"team\" and \"meat\" -> [t,e,a,m] distinct common"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a HashSet problem because the wording signals are: common chars, intersection.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because we only need seen/not-seen behavior.",
+    "Not Two Pointers, because there is no two-end traversal or in-place rewrite."
+  ]
+}

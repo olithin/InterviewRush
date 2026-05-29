@@ -1,0 +1,68 @@
+{
+  "id": 1004,
+  "slug": "arrays-have-same-frequency",
+  "title": "Arrays Have Same Frequency",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given two integer arrays, return true if they contain the same values with the same counts.",
+  "signals": [
+    "same counts",
+    "frequency",
+    "compare maps"
+  ],
+  "mnemonic": "Compare frequency maps",
+  "think": [
+    "What is the task asking? Given two integer arrays, return true if they contain the same values with the same counts.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? same counts, frequency, compare maps.",
+    "Which pattern fits? Dictionary.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean dictionary solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "If lengths differ -> false",
+    "Build frequency map for first array",
+    "Subtract with second array",
+    "If mismatch -> false",
+    "Return true"
+  ],
+  "code": "public object ArraysHaveSameFrequency(/* input */)\n{\n    // 1. If lengths differ -> false\n    // 2. Build frequency map for first array\n    // 3. Subtract with second array\n    // 4. If mismatch -> false\n    // 5. Return true\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void ArraysHaveSameFrequency_Sample_Test()\n{\n    Assert.Pass(\"Use example: [1,2,2] and [2,1,2] -> true\");\n}",
+  "interview": "I would solve it using Dictionary. I would first identify the core operation, then apply a simple dictionary approach and mention the complexity.",
+  "ru": "\u042d\u0442\u043e \u043a\u0430\u043a anagram, \u0442\u043e\u043b\u044c\u043a\u043e \u0434\u043b\u044f \u043c\u0430\u0441\u0441\u0438\u0432\u043e\u0432 \u0447\u0438\u0441\u0435\u043b.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Dictionary"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Dictionary problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[1,2,2] and [2,1,2] -> true"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Dictionary problem because the wording signals are: same counts, frequency.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because the task needs counts or grouping, not just uniqueness.",
+    "Not Two Pointers, because the task is about mapping/frequency rather than index movement."
+  ]
+}

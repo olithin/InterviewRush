@@ -1,0 +1,69 @@
+{
+  "id": 1013,
+  "slug": "find-most-frequent-letter",
+  "title": "Find the Most Frequent Letter",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given a string word, return the letter that appears most often. Ignore case and ignore non-letter characters.",
+  "signals": [
+    "most frequent letter",
+    "count letters",
+    "frequency"
+  ],
+  "mnemonic": "Need count -> Dictionary",
+  "think": [
+    "What is the task asking? Find the letter with the highest frequency.",
+    "What is the key operation? Count letters and keep the current winner.",
+    "What wording signals stand out? Most frequent, letter, count.",
+    "Which pattern fits? Dictionary.",
+    "What is the brute force idea? For each letter, count occurrences again.",
+    "What is the better/optimal idea? Build a frequency map in one pass.",
+    "What are the edge cases? Mixed case, punctuation, ties.",
+    "What is the complexity? O(n) time and O(k) space.",
+    "How would I explain it in an interview? I normalize case, count letters, and keep the letter with the highest count."
+  ],
+  "algorithm": [
+    "Create Dictionary<char, int> counts",
+    "Normalize word to lower case",
+    "Ignore non-letters",
+    "Increment counts and update best letter if needed",
+    "Return best letter"
+  ],
+  "code": "public char FindMostFrequentLetter(string word)\n{\n    var counts = new Dictionary<char, int>();\n    char bestLetter = '\\0';\n    int bestCount = 0;\n\n    foreach (var ch in word.ToLowerInvariant())\n    {\n        if (!char.IsLetter(ch))\n            continue;\n\n        counts[ch] = counts.GetValueOrDefault(ch) + 1;\n\n        if (counts[ch] > bestCount)\n        {\n            bestCount = counts[ch];\n            bestLetter = ch;\n        }\n    }\n\n    return bestLetter;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class FindMostFrequentLetterTests\n{\n    [Test]\n    public void Returns_Most_Frequent_Letter()\n    {\n        var result = FindMostFrequentLetter(\"mississippi\");\n        Assert.That(result, Is.EqualTo('i').Or.EqualTo('s'));\n    }\n\n    private char FindMostFrequentLetter(string word)\n    {\n        var counts = new Dictionary<char, int>();\n        char bestLetter = '\\0';\n        int bestCount = 0;\n\n        foreach (var ch in word.ToLowerInvariant())\n        {\n            if (!char.IsLetter(ch))\n                continue;\n\n            counts[ch] = counts.GetValueOrDefault(ch) + 1;\n\n            if (counts[ch] > bestCount)\n            {\n                bestCount = counts[ch];\n                bestLetter = ch;\n            }\n        }\n\n        return bestLetter;\n    }\n}",
+  "interview": "I would use a dictionary to count letters and keep the most frequent letter as I scan the string.",
+  "ru": "\u041d\u0443\u0436\u043d\u043e \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0447\u0430\u0441\u0442\u043e\u0442\u044b \u0431\u0443\u043a\u0432 \u0438 \u0432\u044b\u0431\u0440\u0430\u0442\u044c \u0431\u0443\u043a\u0432\u0443 \u0441 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u043c count.",
+  "visualExplanation": "word = \"mississippi\"\\nm -> 1\\ni -> 1\\ns -> 1\\ns -> 2\\ni -> 2\\n... winner tracked as counts grow",
+  "mistakes": {
+    "critical": [
+      "Forget to ignore non-letters"
+    ],
+    "important": [
+      "Forget to normalize case"
+    ],
+    "nice": [
+      "Do not define tie behavior"
+    ]
+  },
+  "gaps": [
+    "Important: char frequency map",
+    "Nice to have: explain tie handling choice"
+  ],
+  "edgeCases": [
+    "mixed case",
+    "symbols in input",
+    "tie counts"
+  ],
+  "sortOrder": 130,
+  "status": "active",
+  "examples": [
+    "word = \"mississippi\" -> 'i' or 's' depending on tie rule"
+  ],
+  "constraints": "Assume at least one letter exists.",
+  "whyThisPattern": "This is a Dictionary problem because we need per-letter counts.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because we need frequencies, not uniqueness.",
+    "Not Two Pointers, because no positional comparison is involved."
+  ]
+}

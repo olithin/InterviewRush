@@ -1,0 +1,68 @@
+{
+  "id": 1010,
+  "slug": "count-word-frequency-in-sentence",
+  "title": "Count Word Frequency in a Sentence",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given a sentence, return how many times each word appears. Ignore case.",
+  "signals": [
+    "count words",
+    "word frequency",
+    "how many times"
+  ],
+  "mnemonic": "Word -> count",
+  "think": [
+    "What is the task asking? Count occurrences of each word.",
+    "What is the key operation? Map each normalized word to its count.",
+    "What wording signals stand out? Count words, frequency, appears.",
+    "Which pattern fits? Dictionary.",
+    "What is the brute force idea? For each word, rescan the sentence.",
+    "What is the better/optimal idea? Split into words and increment counts in a dictionary.",
+    "What are the edge cases? Mixed case, repeated spaces, punctuation handling policy.",
+    "What is the complexity? O(n) over the words.",
+    "How would I explain it in an interview? I normalize words and build a frequency map from word to count."
+  ],
+  "algorithm": [
+    "Split sentence into words removing empty entries",
+    "Normalize each word to lower case",
+    "Increment count for each word in Dictionary<string,int>",
+    "Return dictionary"
+  ],
+  "code": "public Dictionary<string, int> CountWordFrequency(string sentence)\n{\n    var counts = new Dictionary<string, int>();\n\n    foreach (var word in sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries))\n    {\n        var normalized = word.ToLowerInvariant();\n        counts[normalized] = counts.GetValueOrDefault(normalized) + 1;\n    }\n\n    return counts;\n}",
+  "tests": "using NUnit.Framework;\nusing System.Collections.Generic;\n\n[TestFixture]\npublic class CountWordFrequencyTests\n{\n    [Test]\n    public void Counts_Words_Ignoring_Case()\n    {\n        var result = CountWordFrequency(\"Hello hello world\");\n        Assert.That(result[\"hello\"], Is.EqualTo(2));\n        Assert.That(result[\"world\"], Is.EqualTo(1));\n    }\n\n    private Dictionary<string, int> CountWordFrequency(string sentence)\n    {\n        var counts = new Dictionary<string, int>();\n\n        foreach (var word in sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries))\n        {\n            var normalized = word.ToLowerInvariant();\n            counts[normalized] = counts.GetValueOrDefault(normalized) + 1;\n        }\n\n        return counts;\n    }\n}",
+  "interview": "I would split the sentence into words, normalize them, and use a dictionary to count how often each word appears.",
+  "ru": "\u042d\u0442\u043e \u0443\u0436\u0435 frequency map \u043d\u0435 \u043f\u043e char, \u0430 \u043f\u043e word. \u0421\u043c\u044b\u0441\u043b \u0442\u043e\u0442 \u0436\u0435: \u0441\u043b\u043e\u0432\u043e -> count.",
+  "visualExplanation": "sentence = \"Hello hello world\"\\nhello -> 1\\nhello -> 2\\nworld -> 1",
+  "mistakes": {
+    "critical": [
+      "Treat same word in different case as different"
+    ],
+    "important": [
+      "Do not handle repeated spaces"
+    ],
+    "nice": [
+      "Do not mention punctuation policy"
+    ]
+  },
+  "gaps": [
+    "Important: word-level frequency maps",
+    "Nice to have: think about normalization rules"
+  ],
+  "edgeCases": [
+    "single word",
+    "mixed case",
+    "multiple spaces"
+  ],
+  "sortOrder": 140,
+  "status": "active",
+  "examples": [
+    "sentence = \"Hello hello world\" -> { hello:2, world:1 }"
+  ],
+  "constraints": "Assume words are separated by spaces.",
+  "whyThisPattern": "This is a Dictionary problem because each unique word needs an associated count.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because counts matter.",
+    "Not Sliding Window, because there is no moving segment."
+  ]
+}

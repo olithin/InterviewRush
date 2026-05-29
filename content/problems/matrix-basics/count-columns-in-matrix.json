@@ -1,0 +1,65 @@
+{
+  "id": 1087,
+  "slug": "count-columns-in-matrix",
+  "title": "Count Columns in a Matrix",
+  "topic": "Matrix Basics",
+  "pattern": "Matrix Basics",
+  "difficulty": "Easy",
+  "statement": "Given a matrix, return the number of columns.",
+  "signals": [
+    "matrix columns",
+    "2D array",
+    "basic shape"
+  ],
+  "mnemonic": "Read first row length",
+  "think": [
+    "What is the task asking? Given a matrix, return the number of columns.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? matrix columns, 2D array, basic shape.",
+    "Which pattern fits? Matrix Basics.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean matrix basics solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Handle empty matrix",
+    "Return matrix[0].Length or column count"
+  ],
+  "code": "public object CountColumnsInMatrix(/* input */)\n{\n    // 1. Handle empty matrix\n    // 2. Return matrix[0].Length or column count\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void CountColumnsInAMatrix_Sample_Test()\n{\n    Assert.Pass(\"Use example: [[1,2],[3,4]] -> 2\");\n}",
+  "interview": "I would solve it using Matrix Basics. I would first identify the core operation, then apply a simple matrix basics approach and mention the complexity.",
+  "ru": "\u0412\u0430\u0436\u043d\u043e \u043f\u043e\u043c\u043d\u0438\u0442\u044c \u043f\u0440\u043e \u043f\u0443\u0441\u0442\u0443\u044e \u043c\u0430\u0442\u0440\u0438\u0446\u0443 \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0443 \u0433\u0440\u0430\u043d\u0438\u0446.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Matrix Basics"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Matrix Basics problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[[1,2],[3,4]] -> 2"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Matrix Basics problem because the wording signals are: matrix columns, 2D array.",
+  "whyNotOtherPatterns": [
+    "Not Two Pointers, because this is about row/column traversal.",
+    "Not Dictionary, because no key-value mapping is required."
+  ]
+}

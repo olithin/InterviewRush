@@ -1,13 +1,31 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { problems } from "@/data/mock-data";
+import { ProblemNavItem } from "@/lib/problem-types";
 
-export function ProblemsTable() {
+type PatternCount = { pattern: string; count: number };
+
+export function ProblemsTable({
+  problems,
+  totalCount,
+  patternCounts
+}: {
+  problems: ProblemNavItem[];
+  totalCount: number;
+  patternCounts: PatternCount[];
+}) {
   return (
-    <Card className="bg-white/90">
+    <Card>
       <CardHeader>
         <CardTitle>Easy Starter Problems</CardTitle>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <Badge variant="default">Total: {totalCount}</Badge>
+          {patternCounts.map((item) => (
+            <Badge key={item.pattern} variant="secondary">
+              {item.pattern}: {item.count}
+            </Badge>
+          ))}
+        </div>
       </CardHeader>
       <CardContent className="overflow-x-auto">
         <table className="w-full min-w-[560px] text-left text-sm">

@@ -1,0 +1,66 @@
+{
+  "id": 1110,
+  "slug": "sort-even-first-then-odd",
+  "title": "Sort Even First Then Odd",
+  "topic": "Sorting",
+  "pattern": "Sorting",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return a new array where even numbers come first and odd numbers after them.",
+  "signals": [
+    "evens first",
+    "odds after",
+    "custom ordering"
+  ],
+  "mnemonic": "Custom partition order",
+  "think": [
+    "What is the task asking? Given an integer array nums, return a new array where even numbers come first and odd numbers after them.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? evens first, odds after, custom ordering.",
+    "Which pattern fits? Sorting.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean sorting solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Sort using parity as primary key",
+    "Keep or define secondary order",
+    "Return result"
+  ],
+  "code": "public object SortEvenFirstThenOdd(/* input */)\n{\n    // 1. Sort using parity as primary key\n    // 2. Keep or define secondary order\n    // 3. Return result\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void SortEvenFirstThenOdd_Sample_Test()\n{\n    Assert.Pass(\"Use example: [3,2,4,1] -> [2,4,3,1]\");\n}",
+  "interview": "I would solve it using Sorting. I would first identify the core operation, then apply a simple sorting approach and mention the complexity.",
+  "ru": "\u042d\u0442\u043e \u0443\u0436\u0435 \u043f\u0440\u043e\u0441\u0442\u043e\u0439 custom ordering \u043f\u043e \u043f\u0440\u0438\u0437\u043d\u0430\u043a\u0443 \u0447\u0451\u0442\u043d\u043e\u0441\u0442\u0438.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Sorting"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Sorting problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[3,2,4,1] -> [2,4,3,1]"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Sorting problem because the wording signals are: evens first, odds after.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because the task benefits from ordering or sorted comparison.",
+    "Not Dictionary, because frequency is not the main idea."
+  ]
+}

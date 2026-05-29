@@ -1,0 +1,68 @@
+{
+  "id": 1043,
+  "slug": "remove-duplicate-numbers",
+  "title": "Remove Duplicate Numbers",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return a new array containing only the first occurrence of each number in original order.",
+  "signals": [
+    "remove duplicates",
+    "keep first occurrence",
+    "unique values"
+  ],
+  "mnemonic": "Seen before? skip it",
+  "think": [
+    "What is the task asking? Keep only the first appearance of each number.",
+    "What is the key operation? Know whether a number was already seen.",
+    "What wording signals stand out? Remove duplicates, unique values, first occurrence.",
+    "Which pattern fits? HashSet, together with a result list.",
+    "What is the brute force idea? For each number, scan the result built so far.",
+    "What is the better/optimal idea? Track seen numbers in a HashSet and append unseen values to result.",
+    "What are the edge cases? Already unique input, all duplicates, negative values.",
+    "What is the complexity? O(n) time and O(n) space.",
+    "How would I explain it in an interview? I keep a set of seen values and a list for the output order."
+  ],
+  "algorithm": [
+    "Create HashSet<int> seen and List<int> result",
+    "Iterate through nums",
+    "If seen.Add(num) succeeds -> append num to result",
+    "Return result as array"
+  ],
+  "code": "public int[] RemoveDuplicates(int[] nums)\n{\n    var seen = new HashSet<int>();\n    var result = new List<int>();\n\n    foreach (var num in nums)\n    {\n        if (seen.Add(num))\n            result.Add(num);\n    }\n\n    return result.ToArray();\n}",
+  "tests": "using NUnit.Framework;\nusing System.Collections.Generic;\n\n[TestFixture]\npublic class RemoveDuplicatesTests\n{\n    [Test]\n    public void Keeps_First_Occurrence_Order()\n    {\n        var result = RemoveDuplicates(new[] { 1, 2, 2, 3, 1, 4 });\n        Assert.That(result, Is.EqualTo(new[] { 1, 2, 3, 4 }));\n    }\n\n    private int[] RemoveDuplicates(int[] nums)\n    {\n        var seen = new HashSet<int>();\n        var result = new List<int>();\n\n        foreach (var num in nums)\n        {\n            if (seen.Add(num))\n                result.Add(num);\n        }\n\n        return result.ToArray();\n    }\n}",
+  "interview": "I would use a HashSet to track which numbers were already seen and a result list to preserve original order.",
+  "ru": "Set \u043e\u0442\u0432\u0435\u0447\u0430\u0435\u0442 \u043d\u0430 \u0432\u043e\u043f\u0440\u043e\u0441 '\u0432\u0438\u0434\u0435\u043b\u0438 \u043b\u0438 \u043c\u044b \u0443\u0436\u0435 \u044d\u0442\u043e \u0447\u0438\u0441\u043b\u043e', \u0430 \u0441\u043f\u0438\u0441\u043e\u043a \u0445\u0440\u0430\u043d\u0438\u0442 \u043e\u0442\u0432\u0435\u0442 \u0432 \u0438\u0441\u0445\u043e\u0434\u043d\u043e\u043c \u043f\u043e\u0440\u044f\u0434\u043a\u0435.",
+  "visualExplanation": "nums = [1,2,2,3,1,4]\\n1 -> add to set and result\\n2 -> add\\n2 -> skip\\n3 -> add\\n1 -> skip\\n4 -> add",
+  "mistakes": {
+    "critical": [
+      "Use only HashSet and lose original order in explanation"
+    ],
+    "important": [
+      "Forget to keep first occurrence only"
+    ],
+    "nice": [
+      "Do not mention why result list is needed"
+    ]
+  },
+  "gaps": [
+    "Important: combine HashSet with output list",
+    "Nice to have: explain order preservation"
+  ],
+  "edgeCases": [
+    "already unique",
+    "all same values",
+    "negative numbers"
+  ],
+  "sortOrder": 230,
+  "status": "active",
+  "examples": [
+    "[1,2,2,3,1,4] -> [1,2,3,4]"
+  ],
+  "constraints": "Assume order matters.",
+  "whyThisPattern": "This is mainly a HashSet problem because seen/not-seen is the core logic, with a list used to preserve order.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because counts are unnecessary.",
+    "Not Sorting, because sorting would destroy original order."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": 1018,
+  "slug": "first-unique-letter-in-name",
+  "title": "First Unique Letter in a Name",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given a string name, return the first letter that appears exactly once. Ignore case. If none exists, return null.",
+  "signals": [
+    "first unique",
+    "count characters",
+    "frequency then scan"
+  ],
+  "mnemonic": "Count first, scan second",
+  "think": [
+    "What is the task asking? Find the first letter whose count is exactly one.",
+    "What is the key operation? Count frequencies first, then preserve the original order in a second pass.",
+    "What wording signals stand out? First unique, appears once, count letters.",
+    "Which pattern fits? Dictionary.",
+    "What is the brute force idea? For each character, count its occurrences by rescanning the whole string.",
+    "What is the better/optimal idea? Two passes with a frequency map.",
+    "What are the edge cases? No unique letters, mixed case, spaces.",
+    "What is the complexity? O(n) time and O(k) space.",
+    "How would I explain it in an interview? I first count all letters, then scan the string again to find the first one whose count is one."
+  ],
+  "algorithm": [
+    "Create Dictionary<char, int> counts",
+    "First pass: count each letter in lower case",
+    "Second pass: return the first letter whose count is 1",
+    "If none exists, return null"
+  ],
+  "code": "public char? FirstUniqueLetter(string name)\n{\n    var counts = new Dictionary<char, int>();\n    var normalized = name.ToLowerInvariant();\n\n    foreach (var ch in normalized)\n    {\n        if (!char.IsLetter(ch))\n            continue;\n\n        counts[ch] = counts.GetValueOrDefault(ch) + 1;\n    }\n\n    foreach (var ch in normalized)\n    {\n        if (char.IsLetter(ch) && counts[ch] == 1)\n            return ch;\n    }\n\n    return null;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class FirstUniqueLetterTests\n{\n    [Test]\n    public void Returns_First_Unique_Letter()\n    {\n        var result = FirstUniqueLetter(\"Swiss\");\n        Assert.That(result, Is.EqualTo('w'));\n    }\n\n    private char? FirstUniqueLetter(string name)\n    {\n        var counts = new Dictionary<char, int>();\n        var normalized = name.ToLowerInvariant();\n\n        foreach (var ch in normalized)\n        {\n            if (!char.IsLetter(ch))\n                continue;\n\n            counts[ch] = counts.GetValueOrDefault(ch) + 1;\n        }\n\n        foreach (var ch in normalized)\n        {\n            if (char.IsLetter(ch) && counts[ch] == 1)\n                return ch;\n        }\n\n        return null;\n    }\n}",
+  "interview": "I would use a frequency map and two passes. The first pass counts letters, and the second pass returns the first one whose count is exactly one.",
+  "ru": "\u042d\u0442\u043e \u0437\u0430\u0434\u0430\u0447\u0430 \u043d\u0430 \u0447\u0430\u0441\u0442\u043e\u0442\u044b \u0438 \u043f\u043e\u0440\u044f\u0434\u043e\u043a. \u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u0441\u0447\u0438\u0442\u0430\u0435\u043c \u0432\u0441\u0435 \u0431\u0443\u043a\u0432\u044b, \u043f\u043e\u0442\u043e\u043c \u0441\u043d\u043e\u0432\u0430 \u0438\u0434\u0451\u043c \u043f\u043e \u0441\u0442\u0440\u043e\u043a\u0435 \u0438 \u043d\u0430\u0445\u043e\u0434\u0438\u043c \u043f\u0435\u0440\u0432\u0443\u044e \u0441 count == 1.",
+  "visualExplanation": "name = \"swiss\"\ncounts = { s:3, w:1, i:1 }\nscan again: s -> not unique\nw -> unique -> answer = 'w'",
+  "mistakes": {
+    "critical": [
+      "Use HashSet and lose frequency information"
+    ],
+    "important": [
+      "Forget the second pass and lose the first position"
+    ],
+    "nice": [
+      "Do not explain why order matters after counting"
+    ]
+  },
+  "gaps": [
+    "Important: understand frequency + second scan pattern",
+    "Nice to have: distinguish first unique from first repeated"
+  ],
+  "edgeCases": [
+    "no unique letters",
+    "single letter",
+    "mixed case"
+  ],
+  "sortOrder": 60,
+  "status": "active",
+  "examples": [
+    "name = \"Swiss\" -> 'w'"
+  ],
+  "constraints": "Assume the input is a short name string.",
+  "whyThisPattern": "This is a Dictionary problem because we need per-letter counts before we can identify the first unique character.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because HashSet does not store frequencies.",
+    "Not Two Pointers, because this is not a left/right comparison problem."
+  ]
+}

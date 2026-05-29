@@ -1,0 +1,12 @@
+# Monorepo: Next.js lives in frontend/. Netlify reads this file from the repo root.
+
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

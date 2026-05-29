@@ -1,0 +1,66 @@
+{
+  "id": 1082,
+  "folder": "linear-scan",
+  "slug": "string-length",
+  "title": "String Length",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a string s, return its length without using the built-in Length property in the core logic.",
+  "signals": [
+    "count characters",
+    "length",
+    "scan string"
+  ],
+  "mnemonic": "One char, one count",
+  "think": [
+    "What is the task asking? Count how many characters the string contains.",
+    "What is the key operation? Increment a counter once per character.",
+    "What wording signals stand out? Length, count characters.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? There is no simpler approach than scanning once.",
+    "What is the better/optimal idea? One pass with a counter.",
+    "What are the edge cases? Empty string.",
+    "What is the complexity? O(n) time and O(1) space.",
+    "How would I explain it in an interview? I iterate through each character and increment a counter."
+  ],
+  "algorithm": [
+    "Initialize count = 0",
+    "Iterate through each character in s",
+    "Increment count",
+    "Return count"
+  ],
+  "code": "public int GetStringLength(string s)\\n{\\n    int count = 0;\\n\\n    foreach (var _ in s)\\n        count++;\\n\\n    return count;\\n}",
+  "tests": "using NUnit.Framework;\\n\\n[TestFixture]\\npublic class StringLengthTests\\n{\\n    [TestCase(\\\"James\\\", 5)]\\n    [TestCase(\\\"\\\", 0)]\\n    public void GetStringLength_ReturnsExpected(string input, int expected)\\n    {\\n        Assert.That(GetStringLength(input), Is.EqualTo(expected));\\n    }\\n\\n    private int GetStringLength(string s)\\n    {\\n        int count = 0;\\n        foreach (var _ in s)\\n            count++;\\n        return count;\\n    }\\n}",
+  "interview": "I would solve it with a simple linear scan and increment a counter for each character.",
+  "ru": "\u042d\u0442\u043e \u0441\u0430\u043c\u0430\u044f \u0431\u0430\u0437\u043e\u0432\u0430\u044f \u0437\u0430\u0434\u0430\u0447\u0430 \u043d\u0430 \u043f\u0440\u043e\u0445\u043e\u0434 \u043f\u043e \u0441\u0442\u0440\u043e\u043a\u0435: \u043e\u0434\u0438\u043d \u0441\u0438\u043c\u0432\u043e\u043b \u2014 \u043e\u0434\u0438\u043d \u0438\u043d\u043a\u0440\u0435\u043c\u0435\u043d\u0442 \u0441\u0447\u0451\u0442\u0447\u0438\u043a\u0430.",
+  "visualExplanation": "James\\nJ -> 1\\na -> 2\\nm -> 3\\ne -> 4\\ns -> 5",
+  "mistakes": {
+    "critical": [
+      "Use built-in Length when the task forbids it"
+    ],
+    "important": [
+      "Confuse bytes with characters"
+    ],
+    "nice": [
+      "Do not explain why this is O(n)"
+    ]
+  },
+  "gaps": [
+    "Important: be comfortable with basic string iteration"
+  ],
+  "edgeCases": [
+    "empty string"
+  ],
+  "sortOrder": 240,
+  "status": "active",
+  "examples": [
+    "s = \\\"James\\\" -> 5"
+  ],
+  "constraints": "Assume ordinary ASCII/UTF-16 char iteration is acceptable.",
+  "whyThisPattern": "This is a basic counting scan: read each character once and increment a counter.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because frequencies are not needed.",
+    "Not Two Pointers, because there is no left/right action."
+  ]
+}

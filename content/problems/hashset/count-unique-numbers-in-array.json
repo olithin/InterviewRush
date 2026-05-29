@@ -1,0 +1,65 @@
+{
+  "id": 1035,
+  "slug": "count-unique-numbers-in-array",
+  "title": "Count Unique Numbers in Array",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given an array, return how many distinct numbers it contains.",
+  "signals": [
+    "count distinct",
+    "set size",
+    "unique numbers"
+  ],
+  "mnemonic": "Distinct = set size",
+  "think": [
+    "What is the task asking? Given an array, return how many distinct numbers it contains.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? count distinct, set size, unique numbers.",
+    "Which pattern fits? HashSet.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean hashset solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Create HashSet<int> from nums",
+    "Return Count"
+  ],
+  "code": "public object CountUniqueNumbersInArray(/* input */)\n{\n    // 1. Create HashSet<int> from nums\n    // 2. Return Count\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void CountUniqueNumbersInArray_Sample_Test()\n{\n    Assert.Pass(\"Use example: [1,2,2,3,3] -> 3\");\n}",
+  "interview": "I would solve it using HashSet. I would first identify the core operation, then apply a simple hashset approach and mention the complexity.",
+  "ru": "Set \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0443\u0431\u0438\u0440\u0430\u0435\u0442 \u043f\u043e\u0432\u0442\u043e\u0440\u044b, \u043e\u0441\u0442\u0430\u0451\u0442\u0441\u044f \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u0442\u044c.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of HashSet"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a HashSet problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[1,2,2,3,3] -> 3"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a HashSet problem because the wording signals are: count distinct, set size.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because we only need seen/not-seen behavior.",
+    "Not Two Pointers, because there is no two-end traversal or in-place rewrite."
+  ]
+}

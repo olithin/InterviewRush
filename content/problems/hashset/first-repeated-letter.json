@@ -1,0 +1,70 @@
+{
+  "id": 1037,
+  "slug": "first-repeated-letter",
+  "title": "First Repeated Letter",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given a string word, return the first letter that appears twice. Ignore case. If no letter repeats, return null.",
+  "signals": [
+    "first repeated",
+    "seen before",
+    "duplicate letter"
+  ],
+  "mnemonic": "Seen before -> duplicate",
+  "think": [
+    "What is the task asking? Find the first character that is seen for the second time.",
+    "What is the key operation? Quickly check whether a character was already seen.",
+    "What wording signals stand out? First repeated, duplicate, seen before.",
+    "Which pattern fits? HashSet.",
+    "What is the brute force idea? For each letter, scan previous characters.",
+    "What is the better/optimal idea? Use a HashSet while scanning left to right.",
+    "What are the edge cases? Mixed case, no duplicates, spaces.",
+    "What is the complexity? O(n) time and O(k) space.",
+    "How would I explain it in an interview? I scan the string and return as soon as adding to the set fails."
+  ],
+  "algorithm": [
+    "Create HashSet<char> seen",
+    "Iterate through the string in lower case",
+    "Ignore non-letter characters",
+    "If current letter is already in seen, return it",
+    "Otherwise add it to seen",
+    "If no repeat is found, return null"
+  ],
+  "code": "public char? FirstRepeatedLetter(string word)\n{\n    var seen = new HashSet<char>();\n\n    foreach (var ch in word.ToLowerInvariant())\n    {\n        if (!char.IsLetter(ch))\n            continue;\n\n        if (!seen.Add(ch))\n            return ch;\n    }\n\n    return null;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class FirstRepeatedLetterTests\n{\n    [Test]\n    public void Returns_First_Repeated_Letter()\n    {\n        var result = FirstRepeatedLetter(\"Programming\");\n        Assert.That(result, Is.EqualTo('r'));\n    }\n\n    private char? FirstRepeatedLetter(string word)\n    {\n        var seen = new HashSet<char>();\n\n        foreach (var ch in word.ToLowerInvariant())\n        {\n            if (!char.IsLetter(ch))\n                continue;\n\n            if (!seen.Add(ch))\n                return ch;\n        }\n\n        return null;\n    }\n}",
+  "interview": "I would use a HashSet because this problem is about detecting whether a letter was seen before. I scan left to right and return the first letter whose insertion fails.",
+  "ru": "\u042d\u0442\u043e \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0437\u0430\u0434\u0430\u0447\u0430 seen before -> HashSet. \u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0431\u0443\u043a\u0432\u0430 \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u0435\u0442\u0441\u044f \u0432\u0442\u043e\u0440\u043e\u0439 \u0440\u0430\u0437, \u0441\u0440\u0430\u0437\u0443 \u0432\u043e\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u043c \u0435\u0451.",
+  "visualExplanation": "word = \"programming\"\np -> add\nr -> add\no -> add\ng -> add\nr -> already seen -> answer = 'r'",
+  "mistakes": {
+    "critical": [
+      "Use Dictionary when only seen/not seen is required"
+    ],
+    "important": [
+      "Forget case normalization"
+    ],
+    "nice": [
+      "Do not explain why HashSet is enough without counts"
+    ]
+  },
+  "gaps": [
+    "Important: distinguish seen-before problems from frequency problems",
+    "Nice to have: explain why scanning order matters"
+  ],
+  "edgeCases": [
+    "no repeated letters",
+    "mixed case",
+    "spaces or punctuation"
+  ],
+  "sortOrder": 50,
+  "status": "active",
+  "examples": [
+    "word = \"programming\" -> 'r'"
+  ],
+  "constraints": "Assume the input is a short word or phrase.",
+  "whyThisPattern": "This is a HashSet problem because we only need to know whether a character was already seen.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because we do not need counts to find the first repeated letter.",
+    "Not Two Pointers, because there is no left/right comparison."
+  ]
+}

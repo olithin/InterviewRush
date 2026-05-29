@@ -1,0 +1,68 @@
+{
+  "id": 1096,
+  "slug": "longest-substring-without-repeating-characters",
+  "title": "Longest Substring Without Repeating Characters",
+  "topic": "Sliding Window",
+  "pattern": "Sliding Window",
+  "difficulty": "Easy",
+  "statement": "Given a string s, return the length of the longest substring without repeating characters.",
+  "signals": [
+    "longest substring",
+    "without repeating",
+    "moving segment"
+  ],
+  "mnemonic": "Longest substring = think window",
+  "think": [
+    "What is the task asking? Given a string s, return the length of the longest substring without repeating characters.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? longest substring, without repeating, moving segment.",
+    "Which pattern fits? Sliding Window.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean sliding window solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Set left=0",
+    "Expand right pointer",
+    "While duplicate exists -> shrink from left",
+    "Track max length",
+    "Return max"
+  ],
+  "code": "public object LongestSubstringWithoutRepeatingCharacters(/* input */)\n{\n    // 1. Set left=0\n    // 2. Expand right pointer\n    // 3. While duplicate exists -> shrink from left\n    // 4. Track max length\n    // 5. Return max\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void LongestSubstringWithoutRepeatingCharacters_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"abcabcbb\" -> 3\");\n}",
+  "interview": "I would solve it using Sliding Window. I would first identify the core operation, then apply a simple sliding window approach and mention the complexity.",
+  "ru": "\u042d\u0442\u043e \u043e\u0434\u043d\u0430 \u0438\u0437 \u0441\u0430\u043c\u044b\u0445 \u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0445 \u0437\u0430\u0434\u0430\u0447 \u043d\u0430 sliding window.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Sliding Window"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Sliding Window problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"abcabcbb\" -> 3"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Sliding Window problem because the wording signals are: longest substring, without repeating.",
+  "whyNotOtherPatterns": [
+    "Not plain Linear Scan, because we need a moving continuous segment.",
+    "Not Two Pointers, because the focus is maintaining a valid window over a substring/subarray."
+  ]
+}

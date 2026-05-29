@@ -9,14 +9,22 @@ export function Tabs({ className, ...props }: React.ComponentPropsWithoutRef<typ
 }
 
 export function TabsList({ className, ...props }: React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>) {
-  return <TabsPrimitive.List className={cn("inline-flex h-11 items-center rounded-2xl bg-muted p-1", className)} {...props} />;
+  return (
+    <TabsPrimitive.List
+      className={cn(
+        "inline-flex h-12 min-h-12 items-center rounded-full border border-white/30 bg-card/80 p-1.5 shadow-clay-inset",
+        className
+      )}
+      {...props}
+    />
+  );
 }
 
 export function TabsTrigger({ className, ...props }: React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>) {
   return (
     <TabsPrimitive.Trigger
       className={cn(
-        "inline-flex h-9 items-center justify-center rounded-xl px-4 text-sm font-semibold transition data-[state=active]:bg-card data-[state=active]:shadow-soft",
+        "inline-flex h-9 min-h-9 items-center justify-center rounded-full px-4 text-sm font-semibold text-muted-foreground transition-all data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-clay",
         className
       )}
       {...props}

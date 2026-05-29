@@ -1,0 +1,64 @@
+{
+  "id": 1088,
+  "slug": "count-rows-in-matrix",
+  "title": "Count Rows in a Matrix",
+  "topic": "Matrix Basics",
+  "pattern": "Matrix Basics",
+  "difficulty": "Easy",
+  "statement": "Given a matrix, return the number of rows.",
+  "signals": [
+    "matrix rows",
+    "2D array",
+    "basic shape"
+  ],
+  "mnemonic": "Read matrix dimensions",
+  "think": [
+    "What is the task asking? Given a matrix, return the number of rows.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? matrix rows, 2D array, basic shape.",
+    "Which pattern fits? Matrix Basics.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean matrix basics solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Return matrix.Length or row count"
+  ],
+  "code": "public object CountRowsInMatrix(/* input */)\n{\n    // 1. Return matrix.Length or row count\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void CountRowsInAMatrix_Sample_Test()\n{\n    Assert.Pass(\"Use example: [[1,2],[3,4]] -> 2\");\n}",
+  "interview": "I would solve it using Matrix Basics. I would first identify the core operation, then apply a simple matrix basics approach and mention the complexity.",
+  "ru": "\u0421\u0430\u043c\u0430\u044f \u0431\u0430\u0437\u043e\u0432\u0430\u044f \u0437\u0430\u0434\u0430\u0447\u0430 \u043d\u0430 \u043f\u043e\u043d\u0438\u043c\u0430\u043d\u0438\u0435 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u044b 2D \u0434\u0430\u043d\u043d\u044b\u0445.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Matrix Basics"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Matrix Basics problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[[1,2],[3,4]] -> 2"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Matrix Basics problem because the wording signals are: matrix rows, 2D array.",
+  "whyNotOtherPatterns": [
+    "Not Two Pointers, because this is about row/column traversal.",
+    "Not Dictionary, because no key-value mapping is required."
+  ]
+}

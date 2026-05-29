@@ -1,0 +1,66 @@
+{
+  "id": 1060,
+  "slug": "count-words-in-sentence",
+  "title": "Count Words in a Sentence",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a sentence, return the number of words in it.",
+  "signals": [
+    "count words",
+    "split sentence",
+    "remove empty"
+  ],
+  "mnemonic": "Split then count",
+  "think": [
+    "What is the task asking? Given a sentence, return the number of words in it.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? count words, split sentence, remove empty.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean linear scan solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Split sentence by spaces",
+    "Ignore empty entries",
+    "Return the number of resulting words"
+  ],
+  "code": "public object CountWordsInSentence(/* input */)\n{\n    // 1. Split sentence by spaces\n    // 2. Ignore empty entries\n    // 3. Return the number of resulting words\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void CountWordsInASentence_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"Hello my friend\" -> 3\");\n}",
+  "interview": "I would solve it using Linear Scan. I would first identify the core operation, then apply a simple linear scan approach and mention the complexity.",
+  "ru": "\u0421\u0430\u043c\u044b\u0439 \u043f\u0440\u043e\u0441\u0442\u043e\u0439 \u0432\u0430\u0440\u0438\u0430\u043d\u0442 \u2014 split \u0441 RemoveEmptyEntries.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Linear Scan"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Linear Scan problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"Hello my friend\" -> 3"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Linear Scan problem because the wording signals are: count words, split sentence.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the task does not require frequency or key-value mapping.",
+    "Not Two Pointers, because there is no left/right or slow/fast movement requirement."
+  ]
+}

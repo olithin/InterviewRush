@@ -1,0 +1,70 @@
+{
+  "id": 1057,
+  "slug": "count-uppercase-and-lowercase",
+  "title": "Count Uppercase and Lowercase Letters",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a string text, return how many uppercase letters and how many lowercase letters it contains.",
+  "signals": [
+    "count uppercase",
+    "count lowercase",
+    "scan string",
+    "character classification"
+  ],
+  "mnemonic": "One scan, two counters",
+  "think": [
+    "What is the task asking? Count letters in two categories: uppercase and lowercase.",
+    "What is the key operation? Inspect each character once and classify it.",
+    "What wording signals stand out? Count, uppercase, lowercase.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Multiple passes for uppercase and lowercase separately.",
+    "What is the better/optimal idea? One pass with two counters.",
+    "What are the edge cases? Digits, spaces, punctuation, empty string.",
+    "What is the complexity? O(n) time and O(1) space.",
+    "How would I explain it in an interview? I scan the string once and increment one of two counters based on char.IsUpper/IsLower."
+  ],
+  "algorithm": [
+    "Initialize upper = 0 and lower = 0",
+    "Iterate through each character in text",
+    "If char.IsUpper(ch) -> upper++",
+    "Else if char.IsLower(ch) -> lower++",
+    "Return both counters"
+  ],
+  "code": "public (int upper, int lower) CountCase(string text)\n{\n    int upper = 0;\n    int lower = 0;\n\n    foreach (var ch in text)\n    {\n        if (char.IsUpper(ch))\n            upper++;\n        else if (char.IsLower(ch))\n            lower++;\n    }\n\n    return (upper, lower);\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class CountCaseTests\n{\n    [Test]\n    public void Counts_Upper_And_Lower_Correctly()\n    {\n        var result = CountCase(\"AnNa123!\");\n        Assert.That(result.upper, Is.EqualTo(2));\n        Assert.That(result.lower, Is.EqualTo(2));\n    }\n\n    private (int upper, int lower) CountCase(string text)\n    {\n        int upper = 0;\n        int lower = 0;\n\n        foreach (var ch in text)\n        {\n            if (char.IsUpper(ch))\n                upper++;\n            else if (char.IsLower(ch))\n                lower++;\n        }\n\n        return (upper, lower);\n    }\n}",
+  "interview": "I would use a simple linear scan. I inspect each character once and increment either the uppercase or lowercase counter.",
+  "ru": "\u042d\u0442\u043e \u043f\u0440\u043e\u0441\u0442\u0430\u044f \u0437\u0430\u0434\u0430\u0447\u0430 \u043d\u0430 \u043e\u0434\u0438\u043d \u043f\u0440\u043e\u0445\u043e\u0434 \u043f\u043e \u0441\u0442\u0440\u043e\u043a\u0435. \u041a\u0430\u0436\u0434\u044b\u0439 \u0441\u0438\u043c\u0432\u043e\u043b \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0435\u043c \u0438 \u043e\u0442\u043d\u043e\u0441\u0438\u043c \u0432 \u043e\u0434\u043d\u0443 \u0438\u0437 \u0434\u0432\u0443\u0445 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0439.",
+  "visualExplanation": "text = \"AnNa123!\"\\nA -> upper\\nn -> lower\\nN -> upper\\na -> lower\\n1,2,3,! -> ignore",
+  "mistakes": {
+    "critical": [
+      "Treat digits or symbols as letters"
+    ],
+    "important": [
+      "Forget to use both IsUpper and IsLower"
+    ],
+    "nice": [
+      "Do not mention O(1) space"
+    ]
+  },
+  "gaps": [
+    "Important: be comfortable with basic char classification",
+    "Nice to have: explain why one pass is enough"
+  ],
+  "edgeCases": [
+    "string with no letters",
+    "all uppercase",
+    "all lowercase"
+  ],
+  "sortOrder": 10,
+  "status": "active",
+  "examples": [
+    "text = \"AnNa123!\" -> upper = 2, lower = 2"
+  ],
+  "constraints": "Assume text can contain letters, digits, spaces, and punctuation.",
+  "whyThisPattern": "This is a Linear Scan problem because we only need one pass and simple per-character classification.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because we do not need counts per unique character.",
+    "Not Two Pointers, because there is no left/right movement."
+  ]
+}

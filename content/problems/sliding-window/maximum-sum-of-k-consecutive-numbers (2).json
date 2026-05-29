@@ -1,0 +1,68 @@
+{
+  "id": 1099,
+  "slug": "maximum-sum-of-k-consecutive-numbers",
+  "title": "Maximum Sum of K Consecutive Numbers",
+  "topic": "Sliding Window",
+  "pattern": "Sliding Window",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums and integer k, return the maximum sum of any consecutive window of size k.",
+  "signals": [
+    "window size k",
+    "maximum sum",
+    "continuous segment"
+  ],
+  "mnemonic": "Moving segment -> Sliding Window",
+  "think": [
+    "What is the task asking? Given an integer array nums and integer k, return the maximum sum of any consecutive window of size k.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? window size k, maximum sum, continuous segment.",
+    "Which pattern fits? Sliding Window.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean sliding window solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Compute sum of first window",
+    "Track maxSum",
+    "Slide window by adding right and removing left",
+    "Update maxSum",
+    "Return maxSum"
+  ],
+  "code": "public object MaximumSumOfKConsecutiveNumbers(/* input */)\n{\n    // 1. Compute sum of first window\n    // 2. Track maxSum\n    // 3. Slide window by adding right and removing left\n    // 4. Update maxSum\n    // 5. Return maxSum\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void MaximumSumOfKConsecutiveNumbers_Sample_Test()\n{\n    Assert.Pass(\"Use example: [1,2,3,4], k=2 -> 7\");\n}",
+  "interview": "I would solve it using Sliding Window. I would first identify the core operation, then apply a simple sliding window approach and mention the complexity.",
+  "ru": "\u0415\u0441\u043b\u0438 \u0435\u0441\u0442\u044c \u0444\u0438\u043a\u0441\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0435 k \u0438 \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u044b\u0439 \u043a\u0443\u0441\u043e\u043a \u043c\u0430\u0441\u0441\u0438\u0432\u0430, \u0434\u0443\u043c\u0430\u0439 \u043f\u0440\u043e sliding window.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Sliding Window"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Sliding Window problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[1,2,3,4], k=2 -> 7"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Sliding Window problem because the wording signals are: window size k, maximum sum.",
+  "whyNotOtherPatterns": [
+    "Not plain Linear Scan, because we need a moving continuous segment.",
+    "Not Two Pointers, because the focus is maintaining a valid window over a substring/subarray."
+  ]
+}

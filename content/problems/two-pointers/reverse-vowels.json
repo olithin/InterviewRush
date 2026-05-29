@@ -1,0 +1,68 @@
+{
+  "id": 1130,
+  "slug": "reverse-vowels",
+  "title": "Reverse Vowels",
+  "topic": "Two Pointers",
+  "pattern": "Two Pointers",
+  "difficulty": "Easy",
+  "statement": "Given a string s, reverse only the vowels.",
+  "signals": [
+    "reverse only selected chars",
+    "two ends",
+    "swap"
+  ],
+  "mnemonic": "Find left target + right target + swap",
+  "think": [
+    "What is the task asking? Given a string s, reverse only the vowels.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? reverse only selected chars, two ends, swap.",
+    "Which pattern fits? Two Pointers.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean two pointers solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Convert to char[]",
+    "Move left to next vowel",
+    "Move right to next vowel",
+    "Swap",
+    "Move inward"
+  ],
+  "code": "public object ReverseVowels(/* input */)\n{\n    // 1. Convert to char[]\n    // 2. Move left to next vowel\n    // 3. Move right to next vowel\n    // 4. Swap\n    // 5. Move inward\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void ReverseVowels_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"hello\" -> \"holle\"\");\n}",
+  "interview": "I would solve it using Two Pointers. I would first identify the core operation, then apply a simple two pointers approach and mention the complexity.",
+  "ru": "\u041d\u0443\u0436\u043d\u043e \u043c\u0435\u043d\u044f\u0442\u044c \u043d\u0435 \u0432\u0441\u0451, \u0430 \u0442\u043e\u043b\u044c\u043a\u043e \u0433\u043b\u0430\u0441\u043d\u044b\u0435, \u043f\u043e\u044d\u0442\u043e\u043c\u0443 left/right \u043f\u043e\u0434\u0445\u043e\u0434\u0438\u0442 \u0438\u0434\u0435\u0430\u043b\u044c\u043d\u043e.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Two Pointers"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Two Pointers problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"hello\" -> \"holle\""
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Two Pointers problem because the wording signals are: reverse only selected chars, two ends.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the core problem is about positions/movement, not mapping.",
+    "Not HashSet, because uniqueness is not the main challenge here."
+  ]
+}

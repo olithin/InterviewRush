@@ -1,0 +1,69 @@
+{
+  "id": 1051,
+  "slug": "count-even-and-odd-numbers",
+  "title": "Count Even and Odd Numbers",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return how many values are even and how many are odd.",
+  "signals": [
+    "count even and odd",
+    "simple condition",
+    "scan array"
+  ],
+  "mnemonic": "One pass, two counters",
+  "think": [
+    "What is the task asking? Count numbers in two categories: even and odd.",
+    "What is the key operation? Check each number with modulo 2.",
+    "What wording signals stand out? Count, even, odd.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? There is no need for anything beyond a simple pass.",
+    "What is the better/optimal idea? Use one pass and two counters.",
+    "What are the edge cases? Empty-like arrays, all even, all odd, negative values.",
+    "What is the complexity? O(n) time and O(1) space.",
+    "How would I explain it in an interview? I iterate once and classify each number using n % 2."
+  ],
+  "algorithm": [
+    "Initialize even = 0 and odd = 0",
+    "Iterate through nums",
+    "If num % 2 == 0 -> even++",
+    "Else odd++",
+    "Return both counts"
+  ],
+  "code": "public (int even, int odd) CountEvenAndOdd(int[] nums)\n{\n    int even = 0;\n    int odd = 0;\n\n    foreach (var num in nums)\n    {\n        if (num % 2 == 0)\n            even++;\n        else\n            odd++;\n    }\n\n    return (even, odd);\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class CountEvenAndOddTests\n{\n    [Test]\n    public void Counts_Even_And_Odd_Correctly()\n    {\n        var result = CountEvenAndOdd(new[] { 1, 2, 3, 4, 5 });\n\n        Assert.That(result.even, Is.EqualTo(2));\n        Assert.That(result.odd, Is.EqualTo(3));\n    }\n\n    private (int even, int odd) CountEvenAndOdd(int[] nums)\n    {\n        int even = 0;\n        int odd = 0;\n\n        foreach (var num in nums)\n        {\n            if (num % 2 == 0)\n                even++;\n            else\n                odd++;\n        }\n\n        return (even, odd);\n    }\n}",
+  "interview": "I would solve it with a single pass through the array. For each number, I check whether it is divisible by two and update the even or odd counter.",
+  "ru": "\u042d\u0442\u043e \u043e\u0447\u0435\u043d\u044c \u0431\u0430\u0437\u043e\u0432\u0430\u044f \u0437\u0430\u0434\u0430\u0447\u0430: \u0438\u0434\u0451\u043c \u043f\u043e \u043c\u0430\u0441\u0441\u0438\u0432\u0443 \u0438 \u0434\u0435\u043b\u0438\u043c \u0447\u0438\u0441\u043b\u0430 \u043d\u0430 \u0434\u0432\u0435 \u0433\u0440\u0443\u043f\u043f\u044b \u043f\u043e \u0443\u0441\u043b\u043e\u0432\u0438\u044e num % 2 == 0.",
+  "visualExplanation": "nums = [1, 2, 3, 4, 5]\n1 -> odd\n2 -> even\n3 -> odd\n4 -> even\n5 -> odd\nresult = even:2, odd:3",
+  "mistakes": {
+    "critical": [
+      "Use wrong parity condition"
+    ],
+    "important": [
+      "Forget that negative even numbers are still even"
+    ],
+    "nice": [
+      "Do not explain why this is O(1) space"
+    ]
+  },
+  "gaps": [
+    "Important: be comfortable with simple array scans",
+    "Nice to have: explain parity check clearly"
+  ],
+  "edgeCases": [
+    "all even numbers",
+    "all odd numbers",
+    "negative values"
+  ],
+  "sortOrder": 40,
+  "status": "active",
+  "examples": [
+    "nums = [1,2,3,4,5] -> even = 2, odd = 3"
+  ],
+  "constraints": "Assume the array length is small to medium.",
+  "whyThisPattern": "This is a Linear Scan problem because the solution is just one pass with a simple per-element condition.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because we do not need mapping or frequencies.",
+    "Not Two Pointers, because we are not rearranging the array."
+  ]
+}

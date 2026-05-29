@@ -1,0 +1,68 @@
+{
+  "id": 1029,
+  "slug": "arrays-share-common-element",
+  "title": "Arrays Share a Common Element",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given two integer arrays nums1 and nums2, return true if they share at least one common element.",
+  "signals": [
+    "common element",
+    "intersection exists",
+    "membership check"
+  ],
+  "mnemonic": "Store one side, test the other",
+  "think": [
+    "What is the task asking? Check whether the arrays intersect at least once.",
+    "What is the key operation? Fast membership check.",
+    "What wording signals stand out? Common element, share at least one, intersection.",
+    "Which pattern fits? HashSet.",
+    "What is the brute force idea? Compare every element of nums1 with every element of nums2.",
+    "What is the better/optimal idea? Put one array in a set and scan the other.",
+    "What are the edge cases? Empty arrays, duplicates, negative numbers.",
+    "What is the complexity? O(n + m) time and O(n) space.",
+    "How would I explain it in an interview? I store the first array in a set and check whether any element from the second array exists in it."
+  ],
+  "algorithm": [
+    "Create HashSet<int> from nums1",
+    "Iterate through nums2",
+    "If current element exists in set -> return true",
+    "If loop ends -> return false"
+  ],
+  "code": "public bool ShareCommonElement(int[] nums1, int[] nums2)\n{\n    var seen = new HashSet<int>(nums1);\n\n    foreach (var num in nums2)\n    {\n        if (seen.Contains(num))\n            return true;\n    }\n\n    return false;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class ShareCommonElementTests\n{\n    [Test]\n    public void Returns_True_When_Common_Element_Exists()\n    {\n        var result = ShareCommonElement(new[] { 1, 2, 3 }, new[] { 5, 3, 9 });\n        Assert.That(result, Is.True);\n    }\n\n    private bool ShareCommonElement(int[] nums1, int[] nums2)\n    {\n        var seen = new HashSet<int>(nums1);\n\n        foreach (var num in nums2)\n        {\n            if (seen.Contains(num))\n                return true;\n        }\n\n        return false;\n    }\n}",
+  "interview": "I would use a HashSet for fast membership checks. I store one array and scan the other until I find an overlap.",
+  "ru": "\u041a\u043b\u0430\u0434\u0451\u043c \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u044b \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u043c\u0430\u0441\u0441\u0438\u0432\u0430 \u0432 set \u0438 \u0441\u043c\u043e\u0442\u0440\u0438\u043c, \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u0435\u0442\u0441\u044f \u043b\u0438 \u0445\u043e\u0442\u044c \u043e\u0434\u0438\u043d \u044d\u043b\u0435\u043c\u0435\u043d\u0442 \u0432\u0442\u043e\u0440\u043e\u0433\u043e \u043c\u0430\u0441\u0441\u0438\u0432\u0430 \u0432 \u044d\u0442\u043e\u043c set.",
+  "visualExplanation": "nums1 = [1,2,3]\\nnums2 = [5,3,9]\\nset = {1,2,3}\\n5 -> no\\n3 -> yes -> true",
+  "mistakes": {
+    "critical": [
+      "Use nested loops without noticing set lookup"
+    ],
+    "important": [
+      "Build set from wrong side and still do extra work"
+    ],
+    "nice": [
+      "Do not mention O(n + m) time"
+    ]
+  },
+  "gaps": [
+    "Important: intersection = membership check",
+    "Nice to have: explain why duplicates in input do not matter"
+  ],
+  "edgeCases": [
+    "empty array",
+    "duplicates",
+    "negative values"
+  ],
+  "sortOrder": 220,
+  "status": "active",
+  "examples": [
+    "[1,2,3] and [5,3,9] -> true"
+  ],
+  "constraints": "Assume arrays may contain duplicates.",
+  "whyThisPattern": "This is a HashSet problem because the core operation is fast existence checking.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because counts are irrelevant.",
+    "Not Two Pointers, because arrays are not sorted and no inward movement is needed."
+  ]
+}

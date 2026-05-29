@@ -1,0 +1,68 @@
+{
+  "id": 1091,
+  "slug": "sum-all-elements-in-matrix",
+  "title": "Sum All Elements in a Matrix",
+  "topic": "Matrix Basics",
+  "pattern": "Matrix Basics",
+  "difficulty": "Easy",
+  "statement": "Given a matrix of integers, return the sum of all elements.",
+  "signals": [
+    "sum matrix",
+    "nested loops",
+    "2D traversal"
+  ],
+  "mnemonic": "Row by row, cell by cell",
+  "think": [
+    "What is the task asking? Given a matrix of integers, return the sum of all elements.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? sum matrix, nested loops, 2D traversal.",
+    "Which pattern fits? Matrix Basics.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean matrix basics solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Initialize sum=0",
+    "Iterate rows",
+    "Iterate columns",
+    "Add each value",
+    "Return sum"
+  ],
+  "code": "public object SumAllElementsInMatrix(/* input */)\n{\n    // 1. Initialize sum=0\n    // 2. Iterate rows\n    // 3. Iterate columns\n    // 4. Add each value\n    // 5. Return sum\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void SumAllElementsInAMatrix_Sample_Test()\n{\n    Assert.Pass(\"Use example: [[1,2],[3,4]] -> 10\");\n}",
+  "interview": "I would solve it using Matrix Basics. I would first identify the core operation, then apply a simple matrix basics approach and mention the complexity.",
+  "ru": "\u0414\u043b\u044f \u043c\u0430\u0442\u0440\u0438\u0446\u044b \u043d\u0443\u0436\u0435\u043d \u0432\u043b\u043e\u0436\u0435\u043d\u043d\u044b\u0439 \u043f\u0440\u043e\u0445\u043e\u0434: \u043f\u043e \u0441\u0442\u0440\u043e\u043a\u0430\u043c \u0438 \u0441\u0442\u043e\u043b\u0431\u0446\u0430\u043c.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Matrix Basics"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Matrix Basics problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[[1,2],[3,4]] -> 10"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Matrix Basics problem because the wording signals are: sum matrix, nested loops.",
+  "whyNotOtherPatterns": [
+    "Not Two Pointers, because this is about row/column traversal.",
+    "Not Dictionary, because no key-value mapping is required."
+  ]
+}

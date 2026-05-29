@@ -5,3 +5,29 @@
 **/*.db
 **/*.db-shm
 **/*.db-wal
+**/*.db.*.bak
+
+# Ad-hoc dotnet publish output at repo root (do not commit)
+_build_check_api*/
+_import_build_out/
+backend/_buildout/
+backend/_tmpbuild/
+
+# Frontend local secrets (NextAuth, Google OAuth)
+frontend/.env.local
+.env.local
+
+# Frontend dependencies and build output (Netlify runs npm install + build)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/tsconfig.tsbuildinfo
+
+# IDE and local tooling
+.cursor/
+.vscode/
+.idea/
+**/.idea/
+
+# Local scratch scripts
+temp_read_db.py

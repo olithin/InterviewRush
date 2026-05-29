@@ -1,0 +1,67 @@
+{
+  "id": 1077,
+  "slug": "return-only-letters-from-string",
+  "title": "Return Only Letters from a String",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a string s, return a new string containing only its letters in the same order.",
+  "signals": [
+    "filter letters",
+    "scan string",
+    "build result"
+  ],
+  "mnemonic": "Keep only letters",
+  "think": [
+    "What is the task asking? Given a string s, return a new string containing only its letters in the same order.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? filter letters, scan string, build result.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean linear scan solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Create result builder",
+    "Iterate chars",
+    "If letter -> append",
+    "Return result"
+  ],
+  "code": "public object ReturnOnlyLettersFromString(/* input */)\n{\n    // 1. Create result builder\n    // 2. Iterate chars\n    // 3. If letter -> append\n    // 4. Return result\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void ReturnOnlyLettersFromAString_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"ab12 c!\" -> \"abc\"\");\n}",
+  "interview": "I would solve it using Linear Scan. I would first identify the core operation, then apply a simple linear scan approach and mention the complexity.",
+  "ru": "\u0424\u0438\u043b\u044c\u0442\u0440\u0443\u0435\u043c \u0441\u0442\u0440\u043e\u043a\u0443 \u0438 \u043e\u0441\u0442\u0430\u0432\u043b\u044f\u0435\u043c \u0442\u043e\u043b\u044c\u043a\u043e \u0431\u0443\u043a\u0432\u044b.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Linear Scan"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Linear Scan problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"ab12 c!\" -> \"abc\""
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Linear Scan problem because the wording signals are: filter letters, scan string.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the task does not require frequency or key-value mapping.",
+    "Not Two Pointers, because there is no left/right or slow/fast movement requirement."
+  ]
+}

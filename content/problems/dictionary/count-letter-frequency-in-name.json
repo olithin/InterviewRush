@@ -1,0 +1,70 @@
+{
+  "id": 1006,
+  "slug": "count-letter-frequency-in-name",
+  "title": "Count Letter Frequency in a Name",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given a string name, return how many times each letter appears in it. Ignore case.",
+  "signals": [
+    "count letters",
+    "frequency",
+    "how many times",
+    "char to count"
+  ],
+  "mnemonic": "Need count -> Dictionary",
+  "think": [
+    "What is the task asking? Count how many times each letter appears.",
+    "What is the key operation? Track frequency per character.",
+    "What wording signals stand out? Count, frequency, repeated letters.",
+    "Which pattern fits? Dictionary, because we need char -> count.",
+    "What is the brute force idea? For each character, scan the whole string again.",
+    "What is the better/optimal idea? Scan once and update a dictionary.",
+    "What are the edge cases? Upper/lower case, spaces, repeated letters.",
+    "What is the complexity? O(n) time and O(k) space.",
+    "How would I explain it in an interview? I normalize the input and count each character with a frequency map."
+  ],
+  "algorithm": [
+    "Create Dictionary<char, int> counts",
+    "Convert the name to lower case",
+    "Iterate through each character",
+    "If it is a letter, increment its count in the dictionary",
+    "Return the dictionary"
+  ],
+  "code": "public Dictionary<char, int> CountLetterFrequency(string name)\n{\n    var counts = new Dictionary<char, int>();\n\n    foreach (var ch in name.ToLowerInvariant())\n    {\n        if (!char.IsLetter(ch))\n            continue;\n\n        counts[ch] = counts.GetValueOrDefault(ch) + 1;\n    }\n\n    return counts;\n}",
+  "tests": "using NUnit.Framework;\nusing System.Collections.Generic;\n\n[TestFixture]\npublic class CountLetterFrequencyTests\n{\n    [Test]\n    public void Counts_Letters_Ignoring_Case()\n    {\n        var result = CountLetterFrequency(\"Anna\");\n\n        Assert.That(result['a'], Is.EqualTo(2));\n        Assert.That(result['n'], Is.EqualTo(2));\n    }\n\n    private Dictionary<char, int> CountLetterFrequency(string name)\n    {\n        var counts = new Dictionary<char, int>();\n\n        foreach (var ch in name.ToLowerInvariant())\n        {\n            if (!char.IsLetter(ch))\n                continue;\n\n            counts[ch] = counts.GetValueOrDefault(ch) + 1;\n        }\n\n        return counts;\n    }\n}",
+  "interview": "I would use a dictionary because this is a frequency-counting problem. I iterate through the string once, normalize case, and increment the count for each letter.",
+  "ru": "\u042d\u0442\u043e \u0437\u0430\u0434\u0430\u0447\u0430 \u043d\u0430 \u0447\u0430\u0441\u0442\u043e\u0442\u044b. \u041d\u0443\u0436\u043d\u043e \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u0442\u044c, \u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0440\u0430\u0437 \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u043b\u0430\u0441\u044c \u043a\u0430\u0436\u0434\u0430\u044f \u0431\u0443\u043a\u0432\u0430, \u0437\u043d\u0430\u0447\u0438\u0442 \u043d\u0443\u0436\u0435\u043d Dictionary.",
+  "visualExplanation": "name = \"Anna\"\n\na -> 1\nn -> 1\nn -> 2\na -> 2\n\nresult = { a:2, n:2 }",
+  "mistakes": {
+    "critical": [
+      "Use HashSet and lose frequency information"
+    ],
+    "important": [
+      "Forget to normalize case"
+    ],
+    "nice": [
+      "Do not explain why Dictionary is the right structure"
+    ]
+  },
+  "gaps": [
+    "Important: distinguish frequency problems from uniqueness problems",
+    "Nice to have: explain char -> count mapping fluently"
+  ],
+  "edgeCases": [
+    "mixed case letters",
+    "spaces",
+    "single repeated letter"
+  ],
+  "sortOrder": 10,
+  "status": "active",
+  "examples": [
+    "name = \"Anna\" -> { a:2, n:2 }"
+  ],
+  "constraints": "Assume the input is a short name string.",
+  "whyThisPattern": "This is a Dictionary problem because we need to store each character together with its count.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because HashSet does not store counts.",
+    "Not Two Pointers, because there is no left/right comparison or in-place movement."
+  ]
+}

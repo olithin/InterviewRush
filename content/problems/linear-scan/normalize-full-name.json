@@ -1,0 +1,69 @@
+{
+  "id": 1071,
+  "slug": "normalize-full-name",
+  "title": "Normalize a Full Name",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a full name string that may contain extra spaces and mixed casing, return a normalized version where each word starts with an uppercase letter followed by lowercase letters, and extra spaces are removed.",
+  "signals": [
+    "normalize name",
+    "capitalize words",
+    "trim spaces",
+    "mixed case"
+  ],
+  "mnemonic": "Trim, split, normalize",
+  "think": [
+    "What is the task asking? Clean spacing and fix letter casing for each word.",
+    "What is the key operation? Process each word and rebuild a normalized result.",
+    "What wording signals stand out? Normalize, full name, uppercase, lowercase, extra spaces.",
+    "Which pattern fits? Linear Scan over words.",
+    "What is the brute force idea? Manual char-by-char state machine.",
+    "What is the better/optimal idea? Split words, normalize each, and join them back.",
+    "What are the edge cases? Multiple spaces, one word, already normalized input.",
+    "What is the complexity? O(n) time and O(n) space.",
+    "How would I explain it in an interview? I remove extra spaces, normalize each token, and join them with a single space."
+  ],
+  "algorithm": [
+    "Split by spaces removing empty entries",
+    "For each word, uppercase first letter and lowercase the rest",
+    "Join normalized words with single spaces",
+    "Return result"
+  ],
+  "code": "public string NormalizeFullName(string fullName)\n{\n    var words = fullName\n        .Split(' ', StringSplitOptions.RemoveEmptyEntries)\n        .Select(word => char.ToUpperInvariant(word[0]) + word.Substring(1).ToLowerInvariant());\n\n    return string.Join(\" \", words);\n}",
+  "tests": "using NUnit.Framework;\nusing System.Linq;\n\n[TestFixture]\npublic class NormalizeFullNameTests\n{\n    [Test]\n    public void Normalizes_Name_Correctly()\n    {\n        var result = NormalizeFullName(\"  aNNa   kaREnina  \");\n        Assert.That(result, Is.EqualTo(\"Anna Karenina\"));\n    }\n\n    private string NormalizeFullName(string fullName)\n    {\n        var words = fullName\n            .Split(' ', StringSplitOptions.RemoveEmptyEntries)\n            .Select(word => char.ToUpperInvariant(word[0]) + word.Substring(1).ToLowerInvariant());\n\n        return string.Join(\" \", words);\n    }\n}",
+  "interview": "I would split the name into non-empty words, normalize the casing of each word, and join them back with single spaces.",
+  "ru": "\u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u0443\u0431\u0438\u0440\u0430\u0435\u043c \u043b\u0438\u0448\u043d\u0438\u0435 \u043f\u0440\u043e\u0431\u0435\u043b\u044b, \u043f\u043e\u0442\u043e\u043c \u043a\u0430\u0436\u0434\u043e\u0435 \u0441\u043b\u043e\u0432\u043e \u043f\u0440\u0438\u0432\u043e\u0434\u0438\u043c \u043a \u0432\u0438\u0434\u0443 '\u041f\u0435\u0440\u0432\u0430\u044f \u0431\u0443\u043a\u0432\u0430 \u0431\u043e\u043b\u044c\u0448\u0430\u044f, \u043e\u0441\u0442\u0430\u043b\u044c\u043d\u044b\u0435 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0438\u0435'.",
+  "visualExplanation": "fullName = \"  aNNa   kaREnina  \"\\nwords = [\"aNNa\", \"kaREnina\"]\\n-> [\"Anna\", \"Karenina\"]\\njoin -> \"Anna Karenina\"",
+  "mistakes": {
+    "critical": [
+      "Do not remove extra spaces"
+    ],
+    "important": [
+      "Forget to lowercase the rest of each word"
+    ],
+    "nice": [
+      "Use culture-sensitive casing without intention"
+    ]
+  },
+  "gaps": [
+    "Important: string cleanup and word-level processing",
+    "Nice to have: explain split-normalize-join pipeline"
+  ],
+  "edgeCases": [
+    "single word",
+    "already normalized",
+    "many extra spaces"
+  ],
+  "sortOrder": 80,
+  "status": "active",
+  "examples": [
+    "\"  aNNa   kaREnina  \" -> \"Anna Karenina\""
+  ],
+  "constraints": "Assume words are separated by spaces and letters are alphabetic.",
+  "whyThisPattern": "This is a Linear Scan over words because each token is processed once and transformed independently.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because no counts are needed.",
+    "Not Two Pointers, because positional comparisons are not the main idea."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": 1102,
+  "slug": "minimum-vowels-in-window-of-k",
+  "title": "Minimum Vowels in Window of K",
+  "topic": "Sliding Window",
+  "pattern": "Sliding Window",
+  "difficulty": "Easy",
+  "statement": "Given a string s and integer k, return the minimum number of vowels in any substring window of size k.",
+  "signals": [
+    "window size k",
+    "minimum vowels",
+    "moving segment"
+  ],
+  "mnemonic": "Slide and update metric",
+  "think": [
+    "What is the task asking? Given a string s and integer k, return the minimum number of vowels in any substring window of size k.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? window size k, minimum vowels, moving segment.",
+    "Which pattern fits? Sliding Window.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean sliding window solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Count vowels in first window",
+    "Track minimum",
+    "Slide window",
+    "Update count using incoming/outgoing chars",
+    "Return minimum"
+  ],
+  "code": "public object MinimumVowelsInWindowOfK(/* input */)\n{\n    // 1. Count vowels in first window\n    // 2. Track minimum\n    // 3. Slide window\n    // 4. Update count using incoming/outgoing chars\n    // 5. Return minimum\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void MinimumVowelsInWindowOfK_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"abciiidef\", k=3 -> 1\");\n}",
+  "interview": "I would solve it using Sliding Window. I would first identify the core operation, then apply a simple sliding window approach and mention the complexity.",
+  "ru": "\u041e\u043f\u044f\u0442\u044c fixed-size window, \u0442\u043e\u043b\u044c\u043a\u043e \u0438\u0449\u0435\u043c \u043c\u0438\u043d\u0438\u043c\u0443\u043c \u043f\u043e \u043c\u0435\u0442\u0440\u0438\u043a\u0435.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Sliding Window"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Sliding Window problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"abciiidef\", k=3 -> 1"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Sliding Window problem because the wording signals are: window size k, minimum vowels.",
+  "whyNotOtherPatterns": [
+    "Not plain Linear Scan, because we need a moving continuous segment.",
+    "Not Two Pointers, because the focus is maintaining a valid window over a substring/subarray."
+  ]
+}

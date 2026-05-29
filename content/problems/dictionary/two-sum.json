@@ -1,0 +1,75 @@
+﻿{
+  "id": 8,
+  "slug": "two-sum",
+  "title": "Two Sum",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given an array of integers nums and an integer target, return the indices of the two numbers such that they add up to target. You may assume that each input has exactly one solution, and you may not use the same element twice.",
+  "signals": [
+    "sum equals target",
+    "find pair",
+    "need complement",
+    "value to index"
+  ],
+  "mnemonic": "Need complement + index -> Dictionary",
+  "think": [
+    "What is the task asking? Find two numbers whose sum equals target and return their indices.",
+    "What is the key operation? For each number, quickly check whether its complement was already seen.",
+    "What wording signals stand out? Pair sum, target, indices, complement.",
+    "Which pattern fits? Dictionary, because we need value -> index mapping.",
+    "What is the brute force idea? Check every pair with two nested loops.",
+    "What is the better/optimal idea? Scan once and store each number with its index in a dictionary.",
+    "What are the edge cases? Duplicate values, answer near the end, negative numbers.",
+    "What is the complexity? O(n) time and O(n) space.",
+    "How would I explain it in an interview? I compute target - num and check whether it already exists in the dictionary."
+  ],
+  "algorithm": [
+    "Create Dictionary<int, int> seen",
+    "Iterate through nums with index i",
+    "Compute complement = target - nums[i]",
+    "If complement exists in dictionary, return [seen[complement], i]",
+    "Otherwise store nums[i] -> i in dictionary"
+  ],
+  "code": "public int[] TwoSum(int[] nums, int target)\\n{\\n    var seen = new Dictionary<int, int>();\\n\\n    for (int i = 0; i < nums.Length; i++)\\n    {\\n        int complement = target - nums[i];\\n\\n        if (seen.ContainsKey(complement))\\n            return new[] { seen[complement], i };\\n\\n        seen[nums[i]] = i;\\n    }\\n\\n    throw new ArgumentException(\\\"No solution found\\\");\\n}",
+  "tests": "using NUnit.Framework;\\n\\n[TestFixture]\\npublic class TwoSumTests\\n{\\n    [Test]\\n    public void Returns_Indices_For_First_Example()\\n    {\\n        var result = TwoSum(new[] { 2, 7, 11, 15 }, 9);\\n        Assert.That(result, Is.EqualTo(new[] { 0, 1 }));\\n    }\\n\\n    [Test]\\n    public void Returns_Indices_For_Second_Example()\\n    {\\n        var result = TwoSum(new[] { 3, 2, 4 }, 6);\\n        Assert.That(result, Is.EqualTo(new[] { 1, 2 }));\\n    }\\n\\n    [Test]\\n    public void Returns_Indices_For_Duplicate_Values()\\n    {\\n        var result = TwoSum(new[] { 3, 3 }, 6);\\n        Assert.That(result, Is.EqualTo(new[] { 0, 1 }));\\n    }\\n\\n    private int[] TwoSum(int[] nums, int target)\\n    {\\n        var seen = new Dictionary<int, int>();\\n\\n        for (int i = 0; i < nums.Length; i++)\\n        {\\n            int complement = target - nums[i];\\n\\n            if (seen.ContainsKey(complement))\\n                return new[] { seen[complement], i };\\n\\n            seen[nums[i]] = i;\\n        }\\n\\n        throw new ArgumentException(\\\"No solution found\\\");\\n    }\\n}",
+  "interview": "I would use a dictionary because I need fast lookup and I also need to remember indices. For each number, I compute its complement as target minus current value. If that complement is already in the dictionary, I return the stored index and the current index.",
+  "ru": "Это задача не просто на поиск числа, а на поиск пары по сумме. Для каждого числа мы считаем, какое число нужно до target, и проверяем, встречалось ли оно раньше. Поэтому здесь нужен Dictionary, потому что надо хранить value -> index.",
+  "visualExplanation": "nums = [2, 7, 11, 15], target = 9\\n\\ni = 0, num = 2\\nneed = 7\\nseen = { 2:0 }\\n\\ni = 1, num = 7\\nneed = 2\\n2 already in seen -> answer = [0, 1]",
+  "mistakes": {
+    "critical": [
+      "Use HashSet and lose index information",
+      "Use the same element twice"
+    ],
+    "important": [
+      "Do not explain why Dictionary is better than nested loops",
+      "Forget to compute complement as target - current value"
+    ],
+    "nice": [
+      "Do not mention that Two Sum sorted would suggest Two Pointers instead"
+    ]
+  },
+  "gaps": [
+    "Important: distinguish HashSet vs Dictionary",
+    "Important: understand complement pattern",
+    "Nice to have: distinguish unsorted Two Sum from sorted Two Sum"
+  ],
+  "edgeCases": [
+    "duplicate values like [3,3]",
+    "negative numbers",
+    "solution near the end"
+  ],
+  "sortOrder": 110,
+  "status": "active",
+  "examples": [
+    "nums = [2,7,11,15], target = 9 -> [0,1]",
+    "nums = [3,2,4], target = 6 -> [1,2]",
+    "nums = [3,3], target = 6 -> [0,1]"
+  ],
+  "constraints": "Assume exactly one valid answer exists. You may not use the same element twice.",
+  "whyThisPattern": "This is a Dictionary problem because we need fast lookup and we also need to store the index of previously seen values.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because HashSet only tells us whether a value exists and does not store indices.",
+    "Not Two Pointers, because the input array is not sorted."
+  ]
+}

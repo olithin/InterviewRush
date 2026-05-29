@@ -1,0 +1,70 @@
+{
+  "id": 1124,
+  "slug": "palindrome-word",
+  "title": "Check Whether a Word Is a Palindrome",
+  "topic": "Two Pointers",
+  "pattern": "Two Pointers",
+  "difficulty": "Easy",
+  "statement": "Given a word, return true if it reads the same forward and backward.",
+  "signals": [
+    "palindrome",
+    "same forward backward",
+    "two ends"
+  ],
+  "mnemonic": "Outside -> compare -> inside",
+  "think": [
+    "What is the task asking? Compare mirrored characters from the front and the back.",
+    "What is the key operation? Check whether pairs from both ends are equal.",
+    "What wording signals stand out? Palindrome, reads the same backward.",
+    "Which pattern fits? Two Pointers (Left/Right).",
+    "What is the brute force idea? Reverse the string and compare with the original.",
+    "What is the better/optimal idea? Compare characters in place with two pointers.",
+    "What are the edge cases? One character, even length, odd length.",
+    "What is the complexity? O(n) time and O(1) extra space if using direct comparison.",
+    "How would I explain it in an interview? I compare the outer characters first and move inward."
+  ],
+  "algorithm": [
+    "Set left = 0 and right = word.Length - 1",
+    "While left < right compare characters",
+    "If mismatch -> false",
+    "Else move inward",
+    "If loop ends -> true"
+  ],
+  "code": "public bool IsPalindromeWord(string word)\n{\n    int left = 0;\n    int right = word.Length - 1;\n\n    while (left < right)\n    {\n        if (word[left] != word[right])\n            return false;\n\n        left++;\n        right--;\n    }\n\n    return true;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class IsPalindromeWordTests\n{\n    [TestCase(\"level\", true)]\n    [TestCase(\"hello\", false)]\n    public void Checks_Palindrome(string word, bool expected)\n    {\n        Assert.That(IsPalindromeWord(word), Is.EqualTo(expected));\n    }\n\n    private bool IsPalindromeWord(string word)\n    {\n        int left = 0;\n        int right = word.Length - 1;\n\n        while (left < right)\n        {\n            if (word[left] != word[right])\n                return false;\n\n            left++;\n            right--;\n        }\n\n        return true;\n    }\n}",
+  "interview": "I would use two pointers, one from each end, and compare mirrored characters while moving inward.",
+  "ru": "\u041f\u0430\u043b\u0438\u043d\u0434\u0440\u043e\u043c \u043f\u043e\u0447\u0442\u0438 \u0432\u0441\u0435\u0433\u0434\u0430 \u0441\u0438\u0433\u043d\u0430\u043b \u043d\u0430 two pointers: \u0441\u0440\u0430\u0432\u043d\u0438\u0432\u0430\u0435\u043c \u043b\u0435\u0432\u044b\u0439 \u0438 \u043f\u0440\u0430\u0432\u044b\u0439 \u043a\u0440\u0430\u0439 \u0438 \u0438\u0434\u0451\u043c \u043a \u0446\u0435\u043d\u0442\u0440\u0443.",
+  "visualExplanation": "word = \"level\"\\nl e v e l\\n^       ^ -> same\\n  ^   ^ -> same\\ncenter reached -> true",
+  "mistakes": {
+    "critical": [
+      "Compare only first and last characters"
+    ],
+    "important": [
+      "Confuse pointer movement"
+    ],
+    "nice": [
+      "Do not mention reverse-string alternative"
+    ]
+  },
+  "gaps": [
+    "Important: palindrome => compare both ends",
+    "Nice to have: speak confidently about left/right pointers"
+  ],
+  "edgeCases": [
+    "single character",
+    "even length word",
+    "mismatch near the center"
+  ],
+  "sortOrder": 320,
+  "status": "active",
+  "examples": [
+    "word = \"level\" -> true",
+    "word = \"hello\" -> false"
+  ],
+  "constraints": "Assume input is already a clean word.",
+  "whyThisPattern": "This is a Two Pointers problem because palindrome checking compares mirrored positions from both ends.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because uniqueness is unrelated.",
+    "Not Sliding Window, because there is no moving substring window."
+  ]
+}

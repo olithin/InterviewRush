@@ -1,0 +1,66 @@
+{
+  "id": 1113,
+  "slug": "sort-numbers-descending",
+  "title": "Sort Numbers Descending",
+  "topic": "Sorting",
+  "pattern": "Sorting",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return it sorted in descending order.",
+  "signals": [
+    "sort values",
+    "descending order",
+    "reorder"
+  ],
+  "mnemonic": "Sort with reverse order",
+  "think": [
+    "What is the task asking? Given an integer array nums, return it sorted in descending order.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? sort values, descending order, reorder.",
+    "Which pattern fits? Sorting.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean sorting solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Sort the array",
+    "Reverse or use descending comparer",
+    "Return result"
+  ],
+  "code": "public object SortNumbersDescending(/* input */)\n{\n    // 1. Sort the array\n    // 2. Reverse or use descending comparer\n    // 3. Return result\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void SortNumbersDescending_Sample_Test()\n{\n    Assert.Pass(\"Use example: [3,1,2] -> [3,2,1]\");\n}",
+  "interview": "I would solve it using Sorting. I would first identify the core operation, then apply a simple sorting approach and mention the complexity.",
+  "ru": "\u0422\u043e\u0442 \u0436\u0435 sorting basics, \u0442\u043e\u043b\u044c\u043a\u043e \u0432 \u043e\u0431\u0440\u0430\u0442\u043d\u043e\u043c \u043f\u043e\u0440\u044f\u0434\u043a\u0435.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Sorting"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Sorting problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[3,1,2] -> [3,2,1]"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Sorting problem because the wording signals are: sort values, descending order.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because the task benefits from ordering or sorted comparison.",
+    "Not Dictionary, because frequency is not the main idea."
+  ]
+}

@@ -5,6 +5,9 @@ export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--app-font)"]
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -22,10 +25,24 @@ export default {
       },
       borderRadius: {
         xl: "1rem",
-        '2xl': "1.5rem"
+        "2xl": "1.5rem",
+        "3xl": "1.75rem"
       },
       boxShadow: {
-        soft: "0 10px 30px rgba(40, 24, 80, 0.12)"
+        none: "none",
+        sm: "none",
+        DEFAULT: "none",
+        md: "none",
+        lg: "none",
+        xl: "none",
+        "2xl": "none",
+        inner: "none",
+        clay: "none",
+        "clay-sm": "none",
+        "clay-inset": "none",
+        rider: "none",
+        "rider-sm": "none",
+        "rider-inset": "none"
       }
     }
   },

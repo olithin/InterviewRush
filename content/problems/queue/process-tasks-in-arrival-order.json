@@ -1,0 +1,67 @@
+{
+  "id": 1092,
+  "slug": "process-tasks-in-arrival-order",
+  "title": "Process Tasks in Arrival Order",
+  "topic": "Queue",
+  "pattern": "Queue",
+  "difficulty": "Easy",
+  "statement": "Given a list of tasks arriving over time, describe or simulate processing the oldest task first.",
+  "signals": [
+    "arrival order",
+    "oldest first",
+    "FIFO"
+  ],
+  "mnemonic": "First come -> first served",
+  "think": [
+    "What is the task asking? Given a list of tasks arriving over time, describe or simulate processing the oldest task first.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? arrival order, oldest first, FIFO.",
+    "Which pattern fits? Queue.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean queue solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Create queue",
+    "Enqueue arriving tasks",
+    "Dequeue from the front to process",
+    "Continue until queue is empty"
+  ],
+  "code": "public object ProcessTasksInArrivalOrder(/* input */)\n{\n    // 1. Create queue\n    // 2. Enqueue arriving tasks\n    // 3. Dequeue from the front to process\n    // 4. Continue until queue is empty\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void ProcessTasksInArrivalOrder_Sample_Test()\n{\n    Assert.Pass(\"Use example: A,B,C arrive -> process A,B,C\");\n}",
+  "interview": "I would solve it using Queue. I would first identify the core operation, then apply a simple queue approach and mention the complexity.",
+  "ru": "\u042d\u0442\u043e \u0444\u0443\u043d\u0434\u0430\u043c\u0435\u043d\u0442\u0430\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043d\u0438\u043c\u0430\u043d\u0438\u0435 Queue: first in, first out.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Queue"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Queue problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "A,B,C arrive -> process A,B,C"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Queue problem because the wording signals are: arrival order, oldest first.",
+  "whyNotOtherPatterns": [
+    "Not Stack, because we need first-in-first-out behavior.",
+    "Not Dictionary, because processing order matters more than mapping."
+  ]
+}
