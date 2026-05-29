@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using QAQuest.Api.Content;
 using QAQuest.Api.Data;
+using QAQuest.Api.Seed;
 using System.Text.RegularExpressions;
 
 var importMode = args.Any(x => string.Equals(x, "import-content", StringComparison.OrdinalIgnoreCase));
@@ -88,6 +89,7 @@ using (var scope = app.Services.CreateScope())
     EnsureUserContentsTable(db);
     EnsureSharedLinksTable(db);
     NormalizeLegacyOrdinalPrefixes(db);
+    InterviewLanguageDemoSeed.EnsureDemoQuestions(db);
     if (importMode)
     {
         var contentPath = ResolveContentProblemsPath(Directory.GetCurrentDirectory());

@@ -11,7 +11,7 @@ export function WeakTopicsCard({ topics }: { topics: string[] }) {
           Weak Topics
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-wrap gap-2">
+      <CardContent className="flex flex-wrap gap-2" style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
         {topics.map((topic) => (
           <Badge key={topic} variant="secondary">
             {topic}

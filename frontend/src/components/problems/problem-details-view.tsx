@@ -21,7 +21,6 @@ import { cn, normalizeMultiline } from "@/lib/utils";
 import { CoachMentalModelPanel } from "@/components/problems/coach-mental-model-panel";
 import { CoachExplanationEditor } from "@/components/problems/coach-explanation-editor";
 import { InterviewQuestionCoachEditor } from "@/components/interview-questions/interview-question-coach-editor";
-import { UserContentPanel } from "@/components/interview-questions/user-content-panel";
 import { InterviewNotebookBlock } from "@/components/problems/interview-notebook-panel";
 import { PracticeCodeWorkbench } from "@/components/problems/practice-code-workbench";
 import { ProblemNavItem, ProblemTeachingDetails } from "@/lib/problem-types";
@@ -59,7 +58,7 @@ export type ProblemDetailsLayout = {
   mentalModelStorageKey?: (id: number) => string;
   /** Inline API editor for `InterviewQuestion` (same UX as "Edit coach content" on tasks). */
   showInterviewQuestionApiEditor?: boolean;
-  /** After deleting a question in the API editor, navigate here (e.g. `/interview/csharp` or `/interview-questions`). */
+  /** After deleting a question in the API editor, navigate here (e.g. `/interview/csharp` … `/interview/python`, or `/interview-questions`). */
   interviewDeleteRedirectPath?: string;
   /** Allow drag-and-drop reordering of interview questions in the sidebar (persists `sortOrder`). */
   canReorderInterviewQuestions?: boolean;
@@ -109,6 +108,13 @@ const defaultProblemLayout: ProblemDetailsLayout = {
 type LearnMode = "coach" | "practice";
 type CoachMainTab = "guided" | "mental";
 type GuidedStep = 1 | 2 | 3 | 4 | 5 | 6;
+
+type CoachSidebarGroup = {
+  rowKey: string;
+  categoryLabel?: string;
+  createCategory: string;
+  items: ProblemNavItem[];
+};
 
 const modeLabels: Record<LearnMode, string> = {
   coach: "Coach mode",
@@ -268,20 +274,17 @@ export function ProblemDetailsView({
     setInterviewNotebookOpen(false);
     setShowInterviewQuestionEditor(false);
   }, [details.id]);
-  const groupedProblems = useMemo(() => {
+  const groupedProblems = useMemo((): CoachSidebarGroup[] => {
     if (layout.navGroupBy === "none") {
-      // Reorder mode keeps user-defined order (sortOrder); fall back to id when sortOrder is missing.
-      const sorted = [...navItems].sort((a, b) => {
-        if (canReorderSidebar) {
-          const ax = a.sortOrder ?? Number.MAX_SAFE_INTEGER;
-          const bx = b.sortOrder ?? Number.MAX_SAFE_INTEGER;
-          if (ax !== bx) return ax - bx;
-        }
-        return a.id - b.id;
-      });
-      return [{ pattern: "", items: sorted }];
+      const sorted = [...navItems].sort((a, b) => compareProblemNavItems(a, b, canReorderSidebar));
+      return [{ rowKey: "all", createCategory: "General", items: sorted }];
     }
-    return groupProblemsByPattern(navItems, canReorderSidebar);
+    return groupProblemsByPattern(navItems, canReorderSidebar).map((g) => ({
+      rowKey: `cat:${g.pattern}`,
+      categoryLabel: g.pattern,
+      createCategory: g.pattern,
+      items: g.items
+    }));
   }, [navItems, layout.navGroupBy, canReorderSidebar]);
   const ordinalById = useMemo(() => {
     const map = new Map<number, number>();
@@ -523,8 +526,8 @@ export function ProblemDetailsView({
         role="complementary"
         aria-label="All tasks by pattern"
       >
-        <div className="mb-3 flex items-center justify-between gap-2">
-          <p className="text-sm font-semibold text-primary">{layout.sidebarTitle}</p>
+        <div className="mb-2 flex items-center justify-between gap-2">
+          <p className="text-xs font-semibold text-primary">{layout.sidebarTitle}</p>
           {canCreateSidebar ? (
             <button
               type="button"
@@ -541,17 +544,19 @@ export function ProblemDetailsView({
         </div>
         <div className="space-y-4">
           {groupedProblems.map((group) => (
-            <div key={group.pattern || "all"} className="space-y-2">
-              {group.pattern ? (
-                <div className="flex items-center justify-between gap-2">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{group.pattern}</p>
+            <div key={group.rowKey} className="space-y-2">
+              {group.categoryLabel ? (
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0 flex flex-col gap-0.5">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{group.categoryLabel}</p>
+                  </div>
                   {canCreateSidebar ? (
                     <button
                       type="button"
                       className="inline-flex shrink-0 items-center gap-0.5 rounded-md px-1.5 py-0.5 text-[11px] font-semibold text-emerald-700 transition hover:bg-emerald-100/70 disabled:opacity-50"
-                      onClick={() => void onCreateNewItem(group.pattern)}
+                      onClick={() => void onCreateNewItem(group.createCategory)}
                       disabled={sidebarBusy}
-                      aria-label={`Add question in ${group.pattern}`}
+                      aria-label={`Add question in ${group.categoryLabel ?? "category"}`}
                       title="Add question to this category"
                     >
                       <Plus className="h-3 w-3" aria-hidden />
@@ -569,7 +574,7 @@ export function ProblemDetailsView({
                     <div
                       key={item.id}
                       className={cn(
-                        "group flex min-w-0 items-stretch gap-0.5 rounded-xl border text-sm transition",
+                        "group flex min-w-0 items-stretch gap-0.5 rounded-xl border text-xs transition",
                         isCurrent
                           ? "border-primary bg-primary/10 font-semibold text-primary"
                           : problemSidebarNavDisabled
@@ -600,7 +605,7 @@ export function ProblemDetailsView({
                       ) : null}
                       {problemSidebarNavDisabled ? (
                         <div
-                          className="min-w-0 flex-1 px-3 py-2 outline-offset-2"
+                          className="min-w-0 flex-1 px-2.5 py-1.5 outline-offset-2"
                           aria-current={isCurrent ? "page" : undefined}
                         >
                           <div className="flex items-center justify-between gap-2">
@@ -623,7 +628,7 @@ export function ProblemDetailsView({
                       ) : (
                         <Link
                           href={layout.navHref(item.id)}
-                          className="min-w-0 flex-1 px-3 py-2 outline-offset-2 transition"
+                          className="min-w-0 flex-1 px-2.5 py-1.5 outline-offset-2 transition"
                         >
                           <div className="flex items-center justify-between gap-2">
                             <span className="line-clamp-2">
@@ -721,22 +726,22 @@ export function ProblemDetailsView({
 
       <main
         className={cn(
-          "min-w-0 min-h-0 w-full max-w-none space-y-4",
+          "min-w-0 min-h-0 w-full max-w-none space-y-3",
           mode === "practice" && "flex h-[calc(100vh-5.5rem)] min-h-0 flex-1 flex-col",
           interviewNotebookFocus &&
             "flex h-[calc(100dvh-3.5rem)] min-h-0 max-h-lvh flex-1 flex-col space-y-3 overflow-x-clip xl:h-[calc(100vh-7rem)]"
         )}
       >
         <Card className="shrink-0">
-          <CardHeader className="pb-3">
+          <CardHeader className="pb-2">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
-                <CardTitle className="text-3xl font-semibold leading-tight tracking-tight text-primary">
+                <CardTitle className="text-2xl font-semibold leading-tight tracking-tight text-primary">
                   {displayDetailsTitle}
                 </CardTitle>
-                <p className="mt-1 text-sm font-medium text-muted-foreground">{layout.pageSubtitle}</p>
+                <p className="mt-0.5 text-xs font-medium text-muted-foreground">{layout.pageSubtitle}</p>
               </div>
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-1.5">
                 {(["coach", "practice"] as LearnMode[]).map((m) => {
                   if (m === "practice" && !layout.showPracticeMode) {
                     return null;
@@ -744,6 +749,7 @@ export function ProblemDetailsView({
                   return (
                     <Button
                       key={m}
+                      size="sm"
                       variant={mode === m ? "default" : "secondary"}
                       onClick={() => {
                         if (m === "coach" && layout.interviewNotebook && interviewNotebookOpen) {
@@ -770,6 +776,7 @@ export function ProblemDetailsView({
                 {layout.showApiCoachEditor ? (
                   <Button
                     type="button"
+                    size="sm"
                     variant="secondary"
                     onClick={() => {
                       setShowCoachEditor((v) => {
@@ -786,6 +793,7 @@ export function ProblemDetailsView({
                 {layout.showInterviewQuestionApiEditor && mode === "coach" ? (
                   <Button
                     type="button"
+                    size="sm"
                     variant="secondary"
                     onClick={() => {
                       setShowInterviewQuestionEditor((v) => {
@@ -801,7 +809,7 @@ export function ProblemDetailsView({
                   </Button>
                 ) : null}
                 {!layout.interviewNotebook && layout.editFormHref && !layout.showInterviewQuestionApiEditor ? (
-                  <Button type="button" variant="secondary" asChild>
+                  <Button type="button" size="sm" variant="secondary" asChild>
                     <Link href={layout.editFormHref}>
                       {layout.editFormLabel ?? "Edit in form"}
                     </Link>
@@ -811,7 +819,7 @@ export function ProblemDetailsView({
                 layout.interviewEditFormHref &&
                 mode === "coach" &&
                 !layout.showInterviewQuestionApiEditor ? (
-                  <Button type="button" variant="secondary" asChild>
+                  <Button type="button" size="sm" variant="secondary" asChild>
                     <Link href={layout.interviewEditFormHref}>
                       {layout.interviewEditFormLabel ?? "Edit question (form)"}
                     </Link>
@@ -820,6 +828,7 @@ export function ProblemDetailsView({
                 {layout.interviewNotebook && mode === "coach" ? (
                   <Button
                     type="button"
+                    size="sm"
                     variant={interviewNotebookOpen && coachMainTab === "guided" ? "default" : "secondary"}
                     onClick={() => {
                       if (coachMainTab !== "guided") {
@@ -836,6 +845,7 @@ export function ProblemDetailsView({
                 {isInterviewBlock && mode === "coach" ? (
                   <Button
                     type="button"
+                    size="sm"
                     variant="secondary"
                     onClick={() => {
                       if (layout.interviewNotebook) {
@@ -895,10 +905,17 @@ export function ProblemDetailsView({
         >
           {!isInterviewBlock ? (
             <TabsList
-              className={cn("w-full justify-start sm:w-auto", interviewNotebookFocus && "shrink-0")}
+              className={cn(
+                "h-9 min-h-9 w-full justify-start p-1 sm:w-auto",
+                interviewNotebookFocus && "shrink-0"
+              )}
             >
-              <TabsTrigger value="guided">Guided path</TabsTrigger>
-              <TabsTrigger value="mental">Mental model</TabsTrigger>
+              <TabsTrigger className="h-7 min-h-7 px-3 text-xs" value="guided">
+                Guided path
+              </TabsTrigger>
+              <TabsTrigger className="h-7 min-h-7 px-3 text-xs" value="mental">
+                Mental model
+              </TabsTrigger>
             </TabsList>
           ) : null}
 
@@ -925,9 +942,13 @@ export function ProblemDetailsView({
           </CardHeader>
           <CardContent>
             <Tabs key={details.id} defaultValue={understandPrimaryTab} className="w-full">
-              <TabsList className="w-full justify-start sm:w-auto">
-                <TabsTrigger value={understandPrimaryTab}>{understandPrimaryLabel}</TabsTrigger>
-                <TabsTrigger value="notes">My notes</TabsTrigger>
+              <TabsList className="h-9 min-h-9 w-full justify-start p-1 sm:w-auto">
+                <TabsTrigger className="h-7 min-h-7 px-3 text-xs" value={understandPrimaryTab}>
+                  {understandPrimaryLabel}
+                </TabsTrigger>
+                <TabsTrigger className="h-7 min-h-7 px-3 text-xs" value="notes">
+                  My notes
+                </TabsTrigger>
               </TabsList>
               <TabsContent value={understandPrimaryTab} className="mt-3">
                 <div
@@ -1018,9 +1039,13 @@ export function ProblemDetailsView({
             </CardHeader>
             <CardContent>
               <Tabs key={`how-${details.id}`} defaultValue="steps" className="w-full">
-                <TabsList className="w-full justify-start sm:w-auto">
-                  <TabsTrigger value="steps">Coach</TabsTrigger>
-                  <TabsTrigger value="notes">My notes</TabsTrigger>
+                <TabsList className="h-9 min-h-9 w-full justify-start p-1 sm:w-auto">
+                  <TabsTrigger className="h-7 min-h-7 px-3 text-xs" value="steps">
+                    Coach
+                  </TabsTrigger>
+                  <TabsTrigger className="h-7 min-h-7 px-3 text-xs" value="notes">
+                    My notes
+                  </TabsTrigger>
                 </TabsList>
                 <TabsContent value="steps" className="mt-3">
                   <p className="mb-2 text-xs text-muted-foreground">Suggested flow from the training content (read only).</p>
@@ -1139,15 +1164,15 @@ export function ProblemDetailsView({
 
         {coachRevealStep < 6 ? (
           <div className="flex justify-end">
-            <Button onClick={() => setCoachRevealStep((s) => nextCoachStep(s, isInterviewBlock))}>
+            <Button
+              size="sm"
+              onClick={() => setCoachRevealStep((s) => nextCoachStep(s, isInterviewBlock))}
+            >
               Reveal Next Step
             </Button>
           </div>
         ) : null}
 
-        {isInterviewBlock ? (
-          <UserContentPanel itemType="interview-question" itemId={details.id} />
-        ) : null}
         </>
         ) : null}
         </TabsContent>
@@ -1194,6 +1219,15 @@ function nextCoachStep(step: GuidedStep, isInterviewBlock: boolean): GuidedStep 
   return (step + 1) as GuidedStep;
 }
 
+function compareProblemNavItems(a: ProblemNavItem, b: ProblemNavItem, useSortOrder: boolean): number {
+  if (useSortOrder) {
+    const ax = a.sortOrder ?? Number.MAX_SAFE_INTEGER;
+    const bx = b.sortOrder ?? Number.MAX_SAFE_INTEGER;
+    if (ax !== bx) return ax - bx;
+  }
+  return a.id - b.id;
+}
+
 function groupProblemsByPattern(problems: ProblemNavItem[], useSortOrder = false) {
   const groups = new Map<string, ProblemNavItem[]>();
   for (const problem of problems) {
@@ -1204,12 +1238,7 @@ function groupProblemsByPattern(problems: ProblemNavItem[], useSortOrder = false
 
   if (useSortOrder) {
     for (const items of groups.values()) {
-      items.sort((a, b) => {
-        const ax = a.sortOrder ?? Number.MAX_SAFE_INTEGER;
-        const bx = b.sortOrder ?? Number.MAX_SAFE_INTEGER;
-        if (ax !== bx) return ax - bx;
-        return a.id - b.id;
-      });
+      items.sort((a, b) => compareProblemNavItems(a, b, true));
     }
   }
 
