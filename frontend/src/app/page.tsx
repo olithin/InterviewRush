@@ -5,7 +5,34 @@ import { WeakTopicsCard } from "@/components/dashboard/weak-topics-card";
 import { getFlashcards, getGaps, getProblems } from "@/lib/api";
 
 export default async function DashboardPage() {
-  const [problems, gaps, flashcards] = await Promise.all([getProblems(), getGaps(), getFlashcards()]);
+  let problems: Awaited<ReturnType<typeof getProblems>> = [];
+  let gaps: Awaited<ReturnType<typeof getGaps>> = [];
+  let flashcards: Awaited<ReturnType<typeof getFlashcards>> = [];
+  let apiError: string | null = null;
+
+  try {
+    [problems, gaps, flashcards] = await Promise.all([getProblems(), getGaps(), getFlashcards()]);
+  } catch (error) {
+    apiError =
+      error instanceof Error
+        ? error.message
+        : "Backend API is not reachable. Deploy the API and set NEXT_PUBLIC_API_BASE_URL.";
+  }
+
+  if (apiError) {
+    return (
+      <div className="space-y-5">
+        <PageTitle
+          title="Dashboard"
+          subtitle="Sign-in works, but problem data needs the backend API in production."
+        />
+        <p className="rounded-xl border border-amber-200/80 bg-amber-50/80 px-4 py-3 text-sm text-amber-950">
+          {apiError}
+        </p>
+      </div>
+    );
+  }
+
   const total = problems.length;
   const patternCounts = Array.from(
     problems.reduce((acc, item) => {
