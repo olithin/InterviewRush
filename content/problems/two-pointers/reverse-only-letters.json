@@ -1,0 +1,68 @@
+{
+  "id": 1127,
+  "slug": "reverse-only-letters",
+  "title": "Reverse Only Letters",
+  "topic": "Two Pointers",
+  "pattern": "Two Pointers",
+  "difficulty": "Easy",
+  "statement": "Given a string s, reverse only the letters and keep other characters in place.",
+  "signals": [
+    "reverse only letters",
+    "keep others",
+    "two ends"
+  ],
+  "mnemonic": "Find letter left + letter right + swap",
+  "think": [
+    "What is the task asking? Given a string s, reverse only the letters and keep other characters in place.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? reverse only letters, keep others, two ends.",
+    "Which pattern fits? Two Pointers.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean two pointers solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Convert to char[]",
+    "Move left to next letter",
+    "Move right to next letter",
+    "Swap",
+    "Move inward"
+  ],
+  "code": "public object ReverseOnlyLetters(/* input */)\n{\n    // 1. Convert to char[]\n    // 2. Move left to next letter\n    // 3. Move right to next letter\n    // 4. Swap\n    // 5. Move inward\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void ReverseOnlyLetters_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"a-bC-dEf-ghIj\" -> \"j-Ih-gfE-dCba\"\");\n}",
+  "interview": "I would solve it using Two Pointers. I would first identify the core operation, then apply a simple two pointers approach and mention the complexity.",
+  "ru": "\u042d\u0442\u043e \u0435\u0449\u0451 \u043e\u0434\u0438\u043d reverse-only-selected-characters pattern.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Two Pointers"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Two Pointers problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"a-bC-dEf-ghIj\" -> \"j-Ih-gfE-dCba\""
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Two Pointers problem because the wording signals are: reverse only letters, keep others.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the core problem is about positions/movement, not mapping.",
+    "Not HashSet, because uniqueness is not the main challenge here."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": 1069,
+  "slug": "largest-odd-number-in-array",
+  "title": "Largest Odd Number in Array",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return the largest odd number. Assume at least one odd exists.",
+  "signals": [
+    "largest odd",
+    "scan array",
+    "track max"
+  ],
+  "mnemonic": "Track best matching value",
+  "think": [
+    "What is the task asking? Given an integer array nums, return the largest odd number. Assume at least one odd exists.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? largest odd, scan array, track max.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean linear scan solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Initialize maxOdd",
+    "Iterate nums",
+    "If odd and greater -> update",
+    "Return maxOdd"
+  ],
+  "code": "public object LargestOddNumberInArray(/* input */)\n{\n    // 1. Initialize maxOdd\n    // 2. Iterate nums\n    // 3. If odd and greater -> update\n    // 4. Return maxOdd\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void LargestOddNumberInArray_Sample_Test()\n{\n    Assert.Pass(\"Use example: [8,3,11,6,5] -> 11\");\n}",
+  "interview": "I would solve it using Linear Scan. I would first identify the core operation, then apply a simple linear scan approach and mention the complexity.",
+  "ru": "\u0418\u0449\u0435\u043c \u043c\u0430\u043a\u0441\u0438\u043c\u0443\u043c \u0442\u043e\u043b\u044c\u043a\u043e \u0441\u0440\u0435\u0434\u0438 \u043d\u0435\u0447\u0451\u0442\u043d\u044b\u0445 \u0447\u0438\u0441\u0435\u043b.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Linear Scan"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Linear Scan problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[8,3,11,6,5] -> 11"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Linear Scan problem because the wording signals are: largest odd, scan array.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the task does not require frequency or key-value mapping.",
+    "Not Two Pointers, because there is no left/right or slow/fast movement requirement."
+  ]
+}

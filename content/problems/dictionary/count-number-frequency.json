@@ -1,0 +1,68 @@
+{
+  "id": 1008,
+  "slug": "count-number-frequency",
+  "title": "Count Number Frequency",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return how many times each number appears.",
+  "signals": [
+    "count numbers",
+    "frequency",
+    "number to count"
+  ],
+  "mnemonic": "Need count -> Dictionary",
+  "think": [
+    "What is the task asking? Count occurrences of each distinct number.",
+    "What is the key operation? Update frequency per value.",
+    "What wording signals stand out? Count, how many times, appears.",
+    "Which pattern fits? Dictionary.",
+    "What is the brute force idea? For each number, scan the whole array again.",
+    "What is the better/optimal idea? One pass and increment dictionary counts.",
+    "What are the edge cases? Repeated numbers, negatives, one element.",
+    "What is the complexity? O(n) time and O(k) space.",
+    "How would I explain it in an interview? I build a frequency map from number to count."
+  ],
+  "algorithm": [
+    "Create Dictionary<int, int> counts",
+    "Iterate through nums",
+    "Increment counts[num]",
+    "Return dictionary"
+  ],
+  "code": "public Dictionary<int, int> CountFrequencies(int[] nums)\n{\n    var counts = new Dictionary<int, int>();\n\n    foreach (var num in nums)\n        counts[num] = counts.GetValueOrDefault(num) + 1;\n\n    return counts;\n}",
+  "tests": "using NUnit.Framework;\nusing System.Collections.Generic;\n\n[TestFixture]\npublic class CountFrequenciesTests\n{\n    [Test]\n    public void Counts_Number_Frequency()\n    {\n        var result = CountFrequencies(new[] { 1, 2, 2, 3, 1, 1 });\n        Assert.That(result[1], Is.EqualTo(3));\n        Assert.That(result[2], Is.EqualTo(2));\n        Assert.That(result[3], Is.EqualTo(1));\n    }\n\n    private Dictionary<int, int> CountFrequencies(int[] nums)\n    {\n        var counts = new Dictionary<int, int>();\n\n        foreach (var num in nums)\n            counts[num] = counts.GetValueOrDefault(num) + 1;\n\n        return counts;\n    }\n}",
+  "interview": "I would use a dictionary because this is a frequency-counting problem. Each number maps to the number of times it appears.",
+  "ru": "\u042d\u0442\u043e \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0437\u0430\u0434\u0430\u0447\u0430 \u043d\u0430 \u0447\u0430\u0441\u0442\u043e\u0442\u044b \u0447\u0438\u0441\u0435\u043b: number -> count.",
+  "visualExplanation": "nums = [1,2,2,3,1,1]\\n1 -> 1\\n2 -> 1\\n2 -> 2\\n3 -> 1\\n1 -> 2\\n1 -> 3",
+  "mistakes": {
+    "critical": [
+      "Use HashSet and lose counts"
+    ],
+    "important": [
+      "Forget GetValueOrDefault or missing-key handling"
+    ],
+    "nice": [
+      "Do not mention O(k) extra space"
+    ]
+  },
+  "gaps": [
+    "Important: frequency map fundamentals",
+    "Nice to have: explain distinct count vs frequency count"
+  ],
+  "edgeCases": [
+    "single element",
+    "negative numbers",
+    "all unique"
+  ],
+  "sortOrder": 110,
+  "status": "active",
+  "examples": [
+    "nums = [1,2,2,3,1,1] -> {1:3, 2:2, 3:1}"
+  ],
+  "constraints": "Assume array size is manageable.",
+  "whyThisPattern": "This is a Dictionary problem because we need value-to-count mapping.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because HashSet does not store occurrence counts.",
+    "Not Two Pointers, because no position movement is needed."
+  ]
+}

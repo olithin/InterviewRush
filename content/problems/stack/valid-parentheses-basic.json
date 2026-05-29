@@ -1,0 +1,68 @@
+{
+  "id": 1116,
+  "slug": "valid-parentheses-basic",
+  "title": "Valid Parentheses Basic",
+  "topic": "Stack",
+  "pattern": "Stack",
+  "difficulty": "Easy",
+  "statement": "Given a string of brackets, return true if it is valid.",
+  "signals": [
+    "brackets",
+    "last opened",
+    "matching pairs"
+  ],
+  "mnemonic": "Last opened -> Stack",
+  "think": [
+    "What is the task asking? Given a string of brackets, return true if it is valid.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? brackets, last opened, matching pairs.",
+    "Which pattern fits? Stack.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean stack solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Create stack",
+    "Iterate chars",
+    "Push opening brackets",
+    "On closing bracket, check stack top",
+    "Return valid if all matched"
+  ],
+  "code": "public object ValidParenthesesBasic(/* input */)\n{\n    // 1. Create stack\n    // 2. Iterate chars\n    // 3. Push opening brackets\n    // 4. On closing bracket, check stack top\n    // 5. Return valid if all matched\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void ValidParenthesesBasic_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"()[]{}\" -> true\");\n}",
+  "interview": "I would solve it using Stack. I would first identify the core operation, then apply a simple stack approach and mention the complexity.",
+  "ru": "\u042d\u0442\u043e \u0431\u0430\u0437\u043e\u0432\u0430\u044f stack-\u0437\u0430\u0434\u0430\u0447\u0430: \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0439 \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0439 \u0434\u043e\u043b\u0436\u0435\u043d \u0437\u0430\u043a\u0440\u044b\u0442\u044c\u0441\u044f \u043f\u0435\u0440\u0432\u044b\u043c.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Stack"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Stack problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"()[]{}\" -> true"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Stack problem because the wording signals are: brackets, last opened.",
+  "whyNotOtherPatterns": [
+    "Not Queue, because we need last-in-first-out behavior.",
+    "Not Dictionary, because we need ordered push/pop matching."
+  ]
+}

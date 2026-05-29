@@ -1,0 +1,68 @@
+{
+  "id": 1075,
+  "slug": "return-initials-from-full-name",
+  "title": "Return Initials from Full Name",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a full name, return its initials in uppercase.",
+  "signals": [
+    "full name",
+    "split words",
+    "take first chars"
+  ],
+  "mnemonic": "Split and take first letters",
+  "think": [
+    "What is the task asking? Given a full name, return its initials in uppercase.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? full name, split words, take first chars.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean linear scan solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Split name into words",
+    "Ignore empty parts",
+    "Take first letter from each word",
+    "Uppercase it",
+    "Join result"
+  ],
+  "code": "public object ReturnInitialsFromFullName(/* input */)\n{\n    // 1. Split name into words\n    // 2. Ignore empty parts\n    // 3. Take first letter from each word\n    // 4. Uppercase it\n    // 5. Join result\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void ReturnInitialsFromFullName_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"Anna Karenina\" -> \"AK\"\");\n}",
+  "interview": "I would solve it using Linear Scan. I would first identify the core operation, then apply a simple linear scan approach and mention the complexity.",
+  "ru": "\u041d\u0443\u0436\u043d\u043e \u0432\u0437\u044f\u0442\u044c \u043f\u0435\u0440\u0432\u044b\u0435 \u0431\u0443\u043a\u0432\u044b \u0441\u043b\u043e\u0432 \u0438 \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u0438\u0445 \u0437\u0430\u0433\u043b\u0430\u0432\u043d\u044b\u043c\u0438.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Linear Scan"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Linear Scan problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"Anna Karenina\" -> \"AK\""
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Linear Scan problem because the wording signals are: full name, split words.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the task does not require frequency or key-value mapping.",
+    "Not Two Pointers, because there is no left/right or slow/fast movement requirement."
+  ]
+}

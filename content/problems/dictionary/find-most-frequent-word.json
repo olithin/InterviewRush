@@ -1,0 +1,66 @@
+{
+  "id": 1016,
+  "slug": "find-most-frequent-word",
+  "title": "Find Most Frequent Word",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given a sentence, return the word that appears most often. Ignore case.",
+  "signals": [
+    "most frequent word",
+    "count words",
+    "frequency"
+  ],
+  "mnemonic": "Count words, then choose best",
+  "think": [
+    "What is the task asking? Given a sentence, return the word that appears most often. Ignore case.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? most frequent word, count words, frequency.",
+    "Which pattern fits? Dictionary.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean dictionary solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Build word frequency map",
+    "Track max count",
+    "Return the word with highest count"
+  ],
+  "code": "public object FindMostFrequentWord(/* input */)\n{\n    // 1. Build word frequency map\n    // 2. Track max count\n    // 3. Return the word with highest count\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void FindMostFrequentWord_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"red blue red green red\" -> \"red\"\");\n}",
+  "interview": "I would solve it using Dictionary. I would first identify the core operation, then apply a simple dictionary approach and mention the complexity.",
+  "ru": "\u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u0441\u0447\u0438\u0442\u0430\u0435\u043c \u0441\u043b\u043e\u0432\u0430, \u043f\u043e\u0442\u043e\u043c \u0438\u0449\u0435\u043c \u0441\u043b\u043e\u0432\u043e \u0441 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0439 \u0447\u0430\u0441\u0442\u043e\u0442\u043e\u0439.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Dictionary"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Dictionary problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"red blue red green red\" -> \"red\""
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Dictionary problem because the wording signals are: most frequent word, count words.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because the task needs counts or grouping, not just uniqueness.",
+    "Not Two Pointers, because the task is about mapping/frequency rather than index movement."
+  ]
+}

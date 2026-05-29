@@ -1,0 +1,68 @@
+{
+  "id": 1062,
+  "folder": "linear-scan",
+  "slug": "factorial-logic",
+  "title": "Factorial Logic",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a non-negative integer n, return n! (factorial of n).",
+  "signals": [
+    "factorial",
+    "multiply sequence",
+    "1 to n"
+  ],
+  "mnemonic": "Multiply the ladder",
+  "think": [
+    "What is the task asking? Multiply all integers from 1 to n.",
+    "What is the key operation? Accumulate a running product.",
+    "What wording signals stand out? Factorial, product, 1 to n.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? A simple loop already works well.",
+    "What is the better/optimal idea? Iterate from 2 to n and multiply into the result.",
+    "What are the edge cases? n = 0, n = 1.",
+    "What is the complexity? O(n) time and O(1) space.",
+    "How would I explain it in an interview? I keep a running product and multiply by each integer up to n."
+  ],
+  "algorithm": [
+    "Initialize result = 1",
+    "Loop i from 2 to n",
+    "Set result *= i",
+    "Return result"
+  ],
+  "code": "public long Factorial(int n)\\n{\\n    long result = 1;\\n\\n    for (int i = 2; i <= n; i++)\\n        result *= i;\\n\\n    return result;\\n}",
+  "tests": "using NUnit.Framework;\\n\\n[TestFixture]\\npublic class FactorialTests\\n{\\n    [TestCase(0, 1L)]\\n    [TestCase(1, 1L)]\\n    [TestCase(5, 120L)]\\n    public void Factorial_ReturnsExpected(int n, long expected)\\n    {\\n        Assert.That(Factorial(n), Is.EqualTo(expected));\\n    }\\n\\n    private long Factorial(int n)\\n    {\\n        long result = 1;\\n        for (int i = 2; i <= n; i++)\\n            result *= i;\\n        return result;\\n    }\\n}",
+  "interview": "I would compute factorial iteratively by multiplying all integers from 2 to n into a running result.",
+  "ru": "\u0424\u0430\u043a\u0442\u043e\u0440\u0438\u0430\u043b \u2014 \u044d\u0442\u043e \u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u0432\u0441\u0435\u0445 \u0447\u0438\u0441\u0435\u043b \u043e\u0442 1 \u0434\u043e n. \u0417\u0434\u0435\u0441\u044c \u0434\u043e\u0441\u0442\u0430\u0442\u043e\u0447\u043d\u043e \u043f\u0440\u043e\u0441\u0442\u043e\u0433\u043e \u0446\u0438\u043a\u043b\u0430.",
+  "visualExplanation": "5! = 1 * 2 * 3 * 4 * 5\\nresult = 1\\n*2 -> 2\\n*3 -> 6\\n*4 -> 24\\n*5 -> 120",
+  "mistakes": {
+    "critical": [
+      "Return 0 for 0!"
+    ],
+    "important": [
+      "Use int and overflow too early"
+    ],
+    "nice": [
+      "Do not mention iterative vs recursive tradeoff"
+    ]
+  },
+  "gaps": [
+    "Important: remember that 0! = 1",
+    "Nice to have: mention overflow concerns"
+  ],
+  "edgeCases": [
+    "n = 0",
+    "n = 1"
+  ],
+  "sortOrder": 260,
+  "status": "active",
+  "examples": [
+    "n = 5 -> 120"
+  ],
+  "constraints": "Assume result fits in long for the tested values.",
+  "whyThisPattern": "This is a simple sequential multiplication problem solved by one pass from 2 to n.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because no mapping is needed.",
+    "Not Two Pointers, because there is no sequence reversal or pair logic."
+  ]
+}

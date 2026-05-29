@@ -1,0 +1,12 @@
+# Netlify settings when "Base directory" in the UI is set to `frontend/`.
+# Publish target is the Next.js output (`.next`); the adapter handles SSR/API routes.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

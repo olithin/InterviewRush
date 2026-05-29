@@ -1,0 +1,68 @@
+{
+  "id": 1118,
+  "slug": "move-even-numbers-to-front",
+  "title": "Move Even Numbers to Front",
+  "topic": "Two Pointers",
+  "pattern": "Two Pointers",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, move all even numbers to the front. Relative order does not have to be preserved.",
+  "signals": [
+    "partition array",
+    "move evens",
+    "two pointers"
+  ],
+  "mnemonic": "Find wrong left + wrong right + swap",
+  "think": [
+    "What is the task asking? Given an integer array nums, move all even numbers to the front. Relative order does not have to be preserved.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? partition array, move evens, two pointers.",
+    "Which pattern fits? Two Pointers.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean two pointers solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Set left and right",
+    "Move left until odd",
+    "Move right until even",
+    "Swap",
+    "Continue"
+  ],
+  "code": "public object MoveEvenNumbersToFront(/* input */)\n{\n    // 1. Set left and right\n    // 2. Move left until odd\n    // 3. Move right until even\n    // 4. Swap\n    // 5. Continue\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void MoveEvenNumbersToFront_Sample_Test()\n{\n    Assert.Pass(\"Use example: [1,2,3,4] -> [4,2,3,1] or similar\");\n}",
+  "interview": "I would solve it using Two Pointers. I would first identify the core operation, then apply a simple two pointers approach and mention the complexity.",
+  "ru": "\u0422\u0430 \u0436\u0435 partition-\u043b\u043e\u0433\u0438\u043a\u0430, \u043d\u043e \u043f\u043e \u0447\u0451\u0442\u043d\u043e\u0441\u0442\u0438.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Two Pointers"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Two Pointers problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[1,2,3,4] -> [4,2,3,1] or similar"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Two Pointers problem because the wording signals are: partition array, move evens.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the core problem is about positions/movement, not mapping.",
+    "Not HashSet, because uniqueness is not the main challenge here."
+  ]
+}

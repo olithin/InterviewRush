@@ -1,0 +1,67 @@
+{
+  "id": 1,
+  "slug": "contains-duplicate",
+  "title": "Contains Duplicate",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return true if any value appears at least twice in the array.",
+  "signals": [
+    "duplicate",
+    "seen before",
+    "appears at least twice",
+    "unique check"
+  ],
+  "mnemonic": "Seen before -> duplicate",
+  "think": [
+    "What is the task asking? Detect if any value repeats.",
+    "What is the key operation? Fast seen/not-seen lookup.",
+    "What wording signals stand out? duplicate, seen before.",
+    "Which pattern fits? HashSet.",
+    "What is the brute force idea? Compare every pair.",
+    "What is the better idea? One pass with HashSet.",
+    "What are the edge cases? Empty, single element, all unique.",
+    "What is the complexity? O(n) time, O(n) space.",
+    "How would I explain it in an interview? Keep a set and return early on first repeat."
+  ],
+  "algorithm": [
+    "Create an empty HashSet<int> seen.",
+    "Loop through each number in nums.",
+    "If number exists in seen, return true.",
+    "Otherwise add number to seen.",
+    "If loop completes, return false."
+  ],
+  "code": "public bool ContainsDuplicate(int[] nums)\\n{\\n    var seen = new HashSet<int>();\\n    foreach (var n in nums)\\n    {\\n        if (!seen.Add(n)) return true;\\n    }\\n    return false;\\n}",
+  "tests": "[Test]\\npublic void ContainsDuplicate_ReturnsTrue_WhenDuplicateExists()\\n{\\n    Assert.That(new Solution().ContainsDuplicate(new[] {1,2,3,1}), Is.True);\\n}",
+  "interview": "I use a HashSet because this is a seen/not-seen question. While scanning once, if insert fails, I immediately know the value is duplicated.",
+  "ru": "Используем HashSet: если число уже встречалось, сразу возвращаем true.",
+  "visualExplanation": "nums = [1, 4, 2, 4]\\nseen: {}\\n1 -> add\\n4 -> add\\n2 -> add\\n4 -> already in seen => duplicate",
+  "mistakes": {
+    "critical": [
+      "Using List.Contains, which turns it into O(n^2)."
+    ],
+    "important": [
+      "Forgetting early return when duplicate is found."
+    ],
+    "nice": [
+      "Not explaining why extra space is acceptable."
+    ]
+  },
+  "gaps": [
+    "Important: distinguish HashSet vs Dictionary by required output.",
+    "Important: practice early-return logic.",
+    "Nice to have: explain time-space tradeoff clearly."
+  ],
+  "edgeCases": [
+    "[] => false",
+    "[7] => false",
+    "Duplicate at start should return true early"
+  ],
+  "sortOrder": 10,
+  "status": "active",
+  "examples": [
+    "nums = [1,2,3,1] => true",
+    "nums = [1,2,3,4] => false"
+  ],
+  "constraints": "Array can contain negative and positive integers."
+}

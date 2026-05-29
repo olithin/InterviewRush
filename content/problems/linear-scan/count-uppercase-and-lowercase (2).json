@@ -1,0 +1,68 @@
+{
+  "id": 1056,
+  "slug": "count-uppercase-and-lowercase",
+  "title": "Count Uppercase and Lowercase",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given a string s, return how many uppercase and lowercase letters it contains.",
+  "signals": [
+    "count uppercase",
+    "count lowercase",
+    "scan string"
+  ],
+  "mnemonic": "One scan, two counters",
+  "think": [
+    "What is the task asking? Given a string s, return how many uppercase and lowercase letters it contains.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? count uppercase, count lowercase, scan string.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean linear scan solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Initialize upper=0 and lower=0",
+    "Iterate through each character",
+    "If uppercase -> upper++",
+    "If lowercase -> lower++",
+    "Return both counts"
+  ],
+  "code": "public object CountUppercaseAndLowercase(/* input */)\n{\n    // 1. Initialize upper=0 and lower=0\n    // 2. Iterate through each character\n    // 3. If uppercase -> upper++\n    // 4. If lowercase -> lower++\n    // 5. Return both counts\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void CountUppercaseAndLowercase_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"AnNa\" -> upper=2, lower=2\");\n}",
+  "interview": "I would solve it using Linear Scan. I would first identify the core operation, then apply a simple linear scan approach and mention the complexity.",
+  "ru": "\u0418\u0434\u0451\u043c \u043f\u043e \u0441\u0442\u0440\u043e\u043a\u0435 \u043e\u0434\u0438\u043d \u0440\u0430\u0437 \u0438 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u043e \u0441\u0447\u0438\u0442\u0430\u0435\u043c \u0437\u0430\u0433\u043b\u0430\u0432\u043d\u044b\u0435 \u0438 \u0441\u0442\u0440\u043e\u0447\u043d\u044b\u0435 \u0431\u0443\u043a\u0432\u044b.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Linear Scan"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Linear Scan problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"AnNa\" -> upper=2, lower=2"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Linear Scan problem because the wording signals are: count uppercase, count lowercase.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the task does not require frequency or key-value mapping.",
+    "Not Two Pointers, because there is no left/right or slow/fast movement requirement."
+  ]
+}

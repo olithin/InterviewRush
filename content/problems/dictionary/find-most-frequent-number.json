@@ -1,0 +1,70 @@
+{
+  "id": 1015,
+  "slug": "find-most-frequent-number",
+  "title": "Find the Most Frequent Number",
+  "topic": "Dictionary",
+  "pattern": "Dictionary",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return the number that appears most often. If multiple numbers have the same highest frequency, return the first one that reaches that frequency.",
+  "signals": [
+    "most frequent",
+    "count occurrences",
+    "frequency map"
+  ],
+  "mnemonic": "Count, then keep the winner",
+  "think": [
+    "What is the task asking? Find which number has the highest count.",
+    "What is the key operation? Count numbers, then track the best frequency.",
+    "What wording signals stand out? Most frequent, appears most often.",
+    "Which pattern fits? Dictionary.",
+    "What is the brute force idea? Count each number by rescanning the whole array.",
+    "What is the better/optimal idea? Build frequency map in one pass and track best as counts grow.",
+    "What are the edge cases? Ties, negative numbers, one element.",
+    "What is the complexity? O(n) time and O(k) space.",
+    "How would I explain it in an interview? I maintain counts and update the current winner when a count becomes larger."
+  ],
+  "algorithm": [
+    "Create Dictionary<int, int> counts",
+    "Initialize bestValue and bestCount",
+    "Iterate through nums",
+    "Increment current number count",
+    "If current count > bestCount, update winner",
+    "Return bestValue"
+  ],
+  "code": "public int FindMostFrequent(int[] nums)\n{\n    var counts = new Dictionary<int, int>();\n    int bestValue = nums[0];\n    int bestCount = 0;\n\n    foreach (var num in nums)\n    {\n        counts[num] = counts.GetValueOrDefault(num) + 1;\n\n        if (counts[num] > bestCount)\n        {\n            bestCount = counts[num];\n            bestValue = num;\n        }\n    }\n\n    return bestValue;\n}",
+  "tests": "using NUnit.Framework;\nusing System.Collections.Generic;\n\n[TestFixture]\npublic class FindMostFrequentTests\n{\n    [Test]\n    public void Returns_Most_Frequent_Number()\n    {\n        var result = FindMostFrequent(new[] { 4, 1, 4, 2, 4, 2 });\n        Assert.That(result, Is.EqualTo(4));\n    }\n\n    private int FindMostFrequent(int[] nums)\n    {\n        var counts = new Dictionary<int, int>();\n        int bestValue = nums[0];\n        int bestCount = 0;\n\n        foreach (var num in nums)\n        {\n            counts[num] = counts.GetValueOrDefault(num) + 1;\n\n            if (counts[num] > bestCount)\n            {\n                bestCount = counts[num];\n                bestValue = num;\n            }\n        }\n\n        return bestValue;\n    }\n}",
+  "interview": "I would use a frequency map and track the current winner as counts are updated.",
+  "ru": "\u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u0441\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0430\u0441\u0442\u043e\u0442\u044b, \u0430 \u0437\u0430\u043e\u0434\u043d\u043e \u0441\u043b\u0435\u0434\u0438\u043c, \u0443 \u043a\u0430\u043a\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430 \u0441\u0447\u0451\u0442\u0447\u0438\u043a \u0441\u0435\u0439\u0447\u0430\u0441 \u0441\u0430\u043c\u044b\u0439 \u0431\u043e\u043b\u044c\u0448\u043e\u0439.",
+  "visualExplanation": "nums = [4,1,4,2,4,2]\\n4 -> count 1 -> best 4\\n1 -> count 1\\n4 -> count 2 -> best 4\\n2 -> count 1\\n4 -> count 3 -> best 4",
+  "mistakes": {
+    "critical": [
+      "Use HashSet and ignore counts"
+    ],
+    "important": [
+      "Forget tie rule"
+    ],
+    "nice": [
+      "Do not explain winner-tracking while counting"
+    ]
+  },
+  "gaps": [
+    "Important: frequency map + best candidate",
+    "Nice to have: mention tie behavior clearly"
+  ],
+  "edgeCases": [
+    "all same values",
+    "tie cases",
+    "single element"
+  ],
+  "sortOrder": 120,
+  "status": "active",
+  "examples": [
+    "nums = [4,1,4,2,4,2] -> 4"
+  ],
+  "constraints": "Assume nums has at least one element.",
+  "whyThisPattern": "This is a Dictionary problem because the core operation is counting occurrences per number.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because uniqueness is not enough.",
+    "Not Sorting, because sorting is unnecessary if we only need frequency winner."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": 1085,
+  "slug": "sum-positive-numbers-only",
+  "title": "Sum Positive Numbers Only",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return the sum of positive numbers only.",
+  "signals": [
+    "sum positives",
+    "scan array",
+    "simple condition"
+  ],
+  "mnemonic": "Add only what matches",
+  "think": [
+    "What is the task asking? Given an integer array nums, return the sum of positive numbers only.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? sum positives, scan array, simple condition.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean linear scan solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Initialize sum=0",
+    "Iterate nums",
+    "If num > 0 -> add",
+    "Return sum"
+  ],
+  "code": "public object SumPositiveNumbersOnly(/* input */)\n{\n    // 1. Initialize sum=0\n    // 2. Iterate nums\n    // 3. If num > 0 -> add\n    // 4. Return sum\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void SumPositiveNumbersOnly_Sample_Test()\n{\n    Assert.Pass(\"Use example: [-1,2,3,-4] -> 5\");\n}",
+  "interview": "I would solve it using Linear Scan. I would first identify the core operation, then apply a simple linear scan approach and mention the complexity.",
+  "ru": "\u0421\u0443\u043c\u043c\u0438\u0440\u0443\u0435\u043c \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u0447\u0438\u0441\u043b\u0430.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Linear Scan"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Linear Scan problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[-1,2,3,-4] -> 5"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Linear Scan problem because the wording signals are: sum positives, scan array.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the task does not require frequency or key-value mapping.",
+    "Not Two Pointers, because there is no left/right or slow/fast movement requirement."
+  ]
+}

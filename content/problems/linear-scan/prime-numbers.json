@@ -1,0 +1,72 @@
+{
+  "id": 1072,
+  "folder": "linear-scan",
+  "slug": "prime-numbers",
+  "title": "Prime Numbers",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given an integer n, return true if it is a prime number, otherwise return false. A prime number is greater than 1 and divisible only by 1 and itself.",
+  "signals": [
+    "prime number",
+    "divisors",
+    "check divisibility",
+    "loop from 2"
+  ],
+  "mnemonic": "Try divisors, stop on match",
+  "think": [
+    "What is the task asking? Check whether the number has any divisor other than 1 and itself.",
+    "What is the key operation? Test divisibility using the modulo operator.",
+    "What wording signals stand out? Prime, divisible, factors.",
+    "Which pattern fits? Linear Scan, because we scan possible divisors.",
+    "What is the brute force idea? Try every number from 2 to n - 1.",
+    "What is the better/optimal idea? Try divisors only up to sqrt(n).",
+    "What are the edge cases? n <= 1, n = 2, even numbers.",
+    "What is the complexity? O(sqrt(n)) time and O(1) space.",
+    "How would I explain it in an interview? I check divisors from 2 up to sqrt(n), and if any divides evenly, the number is not prime."
+  ],
+  "algorithm": [
+    "If n <= 1, return false",
+    "If n == 2, return true",
+    "Loop i from 2 while i * i <= n",
+    "If n % i == 0, return false",
+    "If no divisor is found, return true"
+  ],
+  "code": "public bool IsPrime(int n)\\n{\\n    if (n <= 1)\\n        return false;\\n\\n    for (int i = 2; i * i <= n; i++)\\n    {\\n        if (n % i == 0)\\n            return false;\\n    }\\n\\n    return true;\\n}",
+  "tests": "using NUnit.Framework;\\n\\n[TestFixture]\\npublic class PrimeNumberTests\\n{\\n    [TestCase(2, true)]\\n    [TestCase(3, true)]\\n    [TestCase(4, false)]\\n    [TestCase(17, true)]\\n    [TestCase(1, false)]\\n    public void IsPrime_ReturnsExpected(int n, bool expected)\\n    {\\n        Assert.That(IsPrime(n), Is.EqualTo(expected));\\n    }\\n\\n    private bool IsPrime(int n)\\n    {\\n        if (n <= 1)\\n            return false;\\n\\n        for (int i = 2; i * i <= n; i++)\\n        {\\n            if (n % i == 0)\\n                return false;\\n        }\\n\\n        return true;\\n    }\\n}",
+  "interview": "I would solve it by checking divisors from 2 up to the square root of n. If any divisor divides n evenly, the number is not prime; otherwise it is prime.",
+  "ru": "\u041d\u0443\u0436\u043d\u043e \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c, \u0435\u0441\u0442\u044c \u043b\u0438 \u0443 \u0447\u0438\u0441\u043b\u0430 \u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u043a\u0440\u043e\u043c\u0435 1 \u0438 \u0441\u0430\u043c\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430. \u0415\u0441\u043b\u0438 \u0435\u0441\u0442\u044c \u2014 \u0447\u0438\u0441\u043b\u043e \u043d\u0435 \u043f\u0440\u043e\u0441\u0442\u043e\u0435.",
+  "visualExplanation": "n = 17\\ni = 2 -> 17 % 2 != 0\\ni = 3 -> 17 % 3 != 0\\ni = 4 -> stop, because 4*4 > 17\\nno divisor found -> prime",
+  "mistakes": {
+    "critical": [
+      "Treat 1 as a prime number"
+    ],
+    "important": [
+      "Loop all the way to n instead of stopping at sqrt(n)"
+    ],
+    "nice": [
+      "Do not explain why sqrt(n) is enough"
+    ]
+  },
+  "gaps": [
+    "Important: understand modulo-based divisibility",
+    "Nice to have: explain sqrt optimization"
+  ],
+  "edgeCases": [
+    "n = 1",
+    "n = 2",
+    "negative numbers"
+  ],
+  "sortOrder": 210,
+  "status": "active",
+  "examples": [
+    "n = 11 -> true",
+    "n = 12 -> false"
+  ],
+  "constraints": "Assume n fits into int.",
+  "whyThisPattern": "This is a linear divisor-checking problem: we iterate over possible divisors until we either find one or finish.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because there is no counting or mapping.",
+    "Not Two Pointers, because there is no left/right sequence traversal."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": 1119,
+  "slug": "move-negative-numbers-to-front",
+  "title": "Move Negative Numbers to Front",
+  "topic": "Two Pointers",
+  "pattern": "Two Pointers",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, move all negative numbers to the front. Relative order does not have to be preserved.",
+  "signals": [
+    "partition array",
+    "move negatives",
+    "two pointers"
+  ],
+  "mnemonic": "Find wrong left + wrong right + swap",
+  "think": [
+    "What is the task asking? Given an integer array nums, move all negative numbers to the front. Relative order does not have to be preserved.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? partition array, move negatives, two pointers.",
+    "Which pattern fits? Two Pointers.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean two pointers solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Set left and right",
+    "Move left until non-negative",
+    "Move right until negative",
+    "Swap when left<right",
+    "Continue"
+  ],
+  "code": "public object MoveNegativeNumbersToFront(/* input */)\n{\n    // 1. Set left and right\n    // 2. Move left until non-negative\n    // 3. Move right until negative\n    // 4. Swap when left<right\n    // 5. Continue\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void MoveNegativeNumbersToFront_Sample_Test()\n{\n    Assert.Pass(\"Use example: [1,-2,3,-4] -> negatives in front\");\n}",
+  "interview": "I would solve it using Two Pointers. I would first identify the core operation, then apply a simple two pointers approach and mention the complexity.",
+  "ru": "\u042d\u0442\u043e partition-\u0437\u0430\u0434\u0430\u0447\u0430: \u0438\u0449\u0435\u043c \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u044b, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0441\u0442\u043e\u044f\u0442 \u043d\u0435 \u0432 \u0441\u0432\u043e\u0435\u0439 \u043f\u043e\u043b\u043e\u0432\u0438\u043d\u0435.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Two Pointers"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Two Pointers problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[1,-2,3,-4] -> negatives in front"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Two Pointers problem because the wording signals are: partition array, move negatives.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because the core problem is about positions/movement, not mapping.",
+    "Not HashSet, because uniqueness is not the main challenge here."
+  ]
+}

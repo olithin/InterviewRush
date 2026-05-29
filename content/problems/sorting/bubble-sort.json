@@ -1,0 +1,69 @@
+{
+  "id": 1106,
+  "folder": "sorting",
+  "slug": "bubble-sort",
+  "title": "Bubble Sort",
+  "topic": "Sorting",
+  "pattern": "Sorting",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, sort it in ascending order using the Bubble Sort algorithm.",
+  "signals": [
+    "sort array",
+    "bubble sort",
+    "swap adjacent"
+  ],
+  "mnemonic": "Big values bubble right",
+  "think": [
+    "What is the task asking? Sort the array using a specific algorithm: bubble sort.",
+    "What is the key operation? Compare adjacent elements and swap them if they are in the wrong order.",
+    "What wording signals stand out? Sort, bubble, adjacent swaps.",
+    "Which pattern fits? Sorting.",
+    "What is the brute force idea? Bubble sort itself is already a simple brute-force sorting algorithm.",
+    "What is the better/optimal idea? For learning, implement bubble sort correctly.",
+    "What are the edge cases? Already sorted array, duplicates, negative numbers.",
+    "What is the complexity? O(n\u00b2) time and O(1) extra space.",
+    "How would I explain it in an interview? I repeatedly sweep through the array, swapping adjacent out-of-order elements, so the largest unsorted value moves to the end."
+  ],
+  "algorithm": [
+    "Loop outer pass from 0 to n - 2",
+    "Loop inner index from 0 to n - 2 - pass",
+    "If nums[j] > nums[j + 1], swap them",
+    "After all passes, array is sorted"
+  ],
+  "code": "public void BubbleSort(int[] nums)\\n{\\n    for (int pass = 0; pass < nums.Length - 1; pass++)\\n    {\\n        for (int j = 0; j < nums.Length - 1 - pass; j++)\\n        {\\n            if (nums[j] > nums[j + 1])\\n            {\\n                (nums[j], nums[j + 1]) = (nums[j + 1], nums[j]);\\n            }\\n        }\\n    }\\n}",
+  "tests": "using NUnit.Framework;\\n\\n[TestFixture]\\npublic class BubbleSortTests\\n{\\n    [Test]\\n    public void BubbleSort_SortsAscending()\\n    {\\n        var nums = new[] { 35, 46, 10, 5, 0, -1, 2, 75 };\\n        BubbleSort(nums);\\n        Assert.That(nums, Is.EqualTo(new[] { -1, 0, 2, 5, 10, 35, 46, 75 }));\\n    }\\n\\n    private void BubbleSort(int[] nums)\\n    {\\n        for (int pass = 0; pass < nums.Length - 1; pass++)\\n        {\\n            for (int j = 0; j < nums.Length - 1 - pass; j++)\\n            {\\n                if (nums[j] > nums[j + 1])\\n                    (nums[j], nums[j + 1]) = (nums[j + 1], nums[j]);\\n            }\\n        }\\n    }\\n}",
+  "interview": "I would implement bubble sort by repeatedly comparing adjacent elements and swapping them when needed. After each pass, the largest remaining value bubbles to the end.",
+  "ru": "\u041d\u0430 \u043a\u0430\u0436\u0434\u043e\u043c \u043f\u0440\u043e\u0445\u043e\u0434\u0435 \u043c\u044b \u0441\u0440\u0430\u0432\u043d\u0438\u0432\u0430\u0435\u043c \u0441\u043e\u0441\u0435\u0434\u043d\u0438\u0435 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u044b \u0438 \u0431\u043e\u043b\u0435\u0435 \u0431\u043e\u043b\u044c\u0448\u043e\u0439 \u043a\u0430\u043a \u0431\u0443\u0434\u0442\u043e \u0432\u0441\u043f\u043b\u044b\u0432\u0430\u0435\u0442 \u0432\u043f\u0440\u0430\u0432\u043e.",
+  "visualExplanation": "[5, 3, 8, 1]\\npass 1: [3, 5, 1, 8]\\npass 2: [3, 1, 5, 8]\\npass 3: [1, 3, 5, 8]",
+  "mistakes": {
+    "critical": [
+      "Stop after one pass and think the array is sorted"
+    ],
+    "important": [
+      "Use wrong inner loop boundary"
+    ],
+    "nice": [
+      "Do not mention O(n^2) complexity"
+    ]
+  },
+  "gaps": [
+    "Important: understand nested loop boundaries",
+    "Nice to have: explain why bubble sort is educational but not optimal"
+  ],
+  "edgeCases": [
+    "already sorted",
+    "duplicates",
+    "negative numbers"
+  ],
+  "sortOrder": 250,
+  "status": "active",
+  "examples": [
+    "[5,3,8,1] -> [1,3,5,8]"
+  ],
+  "constraints": "Assume in-place sorting is allowed.",
+  "whyThisPattern": "The task explicitly asks for sorting and names the algorithm, so the pattern is sorting.",
+  "whyNotOtherPatterns": [
+    "Not Two Pointers, because this is repeated adjacent comparison over multiple passes.",
+    "Not HashSet, because uniqueness is not the goal."
+  ]
+}

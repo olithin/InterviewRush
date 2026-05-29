@@ -1,0 +1,68 @@
+{
+  "id": 1036,
+  "slug": "first-repeated-letter",
+  "title": "First Repeated Letter",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given a string word, return the first letter that appears twice. Ignore case.",
+  "signals": [
+    "first repeated",
+    "seen before",
+    "duplicate letter"
+  ],
+  "mnemonic": "Seen before -> duplicate",
+  "think": [
+    "What is the task asking? Given a string word, return the first letter that appears twice. Ignore case.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? first repeated, seen before, duplicate letter.",
+    "Which pattern fits? HashSet.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean hashset solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Create HashSet<char>",
+    "Normalize case",
+    "Iterate letters",
+    "If add fails -> return char",
+    "If none -> null"
+  ],
+  "code": "public object FirstRepeatedLetter(/* input */)\n{\n    // 1. Create HashSet<char>\n    // 2. Normalize case\n    // 3. Iterate letters\n    // 4. If add fails -> return char\n    // 5. If none -> null\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void FirstRepeatedLetter_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"programming\" -> 'r'\");\n}",
+  "interview": "I would solve it using HashSet. I would first identify the core operation, then apply a simple hashset approach and mention the complexity.",
+  "ru": "\u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0431\u0443\u043a\u0432\u0430 \u0432\u0442\u043e\u0440\u043e\u0439 \u0440\u0430\u0437 \u043d\u0435 \u0434\u043e\u0431\u0430\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0432 set, \u044d\u0442\u043e \u043e\u0442\u0432\u0435\u0442.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of HashSet"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a HashSet problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"programming\" -> 'r'"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a HashSet problem because the wording signals are: first repeated, seen before.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because we only need seen/not-seen behavior.",
+    "Not Two Pointers, because there is no two-end traversal or in-place rewrite."
+  ]
+}

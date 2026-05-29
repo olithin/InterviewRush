@@ -1,0 +1,71 @@
+{
+  "id": 1026,
+  "slug": "all-letters-unique",
+  "title": "All Letters Unique",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given a string word, return true if all letters are unique. Ignore case and ignore non-letter characters.",
+  "signals": [
+    "all unique",
+    "seen before",
+    "duplicate letter"
+  ],
+  "mnemonic": "Seen before -> duplicate",
+  "think": [
+    "What is the task asking? Check whether any letter repeats.",
+    "What is the key operation? Quickly tell whether a letter was seen before.",
+    "What wording signals stand out? Unique, duplicate, seen before.",
+    "Which pattern fits? HashSet.",
+    "What is the brute force idea? Compare each letter with every other letter.",
+    "What is the better/optimal idea? Add letters to a set and fail on duplicates.",
+    "What are the edge cases? Mixed case, spaces, punctuation.",
+    "What is the complexity? O(n) time and O(k) space.",
+    "How would I explain it in an interview? I scan letters and return false as soon as a letter appears twice."
+  ],
+  "algorithm": [
+    "Create HashSet<char> seen",
+    "Normalize to lower case",
+    "Ignore non-letter characters",
+    "If letter already in set -> return false",
+    "Else add it",
+    "If loop ends -> return true"
+  ],
+  "code": "public bool AllLettersUnique(string word)\n{\n    var seen = new HashSet<char>();\n\n    foreach (var ch in word.ToLowerInvariant())\n    {\n        if (!char.IsLetter(ch))\n            continue;\n\n        if (!seen.Add(ch))\n            return false;\n    }\n\n    return true;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class AllLettersUniqueTests\n{\n    [TestCase(\"abc\", true)]\n    [TestCase(\"Hello\", false)]\n    public void Checks_Uniqueness(string word, bool expected)\n    {\n        Assert.That(AllLettersUnique(word), Is.EqualTo(expected));\n    }\n\n    private bool AllLettersUnique(string word)\n    {\n        var seen = new HashSet<char>();\n\n        foreach (var ch in word.ToLowerInvariant())\n        {\n            if (!char.IsLetter(ch))\n                continue;\n\n            if (!seen.Add(ch))\n                return false;\n        }\n\n        return true;\n    }\n}",
+  "interview": "I would use a HashSet because the only question is whether a letter was seen before.",
+  "ru": "\u042d\u0442\u043e \u0437\u0430\u0434\u0430\u0447\u0430 \u0432\u0438\u0434\u0430 seen before. \u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0431\u0443\u043a\u0432\u0430 \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u043b\u0430\u0441\u044c \u0432\u0442\u043e\u0440\u043e\u0439 \u0440\u0430\u0437, \u043e\u0442\u0432\u0435\u0442 false.",
+  "visualExplanation": "word = \"Hello\"\\nh -> add\\ne -> add\\nl -> add\\nl -> already seen -> false",
+  "mistakes": {
+    "critical": [
+      "Use Dictionary when only seen/not seen is needed"
+    ],
+    "important": [
+      "Forget case normalization"
+    ],
+    "nice": [
+      "Do not mention ignoring non-letters"
+    ]
+  },
+  "gaps": [
+    "Important: recognize uniqueness problems",
+    "Nice to have: explain why HashSet is enough"
+  ],
+  "edgeCases": [
+    "all unique",
+    "mixed case duplicates",
+    "punctuation in text"
+  ],
+  "sortOrder": 210,
+  "status": "active",
+  "examples": [
+    "word = \"abc\" -> true",
+    "word = \"Hello\" -> false"
+  ],
+  "constraints": "Assume the input may contain letters and other characters.",
+  "whyThisPattern": "This is a HashSet problem because we only need membership checking for previously seen letters.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because counts are unnecessary.",
+    "Not Two Pointers, because there is no need to compare from both ends."
+  ]
+}

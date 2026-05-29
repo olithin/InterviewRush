@@ -1,0 +1,67 @@
+{
+  "id": 1086,
+  "folder": "linear-scan",
+  "slug": "swap-numbers",
+  "title": "Swap Numbers",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given two integers a and b, swap their values and return the pair in swapped order.",
+  "signals": [
+    "swap values",
+    "temporary variable",
+    "exchange"
+  ],
+  "mnemonic": "Hold one, switch two",
+  "think": [
+    "What is the task asking? Exchange the values of two variables.",
+    "What is the key operation? Store one value temporarily, then assign in reverse order.",
+    "What wording signals stand out? Swap, exchange values.",
+    "Which pattern fits? Basic step-by-step logic / linear operations.",
+    "What is the brute force idea? A temporary variable is already the clearest solution.",
+    "What is the better/optimal idea? Use a temp variable or tuple swap in C#.",
+    "What are the edge cases? Equal numbers, negative values.",
+    "What is the complexity? O(1) time and O(1) space.",
+    "How would I explain it in an interview? I keep one value in a temp variable, assign the second to the first, then write temp into the second."
+  ],
+  "algorithm": [
+    "Store a in temp",
+    "Assign b to a",
+    "Assign temp to b",
+    "Return the swapped pair"
+  ],
+  "code": "public (int a, int b) Swap(int a, int b)\\n{\\n    int temp = a;\\n    a = b;\\n    b = temp;\\n    return (a, b);\\n}",
+  "tests": "using NUnit.Framework;\\n\\n[TestFixture]\\npublic class SwapNumbersTests\\n{\\n    [Test]\\n    public void Swap_ReturnsSwappedPair()\\n    {\\n        var result = Swap(10, 20);\\n        Assert.That(result.a, Is.EqualTo(20));\\n        Assert.That(result.b, Is.EqualTo(10));\\n    }\\n\\n    private (int a, int b) Swap(int a, int b)\\n    {\\n        int temp = a;\\n        a = b;\\n        b = temp;\\n        return (a, b);\\n    }\\n}",
+  "interview": "I would swap the values using a temporary variable because it is the clearest and safest approach.",
+  "ru": "\u0421\u0430\u043c\u044b\u0439 \u043f\u043e\u043d\u044f\u0442\u043d\u044b\u0439 \u0441\u043f\u043e\u0441\u043e\u0431 \u2014 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043e\u0434\u043d\u043e \u0447\u0438\u0441\u043b\u043e \u0432\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u043d\u0443\u044e \u043f\u0435\u0440\u0435\u043c\u0435\u043d\u043d\u0443\u044e, \u043f\u043e\u0442\u043e\u043c \u043f\u043e\u043c\u0435\u043d\u044f\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u043c\u0435\u0441\u0442\u0430\u043c\u0438.",
+  "visualExplanation": "a = 10, b = 20\\ntemp = 10\\na = 20\\nb = 10",
+  "mistakes": {
+    "critical": [
+      "Overwrite one value before saving it"
+    ],
+    "important": [
+      "Overcomplicate a very basic task"
+    ],
+    "nice": [
+      "Do not mention tuple swap as a C# alternative"
+    ]
+  },
+  "gaps": [
+    "Important: understand simple variable reassignment order"
+  ],
+  "edgeCases": [
+    "same values",
+    "negative values"
+  ],
+  "sortOrder": 280,
+  "status": "active",
+  "examples": [
+    "a = 10, b = 20 -> (20, 10)"
+  ],
+  "constraints": "Assume ordinary int values.",
+  "whyThisPattern": "This is a fundamentals logic task based on a few ordered assignments.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because there is no mapping.",
+    "Not Two Pointers, because there is no sequence traversal."
+  ]
+}

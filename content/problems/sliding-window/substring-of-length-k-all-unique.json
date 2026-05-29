@@ -1,0 +1,71 @@
+{
+  "id": 1104,
+  "slug": "substring-of-length-k-all-unique",
+  "title": "Substring of Length K With All Unique Characters",
+  "topic": "Sliding Window",
+  "pattern": "Sliding Window",
+  "difficulty": "Easy",
+  "statement": "Given a string s and an integer k, return true if there exists a substring of length k containing only unique characters.",
+  "signals": [
+    "substring length k",
+    "all unique chars in window",
+    "moving segment"
+  ],
+  "mnemonic": "Window moves, set checks uniqueness",
+  "think": [
+    "What is the task asking? Check fixed-size substrings for uniqueness.",
+    "What is the key operation? Maintain a moving window and track character counts or membership.",
+    "What wording signals stand out? Substring, length k, unique characters.",
+    "Which pattern fits? Sliding Window.",
+    "What is the brute force idea? Build every substring of length k and check uniqueness separately.",
+    "What is the better/optimal idea? Slide the window and update counts as characters enter and leave.",
+    "What are the edge cases? k = 0, k > s.Length, repeated characters everywhere.",
+    "What is the complexity? O(n) time and O(k) space.",
+    "How would I explain it in an interview? I maintain a window of size k and track whether all characters inside it are unique."
+  ],
+  "algorithm": [
+    "If k > s.Length -> false",
+    "Create Dictionary<char,int> counts",
+    "Expand window with right pointer",
+    "When window size exceeds k, remove left character",
+    "Whenever window size == k, check counts.Count == k",
+    "If yes -> true, else continue",
+    "Return false"
+  ],
+  "code": "public bool HasUniqueSubstringOfLengthK(string s, int k)\n{\n    if (k > s.Length)\n        return false;\n\n    var counts = new Dictionary<char, int>();\n    int left = 0;\n\n    for (int right = 0; right < s.Length; right++)\n    {\n        counts[s[right]] = counts.GetValueOrDefault(s[right]) + 1;\n\n        if (right - left + 1 > k)\n        {\n            counts[s[left]]--;\n            if (counts[s[left]] == 0)\n                counts.Remove(s[left]);\n            left++;\n        }\n\n        if (right - left + 1 == k && counts.Count == k)\n            return true;\n    }\n\n    return false;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class HasUniqueSubstringOfLengthKTests\n{\n    [TestCase(\"abccde\", 3, true)]\n    [TestCase(\"aabbcc\", 3, false)]\n    public void Checks_For_Unique_Window(string s, int k, bool expected)\n    {\n        Assert.That(HasUniqueSubstringOfLengthK(s, k), Is.EqualTo(expected));\n    }\n\n    private bool HasUniqueSubstringOfLengthK(string s, int k)\n    {\n        if (k > s.Length)\n            return false;\n\n        var counts = new Dictionary<char, int>();\n        int left = 0;\n\n        for (int right = 0; right < s.Length; right++)\n        {\n            counts[s[right]] = counts.GetValueOrDefault(s[right]) + 1;\n\n            if (right - left + 1 > k)\n            {\n                counts[s[left]]--;\n                if (counts[s[left]] == 0)\n                    counts.Remove(s[left]);\n                left++;\n            }\n\n            if (right - left + 1 == k && counts.Count == k)\n                return true;\n        }\n\n        return false;\n    }\n}",
+  "interview": "I would use a sliding window of size k and track character counts. When the window size is k and the number of distinct characters is also k, the window is fully unique.",
+  "ru": "\u042d\u0442\u043e sliding window: \u0434\u0432\u0438\u0433\u0430\u0435\u043c \u043e\u043a\u043d\u043e \u0434\u043b\u0438\u043d\u044b k \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0435\u043c, \u0447\u0442\u043e \u0432\u043d\u0443\u0442\u0440\u0438 \u043d\u0435\u0442 \u043f\u043e\u0432\u0442\u043e\u0440\u043e\u0432.",
+  "visualExplanation": "s = \"abccde\", k=3\\nwindow \"abc\" -> unique -> true\\n(stop early)",
+  "mistakes": {
+    "critical": [
+      "Treat substring as non-contiguous"
+    ],
+    "important": [
+      "Forget to remove leaving character from counts"
+    ],
+    "nice": [
+      "Do not explain why counts.Count == k means all chars are unique"
+    ]
+  },
+  "gaps": [
+    "Important: substring + fixed k => sliding window",
+    "Nice to have: distinguish pattern from HashSet used inside"
+  ],
+  "edgeCases": [
+    "k larger than string length",
+    "k = 1",
+    "all repeated chars"
+  ],
+  "sortOrder": 420,
+  "status": "active",
+  "examples": [
+    "s = \"abccde\", k = 3 -> true"
+  ],
+  "constraints": "Assume k is non-negative.",
+  "whyThisPattern": "This is a Sliding Window problem because we evaluate contiguous substrings of fixed size k while the window moves.",
+  "whyNotOtherPatterns": [
+    "Not pure HashSet, because the main pattern is a moving window.",
+    "Not Two Pointers, because both pointers define a dynamic contiguous segment rather than comparing ends."
+  ]
+}

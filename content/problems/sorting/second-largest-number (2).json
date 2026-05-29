@@ -1,0 +1,67 @@
+{
+  "id": 1107,
+  "slug": "second-largest-number",
+  "title": "Second Largest Number",
+  "topic": "Sorting",
+  "pattern": "Sorting",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return the second largest distinct number.",
+  "signals": [
+    "second largest",
+    "sort then inspect",
+    "distinct values"
+  ],
+  "mnemonic": "Sort, then pick boundary",
+  "think": [
+    "What is the task asking? Given an integer array nums, return the second largest distinct number.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? second largest, sort then inspect, distinct values.",
+    "Which pattern fits? Sorting.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean sorting solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Sort array",
+    "Remove or skip duplicates",
+    "Take second largest distinct value",
+    "Return result"
+  ],
+  "code": "public object SecondLargestNumber(/* input */)\n{\n    // 1. Sort array\n    // 2. Remove or skip duplicates\n    // 3. Take second largest distinct value\n    // 4. Return result\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void SecondLargestNumber_Sample_Test()\n{\n    Assert.Pass(\"Use example: [5,1,5,3] -> 3\");\n}",
+  "interview": "I would solve it using Sorting. I would first identify the core operation, then apply a simple sorting approach and mention the complexity.",
+  "ru": "\u0414\u043b\u044f easy-\u0437\u0430\u0434\u0430\u0447\u0438 \u0441\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u043a\u0430 \u0437\u0434\u0435\u0441\u044c \u0432\u043f\u043e\u043b\u043d\u0435 \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u0430.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Sorting"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Sorting problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[5,1,5,3] -> 3"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Sorting problem because the wording signals are: second largest, sort then inspect.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because the task benefits from ordering or sorted comparison.",
+    "Not Dictionary, because frequency is not the main idea."
+  ]
+}

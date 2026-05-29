@@ -1,0 +1,70 @@
+{
+  "id": 1132,
+  "slug": "sorted-pair-with-target-sum",
+  "title": "Find a Pair With Target Sum in a Sorted Array",
+  "topic": "Two Pointers",
+  "pattern": "Two Pointers",
+  "difficulty": "Easy",
+  "statement": "Given a sorted integer array nums and an integer target, return true if there exists a pair whose sum equals target.",
+  "signals": [
+    "sorted array",
+    "pair sum",
+    "two ends"
+  ],
+  "mnemonic": "Too small -> left++, too large -> right--",
+  "think": [
+    "What is the task asking? Determine whether any pair adds up to target.",
+    "What is the key operation? Use sorted order to move inward intelligently.",
+    "What wording signals stand out? Sorted array, pair, target sum.",
+    "Which pattern fits? Two Pointers (Left/Right).",
+    "What is the brute force idea? Check every pair with nested loops.",
+    "What is the better/optimal idea? Start at both ends and adjust based on the current sum.",
+    "What are the edge cases? No valid pair, duplicate values, negative numbers.",
+    "What is the complexity? O(n) time and O(1) space.",
+    "How would I explain it in an interview? I use the sorted property: if the sum is too small, move left; if too large, move right."
+  ],
+  "algorithm": [
+    "Set left = 0 and right = nums.Length - 1",
+    "Compute sum = nums[left] + nums[right]",
+    "If sum == target -> true",
+    "If sum < target -> left++",
+    "Else right--",
+    "If pointers cross -> false"
+  ],
+  "code": "public bool HasPairWithTargetSum(int[] nums, int target)\n{\n    int left = 0;\n    int right = nums.Length - 1;\n\n    while (left < right)\n    {\n        int sum = nums[left] + nums[right];\n\n        if (sum == target)\n            return true;\n\n        if (sum < target)\n            left++;\n        else\n            right--;\n    }\n\n    return false;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class HasPairWithTargetSumTests\n{\n    [TestCase(new[] { 1, 2, 4, 6, 10 }, 8, true)]\n    [TestCase(new[] { 1, 2, 4, 6, 10 }, 15, false)]\n    public void Checks_For_Pair(int[] nums, int target, bool expected)\n    {\n        Assert.That(HasPairWithTargetSum(nums, target), Is.EqualTo(expected));\n    }\n\n    private bool HasPairWithTargetSum(int[] nums, int target)\n    {\n        int left = 0;\n        int right = nums.Length - 1;\n\n        while (left < right)\n        {\n            int sum = nums[left] + nums[right];\n\n            if (sum == target)\n                return true;\n\n            if (sum < target)\n                left++;\n            else\n                right--;\n        }\n\n        return false;\n    }\n}",
+  "interview": "I would use two pointers because the array is sorted. That lets me move inward based on whether the current sum is too small or too large.",
+  "ru": "\u041e\u0442\u0441\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0441\u0442\u044c \u0434\u0430\u0451\u0442 \u0433\u043b\u0430\u0432\u043d\u043e\u0435 \u043f\u0440\u0435\u0438\u043c\u0443\u0449\u0435\u0441\u0442\u0432\u043e: \u0435\u0441\u043b\u0438 \u0441\u0443\u043c\u043c\u0430 \u043c\u0430\u043b\u0430, \u0434\u0432\u0438\u0433\u0430\u0435\u043c \u043b\u0435\u0432\u044b\u0439 \u0443\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c; \u0435\u0441\u043b\u0438 \u0432\u0435\u043b\u0438\u043a\u0430 \u2014 \u043f\u0440\u0430\u0432\u044b\u0439.",
+  "visualExplanation": "nums = [1,2,4,6,10], target = 8\\n1+10=11 too big -> right--\\n1+6=7 too small -> left++\\n2+6=8 -> true",
+  "mistakes": {
+    "critical": [
+      "Miss that array is sorted and use O(n^2)"
+    ],
+    "important": [
+      "Move wrong pointer after comparing sum"
+    ],
+    "nice": [
+      "Do not mention O(1) space"
+    ]
+  },
+  "gaps": [
+    "Important: recognize sorted pair => two pointers",
+    "Nice to have: explain pointer decision logic fluently"
+  ],
+  "edgeCases": [
+    "duplicate values",
+    "no pair exists",
+    "negative numbers"
+  ],
+  "sortOrder": 330,
+  "status": "active",
+  "examples": [
+    "nums = [1,2,4,6,10], target = 8 -> true"
+  ],
+  "constraints": "Assume nums is sorted in ascending order.",
+  "whyThisPattern": "This is a Two Pointers problem because sorted order lets us make directional decisions from both ends.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because sorted order gives a simpler O(1)-space solution.",
+    "Not Sliding Window, because we are not working with a contiguous segment sum."
+  ]
+}

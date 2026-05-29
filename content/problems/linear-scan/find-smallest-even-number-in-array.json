@@ -1,0 +1,68 @@
+{
+  "id": 1068,
+  "slug": "find-smallest-even-number-in-array",
+  "title": "Find the Smallest Even Number in an Array",
+  "topic": "Linear Scan",
+  "pattern": "Linear Scan",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums, return the smallest even number. If no even number exists, return null.",
+  "signals": [
+    "smallest even",
+    "track min",
+    "scan array"
+  ],
+  "mnemonic": "Filter then keep min",
+  "think": [
+    "What is the task asking? Find the smallest value among even numbers only.",
+    "What is the key operation? Check parity and track the minimum even value.",
+    "What wording signals stand out? Smallest, even number.",
+    "Which pattern fits? Linear Scan.",
+    "What is the brute force idea? Collect evens first, then take min.",
+    "What is the better/optimal idea? One pass with a best candidate.",
+    "What are the edge cases? No even numbers, negative evens, one element.",
+    "What is the complexity? O(n) time and O(1) space.",
+    "How would I explain it in an interview? I keep the current best even number and update it when I find a smaller even value."
+  ],
+  "algorithm": [
+    "Initialize best = null",
+    "Iterate through nums",
+    "If num is even and best is null or num < best -> update best",
+    "Return best"
+  ],
+  "code": "public int? FindSmallestEven(int[] nums)\n{\n    int? best = null;\n\n    foreach (var num in nums)\n    {\n        if (num % 2 == 0 && (best == null || num < best))\n            best = num;\n    }\n\n    return best;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class FindSmallestEvenTests\n{\n    [Test]\n    public void Returns_Smallest_Even()\n    {\n        var result = FindSmallestEven(new[] { 8, 3, 10, 2, 14 });\n        Assert.That(result, Is.EqualTo(2));\n    }\n\n    private int? FindSmallestEven(int[] nums)\n    {\n        int? best = null;\n\n        foreach (var num in nums)\n        {\n            if (num % 2 == 0 && (best == null || num < best))\n                best = num;\n        }\n\n        return best;\n    }\n}",
+  "interview": "I would scan the array once, consider only even numbers, and keep the smallest even candidate found so far.",
+  "ru": "\u0417\u0434\u0435\u0441\u044c \u0442\u043e\u0436\u0435 \u043e\u0431\u044b\u0447\u043d\u044b\u0439 \u043e\u0434\u0438\u043d \u043f\u0440\u043e\u0445\u043e\u0434: \u0441\u043c\u043e\u0442\u0440\u0438\u043c \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430 \u0447\u0451\u0442\u043d\u044b\u0435 \u0438 \u0434\u0435\u0440\u0436\u0438\u043c \u043c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u0438\u0437 \u043d\u0438\u0445.",
+  "visualExplanation": "nums = [8, 3, 10, 2, 14]\\n8 -> best = 8\\n3 -> skip\\n10 -> keep 8\\n2 -> best = 2\\n14 -> keep 2",
+  "mistakes": {
+    "critical": [
+      "Use wrong even condition"
+    ],
+    "important": [
+      "Assume array always contains an even number"
+    ],
+    "nice": [
+      "Do not discuss negative even values"
+    ]
+  },
+  "gaps": [
+    "Important: parity and best-candidate thinking",
+    "Nice to have: return null when not found"
+  ],
+  "edgeCases": [
+    "no even numbers",
+    "negative even values",
+    "single element"
+  ],
+  "sortOrder": 70,
+  "status": "active",
+  "examples": [
+    "nums = [8,3,10,2,14] -> 2"
+  ],
+  "constraints": "Assume array may contain positive or negative integers.",
+  "whyThisPattern": "This is a Linear Scan because we inspect each number once and track the best matching candidate.",
+  "whyNotOtherPatterns": [
+    "Not Sorting, because we only need one answer.",
+    "Not Two Pointers, because there is no positional movement logic."
+  ]
+}

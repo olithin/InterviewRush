@@ -1,0 +1,69 @@
+{
+  "id": 1039,
+  "slug": "first-repeated-word-in-sentence",
+  "title": "First Repeated Word in a Sentence",
+  "topic": "HashSet",
+  "pattern": "HashSet",
+  "difficulty": "Easy",
+  "statement": "Given a sentence, return the first word that appears twice. Ignore case. If no word repeats, return null.",
+  "signals": [
+    "first repeated word",
+    "seen before",
+    "duplicate word"
+  ],
+  "mnemonic": "Seen before -> duplicate",
+  "think": [
+    "What is the task asking? Find the first word encountered for the second time.",
+    "What is the key operation? Track whether a word was already seen.",
+    "What wording signals stand out? First repeated, duplicate, word.",
+    "Which pattern fits? HashSet.",
+    "What is the brute force idea? For each word, search previous words.",
+    "What is the better/optimal idea? Add normalized words to a set and return on first duplicate.",
+    "What are the edge cases? Mixed case, repeated spaces, no duplicates.",
+    "What is the complexity? O(n) over the number of words.",
+    "How would I explain it in an interview? I scan the sentence word by word and return the first word whose insertion into the set fails."
+  ],
+  "algorithm": [
+    "Split sentence into words removing empty entries",
+    "Normalize each word to lower case",
+    "Try to add word to HashSet",
+    "If add fails -> return word",
+    "If loop ends -> return null"
+  ],
+  "code": "public string? FirstRepeatedWord(string sentence)\n{\n    var seen = new HashSet<string>();\n\n    foreach (var word in sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries))\n    {\n        var normalized = word.ToLowerInvariant();\n\n        if (!seen.Add(normalized))\n            return normalized;\n    }\n\n    return null;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class FirstRepeatedWordTests\n{\n    [Test]\n    public void Returns_First_Repeated_Word()\n    {\n        var result = FirstRepeatedWord(\"Go home and go sleep\");\n        Assert.That(result, Is.EqualTo(\"go\"));\n    }\n\n    private string? FirstRepeatedWord(string sentence)\n    {\n        var seen = new HashSet<string>();\n\n        foreach (var word in sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries))\n        {\n            var normalized = word.ToLowerInvariant();\n\n            if (!seen.Add(normalized))\n                return normalized;\n        }\n\n        return null;\n    }\n}",
+  "interview": "I would use a HashSet because the only thing I need is whether a normalized word was already seen before.",
+  "ru": "\u042d\u0442\u043e \u0442\u0430 \u0436\u0435 \u0438\u0434\u0435\u044f seen before, \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0435 \u0434\u043b\u044f char, \u0430 \u0434\u043b\u044f word.",
+  "visualExplanation": "sentence = \"Go home and go sleep\"\\ngo -> add\\nhome -> add\\nand -> add\\ngo -> already seen -> answer = \"go\"",
+  "mistakes": {
+    "critical": [
+      "Forget to normalize case"
+    ],
+    "important": [
+      "Use Dictionary when counts are not required"
+    ],
+    "nice": [
+      "Do not mention Split RemoveEmptyEntries"
+    ]
+  },
+  "gaps": [
+    "Important: same pattern can apply to words, not only characters",
+    "Nice to have: explain why order matters"
+  ],
+  "edgeCases": [
+    "no repeated words",
+    "mixed case duplicates",
+    "multiple spaces"
+  ],
+  "sortOrder": 240,
+  "status": "active",
+  "examples": [
+    "\"Go home and go sleep\" -> \"go\""
+  ],
+  "constraints": "Assume words are space-separated.",
+  "whyThisPattern": "This is a HashSet problem because we only need to know whether a word has already appeared.",
+  "whyNotOtherPatterns": [
+    "Not Dictionary, because counts are unnecessary for the first repeated word.",
+    "Not Sliding Window, because there is no moving contiguous segment logic."
+  ]
+}

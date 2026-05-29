@@ -1,0 +1,66 @@
+{
+  "id": 1114,
+  "slug": "sort-words-by-length",
+  "title": "Sort Words by Length",
+  "topic": "Sorting",
+  "pattern": "Sorting",
+  "difficulty": "Easy",
+  "statement": "Given a sentence, return its words sorted by length.",
+  "signals": [
+    "sort words",
+    "by length",
+    "custom ordering"
+  ],
+  "mnemonic": "Sort by key",
+  "think": [
+    "What is the task asking? Given a sentence, return its words sorted by length.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? sort words, by length, custom ordering.",
+    "Which pattern fits? Sorting.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean sorting solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Split sentence into words",
+    "Sort words by Length",
+    "Return ordered list or sentence"
+  ],
+  "code": "public object SortWordsByLength(/* input */)\n{\n    // 1. Split sentence into words\n    // 2. Sort words by Length\n    // 3. Return ordered list or sentence\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void SortWordsByLength_Sample_Test()\n{\n    Assert.Pass(\"Use example: \"I love QA\" -> [I, QA, love]\");\n}",
+  "interview": "I would solve it using Sorting. I would first identify the core operation, then apply a simple sorting approach and mention the complexity.",
+  "ru": "\u042d\u0442\u043e \u043f\u0440\u043e\u0441\u0442\u0430\u044f custom sort \u0437\u0430\u0434\u0430\u0447\u0430 \u043f\u043e \u043e\u0434\u043d\u043e\u043c\u0443 \u043a\u043b\u044e\u0447\u0443.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Sorting"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Sorting problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "\"I love QA\" -> [I, QA, love]"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Sorting problem because the wording signals are: sort words, by length.",
+  "whyNotOtherPatterns": [
+    "Not HashSet, because the task benefits from ordering or sorted comparison.",
+    "Not Dictionary, because frequency is not the main idea."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": 1100,
+  "slug": "maximum-sum-of-k-consecutive-numbers",
+  "title": "Maximum Sum of K Consecutive Numbers",
+  "topic": "Sliding Window",
+  "pattern": "Sliding Window",
+  "difficulty": "Easy",
+  "statement": "Given an integer array nums and an integer k, return the maximum sum of any consecutive subarray of length k.",
+  "signals": [
+    "maximum sum",
+    "k consecutive",
+    "window size k"
+  ],
+  "mnemonic": "Fixed window slides",
+  "think": [
+    "What is the task asking? Find the best sum among all contiguous windows of size k.",
+    "What is the key operation? Reuse the previous window sum instead of recomputing from scratch.",
+    "What wording signals stand out? Maximum sum, consecutive, length k.",
+    "Which pattern fits? Sliding Window (fixed size).",
+    "What is the brute force idea? For each start index, sum k elements again.",
+    "What is the better/optimal idea? Keep a rolling window sum.",
+    "What are the edge cases? k = 1, k = nums.Length, negative numbers.",
+    "What is the complexity? O(n) time and O(1) extra space.",
+    "How would I explain it in an interview? I add the new entering value and subtract the leaving value as the window moves."
+  ],
+  "algorithm": [
+    "Compute sum of first k elements",
+    "Store it as best",
+    "For each new index from k to end",
+    "Add nums[i] and subtract nums[i-k]",
+    "Update best if current sum is larger",
+    "Return best"
+  ],
+  "code": "public int MaxSumOfKConsecutive(int[] nums, int k)\n{\n    int windowSum = 0;\n\n    for (int i = 0; i < k; i++)\n        windowSum += nums[i];\n\n    int best = windowSum;\n\n    for (int i = k; i < nums.Length; i++)\n    {\n        windowSum += nums[i];\n        windowSum -= nums[i - k];\n        best = Math.Max(best, windowSum);\n    }\n\n    return best;\n}",
+  "tests": "using NUnit.Framework;\n\n[TestFixture]\npublic class MaxSumOfKConsecutiveTests\n{\n    [Test]\n    public void Returns_Max_Window_Sum()\n    {\n        var result = MaxSumOfKConsecutive(new[] { 2, 1, 5, 1, 3, 2 }, 3);\n        Assert.That(result, Is.EqualTo(9));\n    }\n\n    private int MaxSumOfKConsecutive(int[] nums, int k)\n    {\n        int windowSum = 0;\n\n        for (int i = 0; i < k; i++)\n            windowSum += nums[i];\n\n        int best = windowSum;\n\n        for (int i = k; i < nums.Length; i++)\n        {\n            windowSum += nums[i];\n            windowSum -= nums[i - k];\n            best = Math.Max(best, windowSum);\n        }\n\n        return best;\n    }\n}",
+  "interview": "I would use a fixed-size sliding window. After the first window, I update the sum by adding the new element and subtracting the old one.",
+  "ru": "\u0417\u0434\u0435\u0441\u044c \u043a\u043b\u044e\u0447\u0435\u0432\u044b\u0435 \u0441\u043b\u043e\u0432\u0430 \u2014 consecutive \u0438 size k. \u042d\u0442\u043e fixed sliding window.",
+  "visualExplanation": "nums = [2,1,5,1,3,2], k=3\\nwindow [2,1,5] sum=8\\nslide -> [1,5,1] sum=7\\nslide -> [5,1,3] sum=9 -> best",
+  "mistakes": {
+    "critical": [
+      "Recompute each window sum from scratch and miss the pattern"
+    ],
+    "important": [
+      "Subtract wrong leaving element"
+    ],
+    "nice": [
+      "Do not mention fixed-size window explicitly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize 'consecutive' + 'k' => sliding window",
+    "Nice to have: explain rolling sum fluently"
+  ],
+  "edgeCases": [
+    "k = 1",
+    "k equals array length",
+    "negative numbers"
+  ],
+  "sortOrder": 410,
+  "status": "active",
+  "examples": [
+    "nums = [2,1,5,1,3,2], k = 3 -> 9"
+  ],
+  "constraints": "Assume 1 <= k <= nums.Length.",
+  "whyThisPattern": "This is a Sliding Window problem because we evaluate consecutive subarrays of fixed size k.",
+  "whyNotOtherPatterns": [
+    "Not Two Pointers, because we are tracking a moving contiguous window, not comparing ends.",
+    "Not Prefix Sum as main pattern, because a rolling window is simpler here."
+  ]
+}

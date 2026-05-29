@@ -1,0 +1,77 @@
+{
+  "id": 1001,
+  "slug": "count-occurrences-in-sorted-array",
+  "title": "Count Occurrences in Sorted Array",
+  "topic": "Binary Search",
+  "pattern": "Binary Search",
+  "difficulty": "Easy",
+  "statement": "Given a sorted array nums and target, return how many times target appears.",
+  "signals": [
+    "sorted array",
+    "sorted list",
+    "find target",
+    "search in sorted",
+    "does target exist",
+    "return true if exists",
+    "find position / index",
+    "O(log n)",
+    "faster than linear search",
+    "search space can be reduced",
+    "can discard half",
+    "first and last occurrence",
+    "boundary"
+  ],
+  "mnemonic": "Find left boundary and right boundary",
+  "think": [
+    "What is the task asking? Given a sorted array nums and target, return how many times target appears.",
+    "What is the key operation? Identify the repeated action over the input.",
+    "What wording signals stand out? General binary-search phrasing in Spot wording signals, plus first/last index of a value in a sorted array.",
+    "Which pattern fits? Binary Search.",
+    "What is the brute force idea? Use extra loops or repeated checks.",
+    "What is the better/optimal idea? Use a clean binary search solution.",
+    "What are the edge cases? Empty-like input, single values, duplicates, and boundaries.",
+    "What is the complexity? For most of these easy tasks, aim for O(n) time unless sorting is required.",
+    "How would I explain it in an interview? State the pattern, the key operation, and the complexity."
+  ],
+  "algorithm": [
+    "Binary search first occurrence",
+    "Binary search last occurrence",
+    "Subtract indices to get count",
+    "Return 0 if absent"
+  ],
+  "code": "public object CountOccurrencesInSortedArray(/* input */)\n{\n    // 1. Binary search first occurrence\n    // 2. Binary search last occurrence\n    // 3. Subtract indices to get count\n    // 4. Return 0 if absent\n    throw new NotImplementedException();\n}",
+  "tests": "[Test]\npublic void CountOccurrencesInSortedArray_Sample_Test()\n{\n    Assert.Pass(\"Use example: [1,2,2,2,3], target=2 -> 3\");\n}",
+  "interview": "I would solve it using Binary Search. I would first identify the core operation, then apply a simple binary search approach and mention the complexity.",
+  "ru": "\u0412 sorted array count \u043c\u043e\u0436\u043d\u043e \u043d\u0430\u0439\u0442\u0438 \u0447\u0435\u0440\u0435\u0437 \u0434\u0432\u0435 \u0433\u0440\u0430\u043d\u0438\u0446\u044b.",
+  "visualExplanation": "Walk through the input step by step and update the state after each element or window.",
+  "mistakes": {
+    "critical": [
+      "Choose the wrong pattern instead of Binary Search"
+    ],
+    "important": [
+      "Forget one key edge case or condition"
+    ],
+    "nice": [
+      "Do not explain the complexity or trade-off clearly"
+    ]
+  },
+  "gaps": [
+    "Important: recognize when this is a Binary Search problem",
+    "Nice to have: explain why a simpler but slower brute-force approach is worse"
+  ],
+  "edgeCases": [
+    "empty-like input",
+    "single element/value",
+    "boundary cases"
+  ],
+  "status": "active",
+  "examples": [
+    "[1,2,2,2,3], target=2 -> 3"
+  ],
+  "constraints": "",
+  "whyThisPattern": "This is a Binary Search problem: find left and right boundaries of the same value in a sorted array. Spot wording signals include general interview phrases for binary search; this task also stresses first and last occurrence.",
+  "whyNotOtherPatterns": [
+    "Not Linear Scan, because sorted input allows a faster logarithmic search.",
+    "Not HashSet, because ordered boundaries matter."
+  ]
+}
