@@ -1,9 +1,9 @@
 # Monorepo: Next.js lives in frontend/. Netlify reads this file from the repo root.
+# The @netlify/plugin-nextjs adapter deploys SSR/API routes; classic "Deploy" step may show as Skipped.
 
 [build]
   base = "frontend"
   command = "npm run build"
-  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
