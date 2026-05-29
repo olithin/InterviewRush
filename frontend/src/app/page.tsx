@@ -20,15 +20,26 @@ export default async function DashboardPage() {
   }
 
   if (apiError) {
+    const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "(not set — defaults to localhost:5000)";
     return (
       <div className="space-y-5">
         <PageTitle
           title="Dashboard"
-          subtitle="Sign-in works, but problem data needs the backend API in production."
+          subtitle="Frontend is live on Netlify. Problem data needs the .NET API in the cloud."
         />
-        <p className="rounded-xl border border-amber-200/80 bg-amber-50/80 px-4 py-3 text-sm text-amber-950">
-          {apiError}
-        </p>
+        <div className="rounded-xl border border-amber-200/80 bg-amber-50/80 px-4 py-3 text-sm text-amber-950 space-y-2">
+          <p>
+            <strong>API error:</strong> {apiError}
+          </p>
+          <p>
+            <strong>NEXT_PUBLIC_API_BASE_URL:</strong> {apiUrl}
+          </p>
+          <p>
+            Deploy the backend (e.g. Render free from <code className="text-xs">render.yaml</code> in the
+            repo), run <code className="text-xs">import-content</code> once, then set the API URL on Netlify and
+            redeploy.
+          </p>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,25 @@
+# Render Blueprint: ASP.NET Core API (free tier + persistent disk for SQLite).
+# After deploy: open Shell and run: dotnet QAQuest.Api.dll import-content
+
+services:
+  - type: web
+    name: interviewrush-api
+    runtime: dotnet
+    rootDir: backend/src/QAQuest.Api
+    plan: free
+    buildCommand: dotnet publish -c Release -o out
+    startCommand: dotnet out/QAQuest.Api.dll
+    healthCheckPath: /api/problems
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__DefaultConnection
+        value: Data Source=/var/data/qaquest.db
+      - key: Cors__AllowedOrigins__0
+        value: https://interviewrush.netlify.app
+      - key: Cors__AllowedOrigins__1
+        value: http://localhost:3000
+    disk:
+      name: qaquest-data
+      mountPath: /var/data
+      sizeGB: 1

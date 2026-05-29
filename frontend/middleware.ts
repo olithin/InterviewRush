@@ -1,13 +1,6 @@
 export { default } from "next-auth/middleware";
 
 export const config = {
-  matcher: [
-    /*
-     * Include "/" explicitly — the catch-all below does not match the root path.
-     * Avoid auth on Next internals, static files, or API routes.
-     * Public UI: /login, /shared/* (auth lives under /api/*; we skip all /api here).
-     */
-    "/",
-    "/((?!api/|_next/|favicon\\.ico|.*\\..*|login(?:$|/)|shared(?:$|/)).+)"
-  ]
+  // Official NextAuth matcher — must exclude _next/static or CSS/JS chunks break (unstyled page).
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)"]
 };
